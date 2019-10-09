@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Learning notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-10-09T06:59:35.493Z" itemprop="datePublished">Oct 9 2019</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 229 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h3 id="Webpack-超入門安裝"><a href="#Webpack-超入門安裝" class="headerlink" title="Webpack 超入門安裝"></a>Webpack 超入門安裝</h3><ul>
+<li><p>Global Installation<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>建立專案資料夾</p>
+<ul>
+<li><figure class="highlight plain hljs"><figcaption><span><folder name>```</folder></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  ```cd &lt;folder name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>建立 npm 專案</p>
+<ul>
+<li><p><figure class="highlight plain hljs"><figcaption><span>init```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">       1. `package name` : 專案名稱</span><br><span class="line">       2. `version` : 版本號</span><br><span class="line">       3. `description` : 專案敘述</span><br><span class="line">       4. `entry point` : 專案執行進入點 ( 預設值為 index.js)</span><br><span class="line">       5. `test ccommand` : 專案測試指令</span><br><span class="line">       6. `git repository` : 專案原始碼的版本控管位置</span><br><span class="line">       7. `keywords` : 專案關鍵字</span><br><span class="line">       8. `author` : 專案作者</span><br><span class="line">       9. `license` : 專案版權</span><br><span class="line"></span><br><span class="line">- 建置文件</span><br><span class="line">    *  src/index.js</span><br></pre></td></tr></table></figure></p>
+<p>import bar from ‘./bar’;</p>
+<p>bar();<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  src/bar.js</span><br></pre></td></tr></table></figure></p>
+<p>export default function bar() {<br>  //<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 設定 webpack.config.js 檔</span><br></pre></td></tr></table></figure></p>
+<p>const path = require(‘path’); // 引用 path 模組</p>
+<p>module.exports = {<br>entry: ‘./src/index.js’, // webpack 打包對象<br>output: {</p>
+<pre><code>path: path.resolve(__dirname, &apos;dist&apos;),
+filename: &apos;bundle.js&apos;</code></pre><p>}<br>};<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 在 html / or 文件中引入</span><br></pre></td></tr></table></figure></p>
+<!doctype html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    ...
+</head>
+<body>
+    ...
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 執行</span><br></pre></td></tr></table></figure>
+
+<p>npx webpack –config webpack.config.js</p>
+<pre><code>
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<li><a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a></li>
+<li><a href="https://webpack.js.org/guides/installation/" target="_blank" rel="noopener">Installation</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html" target="_blank" rel="noopener">使用 Webpack 綁定應用程式</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html" target="_blank" rel="noopener">webpack 模組綁定程式</a></li>
+</ul>
+
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/10/09/Scope - var (ES6 以前)/"></a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Joanne Huang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>
