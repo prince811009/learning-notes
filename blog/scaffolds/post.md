@@ -1,5 +1,5 @@
 ---
-title: {{ title }}
+title: A Simple Post
 date: {{ date }}
 tags:
 ---

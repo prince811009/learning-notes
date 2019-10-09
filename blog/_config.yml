@@ -43,6 +43,46 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
+
+# Markdown-it config
+# Docs: https://github.com/hexojs/hexo-renderer-markdown-it/wiki
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-deflist
+    - markdown-it-imsize
+    - markdown-it-mark
+    - markdown-it-regexp
+    - markdown-it-task-checkbox
+    - name: markdown-it-container
+      options: success
+    - name: markdown-it-container
+      options: info
+    - name: markdown-it-container
+      options: warning
+    - name: markdown-it-container
+      options: danger
+    - markdown-it-deflist
+    - name: markdown-it-emoji
+      options:
+        shortcuts: {}
+  anchors:
+    level: 1
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ''
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -74,6 +114,12 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: minos
+
+menu:
+  Archives: /archives
+  Categories: /categories
+  Tags: /tags
+  About: /about
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
