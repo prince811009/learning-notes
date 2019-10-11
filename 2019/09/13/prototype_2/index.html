@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JavaScript_prototype chain -2 - Learning notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#JavaScript-在背後默默做的事">1&nbsp;&nbsp;<b>JavaScript 在背後默默做的事</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#原理">1.1&nbsp;&nbsp;原理</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#語法">1.2&nbsp;&nbsp;語法</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/prototype_2.md">
+                
+                <i class="fas fa-edit"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            JavaScript_prototype chain -2
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">Sep 13 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1139 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>第一回我們了解完 prototype 出現的前因後果，後面我們接續著去探索一下當我們下這些指令的時候， JavaScript 在背後做了哪些事情呢?</p>
+<h3 id="JavaScript-在背後默默做的事"><a href="#JavaScript-在背後默默做的事" class="headerlink" title="JavaScript 在背後默默做的事"></a>JavaScript 在背後默默做的事</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>我們想知道的是，當我們呼叫這程式碼的時候，JavaScript 要如何循著線索找到我們要的答案 ?<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Lucky&apos;);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+
+<p>從這幾行中我們還無法看到這個 instance 本身內的 function，但是根據 JavaScript 的機制，如果 dogA 是 Dog 的 instance，就能夠從 <figure class="highlight plain hljs"><figcaption><span>中尋找屬性或方法。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">所以有趣的是，在 DogA 和 ```Dog.prototype``` 之間一定有某些關聯或是方式把他們之間串聯在一起，這樣 JavaScript 才能循著找到原型，而這個連接方式也就是 ```__proto__``` ( 兩個底線 )，可參閱 [Object.prototype.__proto__](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto) 。</span><br><span class="line"></span><br><span class="line"> - example</span><br></pre></td></tr></table></figure></p>
+<p>function Dog(name, age) {<br>    this.name = name;<br>    this.age = age;<br>}</p>
+<p>Dog.prototype.log = function () {<br>    console.log(this.name + ‘, age:’ + this.age);<br>}</p>
+<p>var dogA = new Dog(‘Lucky’, 5);<br>console.log(dogA.<strong>proto</strong> === Dog.prototype) // true<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在這個例子中， ```dogA.__proto__``` 會指向 ```Dog.prototype``` ，所以就算原本的 instance 沒有看到這些 methods ，但是 JavaScript 仍然可以循著這個路徑去找到  ```Dog.prototype``` ，以及其中的 methods 。</span><br><span class="line"></span><br><span class="line">那有可能會有找不到的情況嗎 ? 那這時候 JavaScript 就會再往下一層  ```Dog.prototype.__proto__``` 去尋找，一直到找到為止 ( 或是找到 null 為止 )，， 而這項透過 ```__proto``` 一直循線找下去的現象稱為 &quot;prototype chain&quot; ( 原型鍊 )，而這就達成了 JavaScript 想要做出類似繼承的功能，可以呼叫自己 parent 的屬性和 methods 。</span><br><span class="line"></span><br><span class="line">所以後面我們就來試試如果一直用 ```__proto``` 找下去的話會找到什麼呢 ?</span><br></pre></td></tr></table></figure></p>
+<p>function Dog(name, age) {<br>    this.name = name;<br>    this.age = age;<br>}</p>
+<p>Dog.prototype.log = function () {<br>    console.log(this.name + ‘, age:’ + this.age);<br>}</p>
+<p>var dogA = new Dog(‘Lucky’, 5);<br>console.log(dogA.<strong>proto</strong> === Dog.prototype) // true<br>// 以上為剛剛上方的 example </p>
+<p>//keep searching<br>console.log(Dog.prototype.<strong>proto</strong> === Object.prototype) // true<br>console.log(Object.prototype.<strong>proto</strong>) // null, the top of the prototype chain<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 你的屬性不是你的屬性 ? </span><br><span class="line">既然我們知道 instance 可以有類似繼承 parent 的屬性，那我們又要如何區別某項屬性是 instance 原本就有的，或是他是屬於  ```prototype``` 裡面的 ?</span><br><span class="line"></span><br><span class="line">#### hasOwnProperty</span><br><span class="line">```hasOwnProperty``` 正好提供了這項功能，讓我們直接看範例：</span><br></pre></td></tr></table></figure></p>
+<p>function Dog(name, age) {<br>    this.name = name;<br>    this.age = age;<br>}</p>
+<p>Dog.prototype.log = function () {<br>    console.log(this.name + ‘, age:’ + this.age);<br>}</p>
+<p>var dogA = new Dog(‘Lucky’, 5);<br>console.log(dogA.hasOwnProperty(‘log’)); // false<br>console.log(dogA.<strong>proto</strong>.hasOwnProperty(‘log’)); // true<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">```hasOwnProperty``` 是不是很方便檢查用呢 ? </span><br><span class="line"></span><br><span class="line"> - quiz:</span><br></pre></td></tr></table></figure></p>
+<pre><code>function Dog(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Dog.prototype.log = function () {
+    console.log(this.name + &apos;, age:&apos; + this.age);
+}
+
+var dogA = new Dog(&apos;Lucky&apos;, 5);
+console.log(Dog.__proto__ === Function.prototype); // true
+console.log(Function.prototype.__proto__ === Object.prototype); //true
+console.log(Object.prototype.__proto__); //null
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">### instanceof</span><br><span class="line">用來判斷 A 是否為 B 的 instance ( 用法： ``` A instanceof B ``` )。</span><br></pre></td></tr></table></figure></code></pre><p>function Dog(name, age) {<br>    this.name = name;<br>    this.age = age;<br>}</p>
+<p>Dog.prototype.log = function () {<br>    console.log(this.name + ‘, age:’ + this.age);<br>}</p>
+<p>var dogA = new Dog(‘Lucky’, 5);</p>
+<p>console.log(dogA instanceof Dog); // true<br>console.log(dogA instanceof Object); // true<br>console.log(dogA instanceof Array); // false<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">### constructor</span><br><span class="line">暨上一回有提到 ```constructor``` ，每一個 prototype 都有一個叫做  ```constructor``` 的屬性</span><br><span class="line"> - example</span><br><span class="line"> ```Dog.prototype.constructor</span><br></pre></td></tr></table></figure></p>
+<p>而這個屬性會指向構造函數，也就是 <figure class="highlight plain hljs"><figcaption><span>( 好像繞口令 ~)。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- example</span><br></pre></td></tr></table></figure></p>
+<p> Dog.prototype 的建構函數也就是 Dog 本身<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">### new </span><br><span class="line">#### 定義</span><br><span class="line">```new``` 這個指令是讓我們在具有 constructor 的 function 中創造一個 instance，當我們下 ```new``` 這個指令後，會依序進行：</span><br><span class="line"> 1. Creates a blank, plain JavaScript object;</span><br><span class="line"> 2. Links (sets the constructor of) this object to another object;</span><br><span class="line"> 3. Passes the newly created object from Step 1 as the this context;</span><br><span class="line"> 4. Returns this if the function doesn&apos;t return its own object.</span><br><span class="line"></span><br><span class="line"> 讓我們先來試看看如何 ```new operator</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Car(make, model, year) &#123;</span><br><span class="line">    this.make = make</span><br><span class="line">    this.model = model</span><br><span class="line">    this.year = year</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var car1 = new Car(&apos;Eagle&apos;, &apos;Talon Tsi&apos;, 1993)</span><br><span class="line"></span><br><span class="line">console.log(car1.make) // &apos;Eagle&apos;</span><br></pre></td></tr></table></figure></p>
+<h4 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new constructor[([arguments])]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>constructor : </p>
+<p> A class or function that specifies the type of the object instance</p>
+</li>
+<li><p>arguments : </p>
+<p> A list of values that the constructor will be called with</p>
+</li>
+</ul>
+<p>因此回應到我們上面的例子中，當我們下了這項指令後，表示：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Lucky&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript 會幫我們做以下這些事：</p>
+<ol>
+<li>創造出一個新的 Object </li>
+<li>把這個 Object.<strong>proto</strong> 指向 <code>Dog.prototype</code> ，形成 <code>prototype chain</code></li>
+<li>把 Object 當作 context ，呼叫 <code>constructor</code> ( 也就是 Dog)</li>
+<li>回傳 Object</li>
+</ol>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>簡單地說， JavaScript 就是透過 prototype chain 的機制，把各物件的上下關係串聯起來，可以從我們要找的 obj 的 parent ( <code>obj.__proto__</code> ) 去循線蹤跡，一直到 the top of the prototype chain ( <code>Object.prototype</code> ) ，並一直到 null 結束。</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/13/primitive type 與 object 中的賦值差異/">primitive type 與 object 中的賦值差異</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/10/prototype_1/">JavaScript_prototype chain - 1</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Joanne Huang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

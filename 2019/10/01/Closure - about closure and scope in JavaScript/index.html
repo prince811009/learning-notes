@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Closure - about closure and scope in JavaScript - Learning notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Introduction">1&nbsp;&nbsp;<b>Introduction</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Reference">1.1&nbsp;&nbsp;Reference</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Closure%20-%20about%20closure%20and%20scope%20in%20JavaScript.md">
+                
+                <i class="fas fa-edit"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Closure - about closure and scope in JavaScript
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-10-01T02:43:10.000Z" itemprop="datePublished">Oct 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 minutes read (About 1326 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>首先先簡介 Closure 的特性</p>
+<a id="more"></a>
+
+<ul>
+<li><p>example 01 :<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    function inner() &#123;</span><br><span class="line">        console.log(a) // 10</span><br><span class="line">    &#125;</span><br><span class="line">    inner()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<p> 由這項 function，試著改寫成 =&gt; 不要直接執行 inner ，而是把這整個 function 直接回傳，會變成：<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    function inner() &#123;</span><br><span class="line">        console.log(a) // 仍為 10</span><br><span class="line">    &#125;</span><br><span class="line">    return inner // 注意：並非 ```return inner()</span><br></pre></td></tr></table></figure></p>
+<p> }</p>
+<p> var inner = test()<br> inner()<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">這時因為 ```return inner``` 的關係，使變數 ```a``` 也存在於 function inner 之中，所以可以將「在 function 之中 return 一個 function」作為 ```Closure``` 現象。</span><br><span class="line"></span><br><span class="line">    一項重要的優點為，可將變數隱藏在 function 內部，不使外部存取到這項變數，也就無法被隨意變更，如以下的例子：</span><br><span class="line"> - example 02 :</span><br></pre></td></tr></table></figure></p>
+<p> var myWallet = 100<br> function deduct(n) {</p>
+<pre><code>myWallet -= (n &gt; 10 ? 10 : n)</code></pre><p> }</p>
+<p> deduct(13) // 90<br> myWallet -= 999 // -909<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原本變數在 function 內部中特定條件下執行特定的事情，但仍能被外部存取且修改，若利用 closure　改寫，就能夠避免這項問題。</span><br></pre></td></tr></table></figure></p>
+<p> function getWallet() {</p>
+<pre><code>var myWallet = 100
+return {
+    deduct: function(n) {
+        myWallet -= (n &gt; 10 ? 10 : n)
+    }
+}</code></pre><p> }</p>
+<p> var wallet = getWallet()<br> wallet.deduct(13) // 90<br> myWallet -= 999 // Uncaught ReferenceError: my_balance is not defined<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   上述例子出現錯誤的原因為，因為變數被隱藏在 function 內部，因此外部無法存取到，若需要修改需透過執行 ```deduct``` 這項 function，達到隱藏資訊的目的，變數不會被隨意更改。</span><br><span class="line"></span><br><span class="line">- example 03 : </span><br><span class="line">   另一項常見的例子</span><br></pre></td></tr></table></figure></p>
+<p> var arr = []<br> for (var i = 0; i &lt; 4; i++) {</p>
+<pre><code>arr[i] = function() {
+    console.log(i) // 4
+}</code></pre><p> }</p>
+<p> arr<a href>0</a><br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">原因為當我們呼叫 ```arr[0]()``` 時，程式會去尋找這詞變數 ```i``` 為何，但是這時是迴圈已經全部跑完跳出時產生的 ```i``` ，因為 function 本身沒有 ```i``` 這項變數，因此往作用域的外層尋找時，就是找到這項跑完迴圈的 ```i``` ，因此 ```i``` 為 4 。</span><br><span class="line"></span><br><span class="line">若要解決這項問題，可使用幾種方式：</span><br><span class="line"></span><br><span class="line"> *  ```IIFE（Immediately Invoked Function Expression )</span><br></pre></td></tr></table></figure></p>
+<pre><code>可以將一個 function 包起來並把 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 從 ECMAScript 中探討 scope</span><br><span class="line"> - ```10.1.4 Scope Chain and Identifier Resolution</span><br></pre></td></tr></table></figure></code></pre><blockquote>
+<p>Every execution context has associated with it a scope chain. A scope chain is a list of objects that are searched when evaluating an Identifier. When control enters an execution context, a scope chain is created and populated with an initial set of objects, depending on the type of code.</p>
+</blockquote>
+<p> 每個 EC 都有屬於自己的 scope chain，當進入 EC 時 scope chain 就會被建立。</p>
+</li>
+<li><p><figure class="highlight plain hljs"><figcaption><span>Entering An Execution Context```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  ```10.2.3 Function Code</span><br></pre></td></tr></table></figure></p>
+<pre><code>&gt; The scope chain is initialised to contain the activation object followed by the objects in the scope chain stored in the [[Scope]] property of the Function object.
+
+當進入 EC 時，scope chain 會被初始化為 activation object，並加上 function 的 [[Scope]] 屬性。
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scope chain = AO + [[Scope]]</span><br></pre></td></tr></table></figure></code></pre></li>
+<li><p><figure class="highlight plain hljs"><figcaption><span>Creating Function Objects```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    &gt; Given an optional parameter list specified by FormalParameterList, a body specified by FunctionBody, and a scope chain specified by Scope, a Function object is constructed as follows:  </span><br><span class="line">    ...  </span><br><span class="line">    &gt; 7. Set the [[Scope]] property of F to a new scope chain (10.1.4) that contains the same objects as Scope.</span><br><span class="line">    </span><br><span class="line">    當我們建立 function 時會設定的 [[Scope]] ，裡面內含 scope 。</span><br><span class="line"></span><br><span class="line">### 探討 closure 行程過程及原理</span><br><span class="line">依據上述方式一步一步拆解過程</span><br><span class="line"> - example</span><br></pre></td></tr></table></figure></p>
+<p> var v1 = 10<br> function test() {</p>
+<pre><code>var vTest = 20
+function inner() {
+    console.log(v1, vTest) // 10, 20
+}
+return inner</code></pre><p> }<br> var inner = test()<br> inner()<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 進入 global EC </span><br><span class="line"></span><br><span class="line">   進入 global EC，並初始化 VO and scope chain。</span><br></pre></td></tr></table></figure></p>
+<p> globalEC {</p>
+<pre><code>VO: {
+    v1: undefined,
+    inner: undefined,
+    test: func
+},
+scopeChain: globalEC.VO</code></pre><p> }<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 執行主程式</span><br><span class="line"></span><br><span class="line">   執行 ```var v1 = 10``` 以及 ```var inner = test()``` 。</span><br></pre></td></tr></table></figure></p>
+<p> globalEC {</p>
+<pre><code>VO: {
+    v1: 10,
+    inner: undefined,
+    test: func
+},
+scopeChain: globalEC.VO</code></pre><p> }</p>
+<p> test.[[Scope]] = globalEC.scopeChain<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 進入 test EC</span><br><span class="line"></span><br><span class="line">   進入 test EC，並初始化 AO and scope chain。</span><br></pre></td></tr></table></figure></p>
+<p> testEC {</p>
+<pre><code>AO: {
+    arguments,
+    vTest: undefined,
+    inner: func
+},
+scopeChain: [testEC.AO, globalEC.VO]</code></pre><p> }</p>
+<p> globalEC {</p>
+<pre><code>VO: {
+    v1: 10,
+    inner: undefined,
+    test: func
+},
+scopeChain: globalEC.VO</code></pre><p> }</p>
+<p> test.[[Scope]] = globalEC.scopeChain<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 執行 test 程式</span><br><span class="line"></span><br><span class="line">    執行 ```var vTest = 20``` 與 ```return inner``` 。</span><br></pre></td></tr></table></figure></p>
+<p> testEC {</p>
+<pre><code>AO: {
+    arguments,
+    vTest: 20,
+    inner: func
+},
+scopeChain: [testEC.AO, globalEC.VO]</code></pre><p> }</p>
+<p> globalEC {</p>
+<pre><code>VO: {
+    v1: 10,
+    inner: func,
+    test: func
+},
+scopeChain: globalEC.VO</code></pre><p> }</p>
+<p> inner.[[Scope]] = testEC.scopeChain = [testEC.AO, globalEC.VO]<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5. 執行 ```return inner</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<pre><code>理論上 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> 8. 執行完畢</span><br><span class="line">---</span><br><span class="line">### 結論</span><br><span class="line">透過上述的拆解流程可以得知，其實當我們在宣告 function 時，程式背後的 compiler 就已經在幫我們建立 EC 以及初始化 EO/AO 的資訊了，並且把 scope 設定到 [[Scope]] 之中，因此當我們在這段程式碼之中：</span><br></pre></td></tr></table></figure></code></pre><p>function test () {<br>  let a = 10<br>  function inner () {<br>    console.log(a)<br>  }<br>  return inner<br>}<br>var inner = test()<br>inner()<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 ```return inner``` 時，就能夠把內部的 function inner 回傳，使後續動作可以藉著執行 inner() 進行。而這樣的形式，我們可以說 ```inner()``` 這項 function 是在一個 ```Closure</span><br></pre></td></tr></table></figure></p>
+<p>之中，因為它也就像是被一項外層的 function 包裹起來。</p>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<li><a href="https://github.com/aszx87410/blog/issues/35" target="_blank" rel="noopener">所有的函式都是閉包：談 JS 中的作用域與 Closure</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/10/05/Webpack/">Webpack 超入門安裝</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/28/Gulp - automate and enhance your workflow/">why do we need Gulp ?</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Joanne Huang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>
