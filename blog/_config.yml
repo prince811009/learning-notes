@@ -83,6 +83,7 @@ markdown:
     permalink: true
     permalinkClass: header-anchor
     permalinkSymbol: ''
+
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')

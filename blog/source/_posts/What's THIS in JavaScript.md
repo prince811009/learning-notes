@@ -1,4 +1,16 @@
-## What's THIS in JavaScript ?
+---
+title: What's THIS in JavaScript ?
+date: 2019-09-25 10:43:10
+categories:
+- Documentation
+tags:
+- JavaScript
+toc: true
+navbar_links:
+  Edit on GitHub:
+    icon: fas fa-edit
+    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/What's%20THIS%20in%20JavaScript.md
+---
 
 ### 前言
 常常出現以及使用的 ```this``` 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。
@@ -6,6 +18,9 @@
 ### 由物件導向的角度開始探討
 
 試宣告了一個 class ```Car``` ，我們可以使用兩個 methods ( setName and getName )，並在裡面使用 ```this.name``` 存取 instance 的屬性，由此可見這裡的 ```this``` 指的對象就是 instance 本身 ( ```myCar``` )。
+
+
+<!-- more -->
 
 ```
 class Car {
