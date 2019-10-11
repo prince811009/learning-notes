@@ -13,35 +13,41 @@ navbar_links:
 ---
 
  - Global Installation
+
     ```
     npm install webpack --save-dev
     ```
- - 建立專案資料夾
-     *  ```mkdir <folder name>```
-     *  ```cd <folder name>```
- - 建立 npm 專案
-     *  ```npm init```
-        1. ```package name``` : 專案名稱
-        2. ```version``` : 版本號
-        3. ```description``` : 專案敘述
-        4. ```entry point``` : 專案執行進入點 ( 預設值為 index.js)
-        5. ```test ccommand``` : 專案測試指令
-        6. ```git repository``` : 專案原始碼的版本控管位置
-        7. ```keywords``` : 專案關鍵字
-        8. ```author``` : 專案作者
-        9. ```license``` : 專案版權
 
+ - 建立專案資料夾
+     *  `mkdir <folder name>`
+     *  `cd <folder name>`
 
 <!-- more -->
 
+ - 建立 npm 專案
+     *  `npm init`
+        1. `package name` : 專案名稱
+        2. `version` : 版本號
+        3. `description` : 專案敘述
+        4. `entry point` : 專案執行進入點 ( 預設值為 index.js)
+        5. `test ccommand` : 專案測試指令
+        6. `git repository` : 專案原始碼的版本控管位置
+        7. `keywords` : 專案關鍵字
+        8. `author` : 專案作者
+        9. `license` : 專案版權
+
+
  - 建置文件
      *  src/index.js
+
         ```
         import bar from './bar';
 
         bar();
         ```
+
      *  src/bar.js
+
         ```
         export default function bar() { 
           //
@@ -49,6 +55,7 @@ navbar_links:
         ```
 
  - 設定 webpack.config.js 檔
+
     ```
     const path = require('path'); // 引用 path 模組
 
@@ -60,7 +67,9 @@ navbar_links:
         }
     };
     ```
+
  - 在 html / or 文件中引入
+
     ```
     <!doctype html>
     <html>
@@ -73,7 +82,9 @@ navbar_links:
         </body>
     </html>
     ```
+
  - 執行
+
     ```
     npx webpack --config webpack.config.js
     ```

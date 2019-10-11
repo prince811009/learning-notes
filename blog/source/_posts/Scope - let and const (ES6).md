@@ -13,7 +13,7 @@ navbar_links:
 ---
 ### 前言：
 
-在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 ```block``` 。
+在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 `block` 。
 
 <!-- more -->
 
@@ -22,6 +22,7 @@ navbar_links:
  - var
 
     作用域範圍為 function 之內都可使用
+
     ```
     function() {
         var a = 60
@@ -35,7 +36,8 @@ navbar_links:
     ```
 
  - let or const
-    *  example 01 :  
+    *  example 01 : 
+
         ```
         function() {
             var a = 60
@@ -47,11 +49,12 @@ navbar_links:
 
         test() 
         ```
-        因為在 ES6 之後，使用 ```let``` or ```const``` ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 ```if``` 的範圍外後，就無法存取到 ```b``` 。
+
+        因為在 ES6 之後，使用 `let` or `const` ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 `if` 的範圍外後，就無法存取到 `b` 。
 
     *  example 02 :  
 
-        > 使用 var 宣告的情況下：
+        - 使用 var 宣告的情況下：
 
         ```
         function test() {
@@ -63,6 +66,7 @@ navbar_links:
 
         test()
         ```
+
         * answer: 
             ```
             i: 1
@@ -77,8 +81,7 @@ navbar_links:
             final value: 10 // 可存取到 function 中的所有變數
             ```
 
-        > 使用 let or const 宣告的情況下：
-
+        - 使用 let or const 宣告的情況下：
         ```
         function test() {
             for (let i=0; i<10; i++) {

@@ -16,6 +16,7 @@ navbar_links:
  - Scope 的最基本單位 -  function
 
     在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。
+
     ```
     function test() {
         var a = 10
@@ -25,7 +26,8 @@ navbar_links:
     test() // 10
     console.log(a) // ReferenceError: a is not defined
     ```
-    因此這個例子中，function test() 會產生一個 test scope，而 ```a``` 就會宣告在這個 test 的 scope 裡面，所以 ```a``` 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 ```ReferenceError: a is not defined``` 。
+
+    因此這個例子中，function test() 會產生一個 test scope，而 `a` 就會宣告在這個 test 的 scope 裡面，所以 `a` 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 `ReferenceError: a is not defined` 。
 
 <!-- more -->
 
@@ -73,5 +75,6 @@ navbar_links:
     test() 
     console.log(a) // global
     ```
+
 ### scope chain 作用域鍊
-由上可得結論，作用域的優先尋找順序為 ```inner scope -> test scope -> global scope``` 。
+由上可得結論，作用域的優先尋找順序為 `inner scope -> test scope -> global scope` 。

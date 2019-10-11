@@ -20,6 +20,9 @@ navbar_links:
    *  symbol (ES6) 
  - others
    *  object(array, function, date...)
+
+<!-- more -->
+
  - primitive type 與 object 資料型態的差別
 
     其中最大差別在於 primitive type 為 Immutable
@@ -34,7 +37,6 @@ navbar_links:
     console.log(arr) // [1, 2]
     ```
 
-<!-- more -->
 
 ### typeof 
  - 可使用 typeof 了解目前的資料型態
@@ -73,20 +75,20 @@ navbar_links:
 ### Description
 The following table summarizes the possible return values of typeof
 
-Type | Result
--- | --
-Undefined | "undefined"
-Null | "object" (see below)
-Boolean | "boolean"
-Number | "number"
-BigInt | "bigint"
-String | "string"
-Symbol (new in ECMAScript 2015) | "symbol"
-Host object (provided by the JS environment) | Implementation-dependent
-Function object (implements [[Call]] in ECMA-262 terms) | "function"
-Any other object | "object"
+| Type | Result |
+| -- | -- |
+| Undefined | "undefined" |
+| Null | "object" (see below) |
+| Boolean | "boolean" |
+| Number | "number" |
+| BigInt | "bigint" |
+| String | "string" |
+| Symbol (new in ECMAScript 2015) | "symbol" |
+| Host object (provided by the JS environment) | Implementation-dependent |
+| Function object (implements [[Call]] in ECMA-262 terms) | "function" |
+| Any other object | "object" |
 ---
-但因為使用 ```typeof ``` 在某些情況下可能不是很準確，例如無法檢測出是否為 array，因此可使用另外兩種方式
+但因為使用 `typeof ` 在某些情況下可能不是很準確，例如無法檢測出是否為 array，因此可使用另外兩種方式
 
 ### Array.isArray()
 The Array.isArray() method determines whether the passed value is an Array.

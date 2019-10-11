@@ -17,6 +17,8 @@ navbar_links:
 
 > Gulp 為一個開源的 Task runner ( 工作執行器 )，建構在 node.js 和 npm 上，自動化整合套件。
 
+<!-- more -->
+
  - 提供的 API : 
    *  gulp.task : 執行工作
    *  gulp.src : 執行資料來源
@@ -25,56 +27,58 @@ navbar_links:
 
  - 官方 [gulpfile.js](https://gulpjs.com/)
 
-<!-- more -->
+      ```
+      // 引用 gulp plugin
+      const { src, dest, parallel } = require('gulp'); 
+      const pug = require('gulp-pug');
+      const less = require('gulp-less');
+      const minifyCSS = require('gulp-csso');
+      const concat = require('gulp-concat');
 
-    ```
-    // 引用 gulp plugin
-    const { src, dest, parallel } = require('gulp'); 
-    const pug = require('gulp-pug');
-    const less = require('gulp-less');
-    const minifyCSS = require('gulp-csso');
-    const concat = require('gulp-concat');
+      // 建立 gulp task
+      function html() {
+      return src('client/templates/*.pug')
+         .pipe(pug())
+         .pipe(dest('build/html'))
+      }
 
-    // 建立 gulp task
-    function html() {
-    return src('client/templates/*.pug')
-        .pipe(pug())
-        .pipe(dest('build/html'))
-    }
+      function css() {
+      return src('client/templates/*.less')
+         .pipe(less())
+         .pipe(minifyCSS())
+         .pipe(dest('build/css'))
+      }
 
-    function css() {
-    return src('client/templates/*.less')
-        .pipe(less())
-        .pipe(minifyCSS())
-        .pipe(dest('build/css'))
-    }
+      function js() {
+      return src('client/javascript/*.js', { sourcemaps: true })
+         .pipe(concat('app.min.js'))
+         .pipe(dest('build/js', { sourcemaps: true }))
+      }
 
-    function js() {
-    return src('client/javascript/*.js', { sourcemaps: true })
-        .pipe(concat('app.min.js'))
-        .pipe(dest('build/js', { sourcemaps: true }))
-    }
-
-    exports.js = js;
-    exports.css = css;
-    exports.html = html;
-    exports.default = parallel(html, css, js);          
-    ```
+      exports.js = js;
+      exports.css = css;
+      exports.html = html;
+      exports.default = parallel(html, css, js);          
+      ```
 
 ### 安裝 Gulp 流程
  - Check for node, npm, and npx
+
     ```
     node --version
     npm --version
     npx --version
     ```
+
  - Install the [gulp](https://gulpjs.com/) command line utility
+
     ```
     npm install gulp-cli -g // 在 global 環境下安裝 gulp
     npm install gulp -D
     npx -p touch nodetouch gulpfile.js // 設定檔放置在 gulpfile.js
     gulp --help
     ```
+
  - 安裝 gulp 相關套件 ( 以下列舉常見選項 )
      *  [gulp-sass](https://www.npmjs.com/package/gulp-sass)
      *  [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
@@ -86,15 +90,20 @@ navbar_links:
      *  [del](https://www.npmjs.com/package/del)
 
  - Create a project
+
     ```
     npx mkdirp my-project
     cd my-project
     ```
+
  - Create a package.json file in your project directory
+
     ```
     npm init
     ```
+
  - Create a file named gulpfile.js in your project root with these contents :
+
     ```
     function defaultTask(cb) {
     // place code for your default task here
@@ -103,15 +112,18 @@ navbar_links:
 
     exports.default = defaultTask
     ```
-    當我們安裝 gulp 相關套件時，```Usage``` 的地方都有提供詳細的引入方式。
 
- - start ```Gulp``` ~ 
+    當我們安裝 gulp 相關套件時，`Usage` 的地方都有提供詳細的引入方式。
+
+ - start `Gulp` ~ 
+    
     ```
     gulp || gulp <task> <othertask>
     ```
 
 ### 實作 Gulp 範例
  - 設定 gulpfile.js 檔
+
    ```
    const gulp = require('gulp'); // 載入 gulp
    const sass = require('gulp-sass'); // compile your Sass files
@@ -154,16 +166,18 @@ navbar_links:
    exports.watch = watch;
    exports.default = gulp.series(clean, styles, scripts); // 定義名稱為 default 的 gulp task
    ```
- - ```watch```
+
+ - `watch`
  
-    例如，當我們使用 ```gulp-uglify``` 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， ```gulp-uglify``` 可以監看並自動執行最小化。
-    ```
-    function watch() {
-      gulp.watch('./css/style.scss', styles);
-      gulp.watch('./js/*.js', scripts);
-   }
-   ```
-   因此上述程式碼可以協助我們監看 css 以及 js 檔是否有異動來自動執行 ```function styles()``` and ```function scripts()``` 。
+    例如，當我們使用 `gulp-uglify` 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， `gulp-uglify` 可以監看並自動執行最小化。
+
+      ```
+      function watch() {
+         gulp.watch('./css/style.scss', styles);
+         gulp.watch('./js/*.js', scripts);
+      }
+      ```
+   因此上述程式碼可以協助我們監看 css 以及 js 檔是否有異動來自動執行 `function styles()` and `function scripts()` 。
 
 ---
 #### Reference
