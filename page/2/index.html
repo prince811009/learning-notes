@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Learning notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/20/JavaScript 變數的資料型態/" itemprop="url">JavaScript 變數的資料型態</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-20T10:43:10.000Z" itemprop="datePublished">Sep 20 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 367 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <ul>
+<li><p>primitive type ( 原始型態 )</p>
+<ul>
+<li>null</li>
+<li>undefined</li>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>symbol (ES6) </li>
+</ul>
+</li>
+<li><p>others</p>
+<ul>
+<li>object(array, function, date…)</li>
+</ul>
+</li>
+<li><p>primitive type 與 object 資料型態的差別</p>
+<p> 其中最大差別在於 primitive type 為 Immutable</p>
+<p> <epacse hidden>24</epacse></p>
+</li>
+</ul>
+        <p class="article-more-link">
+            <a href="/2019/09/20/JavaScript 變數的資料型態/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/13/primitive type 與 object 中的賦值差異/" itemprop="url">primitive type 與 object 中的賦值差異</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">Sep 13 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 483 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="賦值差異"><a href="#賦值差異" class="headerlink" title="賦值差異"></a>賦值差異</h3><ul>
+<li><p>在 primitive type 中</p>
+<p> 變數 a 並不會跟著一起改變</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   var a = 10</span><br><span class="line">   var b = a</span><br><span class="line">   console.log(a, b) // 10, 10</span><br><span class="line"></span><br><span class="line">   b = 200</span><br><span class="line">   console.log(a, b) // 10, 200</span><br><span class="line">   ```  </span><br><span class="line"></span><br><span class="line">- 在 object 中</span><br><span class="line"> </span><br><span class="line">   obj 也連同 obj2 一起改變</span><br></pre></td></tr></table></figure></p>
+<p> var obj = {<br>   number: 10<br> }</p>
+<p> var obj2 = obj<br> console.log(obj, obj2) // {number: 10} {number: 10}<br> obj2.number = 20<br> console.log(obj, obj2) // {number: 20} {number: 20}<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">### 原理</span><br><span class="line"> - 在 primitive type 中</span><br></pre></td></tr></table></figure></p>
+<p> var a = 10<br> var b = a<br> console.log(a, b) // 10, 10</p>
+<p> b = 200<br> console.log(a, b) // 10, 200<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以由儲存的記憶體位置來試想，當我們宣告  ```var a = 10``` 時，</span><br></pre></td></tr></table></figure></p>
+<p>   a: 10 // 記憶體 a 位置，儲存的值 = 10<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">當我們宣告 ```var b = a``` 時，會把 a 的值複製給 b ，所以 b 的記憶體位置也會存 10 。</span><br></pre></td></tr></table></figure></p>
+<p> a: 10<br> b: 10<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">當我們下指令 ```b = 20``` 時，此時就將 b 位置的值修改成 20。</span><br></pre></td></tr></table></figure></p>
+<p> a: 10<br> b: 20<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在 object 中</span><br></pre></td></tr></table></figure></p>
+<p> var obj = {<br>   number: 10<br> }</p>
+<p> var obj2 = obj<br> console.log(obj, obj2) // {number: 10} {number: 10}<br> obj2.number = 20<br> console.log(obj, obj2) // {number: 20} {number: 20}<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們宣告 obj 時，會將 obj 真正的值儲存在某記憶體位置</span><br></pre></td></tr></table></figure></p>
+<p> var obj = {<br>   number: 10<br> }<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可試想儲存在記憶體 0x01 的位置</span><br></pre></td></tr></table></figure></p>
+<p> 0x01 {<br>   number: 10<br> }<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">此時回頭看 obj 儲存的值其實是這個記憶體位置</span><br></pre></td></tr></table></figure></p>
+<p> obj: 0x01<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因此當我們宣告 ```var obj2 = obj``` 時，會將 obj 的值，也就是記憶體位置複製給 obj2，所以現在 ```obj``` 與 ```obj2``` 會指向同一個記憶體位置。</span><br></pre></td></tr></table></figure></p>
+<p> 0x01 {<br>   number: 10<br> }</p>
+<p> obj: 0x01<br> obj2: 0x01<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最後當我們執行 ```obj2.number = 20``` 來改變 obj2 的值的時候，會去找 obj2 的記憶體位置的 number 修改成 20，所以 obj 和 obj2 log 出來的值就會變成相同。</span><br></pre></td></tr></table></figure></p>
+<p> 0x01: {<br>   number: 20<br> }</p>
+<p> obj: 0x01<br> obj2: 0x01<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若再將例子變換一些，</span><br></pre></td></tr></table></figure></p>
+<p>   var obj = {</p>
+<pre><code>number: 10</code></pre><p>   }</p>
+<p>   var obj2 = obj<br>   console.log(obj, obj2) // {number: 10} {number: 10}<br>   obj2 = {</p>
+<pre><code>number: 30</code></pre><p>   }<br>   console.log(obj, obj2) // {number: 10} {number: 30}<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 ```var obj = &#123; number: 10 &#125;``` 時，會先建立新的記憶體位置 0x01，再把記憶體位置給予 obj，而 obj2 同上，也會建立另一個新的記憶體位置 0x02，再將記憶體位置給予 obj2。</span><br></pre></td></tr></table></figure></p>
+<p> 0x01: {<br>   number: 10<br> }</p>
+<p> 0x02: {<br>   number: 30<br> }</p>
+<p> obj: 0x01<br> obj2: 0x02<br> ``` </p>
+</li>
+</ul>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/13/prototype_2/" itemprop="url">JavaScript_prototype chain -2</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">Sep 13 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1139 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>第一回我們了解完 prototype 出現的前因後果，後面我們接續著去探索一下當我們下這些指令的時候， JavaScript 在背後做了哪些事情呢?</p>
+<h3 id="JavaScript-在背後默默做的事"><a href="#JavaScript-在背後默默做的事" class="headerlink" title="JavaScript 在背後默默做的事"></a>JavaScript 在背後默默做的事</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>我們想知道的是，當我們呼叫這程式碼的時候，JavaScript 要如何循著線索找到我們要的答案 ?<br><epacse hidden>105</epacse></p>
+        <p class="article-more-link">
+            <a href="/2019/09/13/prototype_2/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/10/prototype_1/" itemprop="url">JavaScript_prototype chain - 1</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-10T02:43:10.000Z" itemprop="datePublished">Sep 10 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1172 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="先從-JavaScript-中的-class-開始"><a href="#先從-JavaScript-中的-class-開始" class="headerlink" title="先從 JavaScript 中的 class 開始"></a>先從 JavaScript 中的 class 開始</h3><ul>
+<li>JavaScript 中的繼承機制<br> 有趣的是這其中沒有 “子類別” 與 “父類別” 的概念，也沒有區分 <figure class="highlight plain hljs"><figcaption><span>與 ```instance``` ，皆是由 ```prototype chain``` 的模式下實現繼承機制。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### JavaScript 設計原理</span><br><span class="line">在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。</span><br><span class="line"></span><br><span class="line">Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">### JavaScript 需不需要設計繼承機制 ?</span><br><span class="line">如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。</span><br><span class="line"></span><br><span class="line">但是 Brendan Eich 沒有打算引入 ```class``` 的概念，但是他把 ```new``` 的命令引入了 JavaScript 中，從原形中生成一個 instance 。</span><br><span class="line"> - C++</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>ClassName *object = new ClassName(param);<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Java</span><br></pre></td></tr></table></figure></p>
+<p> FOO foo = new Foo();<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">而上述提到的 C++, Java 在使用 ```new``` 時，會使用 ```class``` 的 ```constructor``` ，不過因為 JavaScript 沒有引入 ```class``` 的概念，因此使用 ```new``` 時，後面接的不是 ```class``` 而是直接接 ```constructor```。</span><br><span class="line"></span><br><span class="line"> - example</span><br><span class="line"> 現在有一個叫做 Dog 的 constructor，來表示狗的原形：</span><br></pre></td></tr></table></figure></p>
+<p>// constructor<br>function Dog(name) {<br>    this.name = name;<br>}<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我們在使用 ```new``` 生成一個狗的 instance：</span><br></pre></td></tr></table></figure></p>
+<p>var dogA = new Dog(‘Doggy’);<br>console.log(dogA.name); // Doggy<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### Reference [JavaScript 中的构造函数](https://juejin.im/entry/584a1c98ac502e006c5d63b8)</span><br><span class="line"></span><br><span class="line">### constructor 基本結構</span><br><span class="line">而剛剛提及的 constructor 又是指什麼事情呢 ? </span><br><span class="line"></span><br><span class="line">使用物件導向的第一步，就是生成 instance，而在 JavaScript 中是以 constructor 與 prototype 來進行。生成 instance 時需要一個模板當作我們的藍圖，表示某一類實物的共同特徵，接著再根據這個模板生成。</span><br><span class="line"></span><br><span class="line">而 JavaScript 中就是使用 constructor 作為一個模板，每個模板可以生成許多 instance ，每個 instance 都有相同的結構。</span><br><span class="line"></span><br><span class="line"> - constructor基本結構</span><br></pre></td></tr></table></figure></p>
+<p>var Dog = function() {<br>    this.height = 100;<br>}<br>// or another way</p>
+<p>function Dog() {<br>    this.height = 100;<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 特點：與其他函數的區別</span><br><span class="line">  *  constructor 函數名的第一個字母通常為大寫</span><br><span class="line">  *  函數內使用 ```this``` ，代表所要生成的對象 instance</span><br><span class="line">  *  生成 instance 時，必須使用 ```new``` 指令來使用 ```constructor</span><br></pre></td></tr></table></figure></p>
+<h3 id="JavaScript-中-new-指令的缺點"><a href="#JavaScript-中-new-指令的缺點" class="headerlink" title="JavaScript 中 new 指令的缺點"></a>JavaScript 中 new 指令的缺點</h3><p>使用 <figure class="highlight plain hljs"><figcaption><span>生成 instance 的缺點為無法共享屬性與 methods</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 例如先在 Dog 的 ```constructor``` 中設置一個 instance 的共同屬性 &quot;species&quot;。</span><br></pre></td></tr></table></figure></p>
+<p>function Dog(name) {<br>    this.name = name<br>    this.species = ‘犬科’;<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 再生成兩個 instance</span><br></pre></td></tr></table></figure></p>
+<p> var dogA = new Dog(‘Doggy’);<br> var dogB = new Dog(‘Lucky’);<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 而這兩的 instance 的 species 的屬性是各自獨立的，就算修改其中之一也不會互相影響。</span><br></pre></td></tr></table></figure></p>
+<p> dogA.species = ‘貓科’;<br> console.log(dogB.species); // 犬科<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> 因此每一個 instance 都擁有屬於自己的屬性和 methods，但這就無法做到屬性 / 數據共享，使不必要的資源浪費；這時就要分成兩個做法，因為有些屬性例如 age, name 很明顯是每個 instance 會不一樣的，但是又會有某一些屬性或是 methods 會是每個 instance 彼此之間可以共享的。</span><br><span class="line"></span><br><span class="line"> ### prototype 屬性的引入</span><br><span class="line">考慮到這部份的確點，Brendan Eich 又決定為 ```constructor``` 設置  ```prototype``` 的屬性。所有 instance 需要共享這些屬性和 methods 的都放在這裡，不需要共享的則放在 constructor 裡。</span><br><span class="line"></span><br><span class="line">當 instance一旦被創造，將自動引用 ```prototype``` 對象的屬性和 methods，也可以把 instance 的屬性和方法，分成本地端和引用端兩種型態。</span><br><span class="line"></span><br><span class="line"> - 使用 ```prototype``` 屬性改寫：</span><br></pre></td></tr></table></figure></p>
+<p>function Dog(name) {<br>    this.name = name;<br>}</p>
+<p>Dog.prototype = {<br>    species: ‘犬科’<br>}</p>
+<p>var dogA = new Dog(‘Doggy’);<br>var dogB = new Dog(‘Lucky’);</p>
+<p>console.log(dogA.species); // 犬科<br>console.log(dogB.species); // 犬科<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目前 species 的屬性是放在  ```prototype``` 裡面，可以讓兩個 instance 共享，因此只要修改  ```prototype``` ，就會同時影響兩個 instance 。</span><br><span class="line"></span><br><span class="line"> - 修改  ```prototype</span><br></pre></td></tr></table></figure></p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Dog.prototype.species = &apos;貓科&apos;;</span><br><span class="line">console.log(dogA.species); // 貓科</span><br><span class="line">console.log(dogB.species); // 貓科</span><br></pre></td></tr></table></figure></p>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>你有一個 <figure class="highlight plain hljs"><figcaption><span>的函數，就可以把 ```Dog``` 當作 ```constructor``` ，再利用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">var obj = new Dog()</span><br></pre></td></tr></table></figure></p>
+<p>來 new 一個 <code>Dog</code> 的 instance，並且可以在 Dog.prototype 上寫下想要讓 instance 共同享有的屬性或 methods 。</p>
+<h4 id="Reference-該來理解-JavaScript-的原型鍊了"><a href="#Reference-該來理解-JavaScript-的原型鍊了" class="headerlink" title="Reference: 該來理解 JavaScript 的原型鍊了"></a>Reference: <a href="https://github.com/aszx87410/blog/issues/18" target="_blank" rel="noopener">該來理解 JavaScript 的原型鍊了</a></h4>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/08/Scope - let and const (ES6)/" itemprop="url">let and const (ES6) 的生存範圍</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-08T02:43:10.000Z" itemprop="datePublished">Sep 8 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 240 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 <code>block</code> 。</p>
+        <p class="article-more-link">
+            <a href="/2019/09/08/Scope - let and const (ES6)/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/07/Scope - var (ES6 以前)/" itemprop="url">Scope 作用域 (ES6 以前)</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-07T02:43:10.000Z" itemprop="datePublished">Sep 7 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 289 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="變數的生存範圍"><a href="#變數的生存範圍" class="headerlink" title="變數的生存範圍"></a>變數的生存範圍</h3><ul>
+<li><p>Scope 的最基本單位 -  function</p>
+<p> 在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。<br> <epacse hidden>40</epacse></p>
+<p> 因此這個例子中，function test() 會產生一個 test scope，而 <code>a</code> 就會宣告在這個 test 的 scope 裡面，所以 <code>a</code> 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 <code>ReferenceError: a is not defined</code> 。</p>
+</li>
+</ul>
+        <p class="article-more-link">
+            <a href="/2019/09/07/Scope - var (ES6 以前)/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+        
+<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+    <div class="pagination-previous">
+        <a href="/">Prev</a>
+    </div>
+    <div class="pagination-next is-invisible is-hidden-mobile">
+        <a href="/page/3/">Next</a>
+    </div>
+    <ul class="pagination-list is-hidden-mobile">
+        
+        <li><a class="pagination-link" href="/">1</a></li>
+        
+        <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
+        
+    </ul>
+</nav>
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Joanne Huang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

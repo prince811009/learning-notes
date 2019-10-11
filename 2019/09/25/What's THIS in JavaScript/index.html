@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>What&#39;s THIS in JavaScript ? - Learning notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#前言">1&nbsp;&nbsp;<b>前言</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Reference">1.1&nbsp;&nbsp;Reference</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/What&#39;s%20THIS%20in%20JavaScript.md">
+                
+                <i class="fas fa-edit"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            What&#39;s THIS in JavaScript ?
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-25T02:43:10.000Z" itemprop="datePublished">Sep 25 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1257 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>常常出現以及使用的 <figure class="highlight plain hljs"><figcaption><span>似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 由物件導向的角度開始探討</span><br><span class="line"></span><br><span class="line">試宣告了一個 class ```Car``` ，我們可以使用兩個 methods ( setName and getName )，並在裡面使用 ```this.name``` 存取 instance 的屬性，由此可見這裡的 ```this``` 指的對象就是 instance 本身 ( ```myCar``` )。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure></p>
+<p>class Car {<br>    setName(name) {<br>        this.name = name<br>    }</p>
+<pre><code>getName() {
+    return this.name
+}</code></pre><p>}</p>
+<p>const myCar = new Car()<br>myCar.setName(‘hello’)<br>console.log(myCar.getName()) // hello<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">### 物件導向之外情況</span><br><span class="line"> - 嚴格模式下 =&gt; undefined</span><br><span class="line"> - 非嚴格模式，且在瀏覽器下執行 =&gt; window</span><br><span class="line"> - 非嚴格模式，且在 node.js 下執行 =&gt; global</span><br><span class="line"></span><br><span class="line">### 更改 this 值</span><br><span class="line"></span><br><span class="line">儘管 this 可能有預設值，但仍可透過一些方法去修改：</span><br></pre></td></tr></table></figure></p>
+<p>‘use strict’;<br>function hello(a, b){<br>    console.log(this, a, b)<br>}</p>
+<p>hello(1, 2) // undefined 1 2<br>hello.call(undefined, 1, 2) // undefined 1 2<br>hello.apply(undefined, [1, 2]) // undefined 1 2<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">- 直接呼叫 function </span><br><span class="line">    *  上述程式碼可以從 function `hello` 可以 log 出 ```this``` 的值和 a, b 兩個參數，因此在呼叫 ```hello(1, 2)``` 的時候，在嚴格模式下 ```this``` 會是 ```undefined``` ， 而 a, b 分別為 1, 2。</span><br><span class="line"></span><br><span class="line">- 使用 ```call``` 和 ```apply``` 方式呼叫 function。</span><br><span class="line"></span><br><span class="line">    *  當使用 ```hello.call(undefined, 1, 2)``` 的時候，會發現回傳結果和呼叫 `hello(1, 2)` 相同。</span><br><span class="line"></span><br><span class="line">    *  若使用 `hello.apply(undefined, [1, 2])` 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 </span><br><span class="line"></span><br><span class="line">    *  回到上述未解的問題，也就是一直為 `undefined` 的那項參數 =&gt; `this` 的值，以下舉例說明：</span><br><span class="line">       - example 01 :</span><br></pre></td></tr></table></figure></p>
+<pre><code>        &apos;use strict&apos;;
+        function hello(a, b){
+            console.log(this, a, b)
+        }
+
+        hello.call(&apos;yo&apos;, 1, 2) // yo 1 2
+        hello.apply(&apos;hihihi&apos;, [1, 2]) // hihihi 1 2
+        <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### 物件中的 this</span><br><span class="line">除了物件導向 class 中的 this ，接續探討一般 JavaScript 中的 object 的情況。</span><br><span class="line">首先先宣告一項物件：</span><br></pre></td></tr></table></figure></code></pre><p>const obj = {<br>    value: 1,<br>    hello: function() {<br>        console.log(this.value)<br>    }<br>}</p>
+<p>obj.hello() // 1<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊所強調的重點為：</span><br><span class="line">&gt; `this` 的值與作用域或程式碼順序 / 位置無關，而是和如何呼叫有關。</span><br><span class="line"></span><br><span class="line">`this` 的值會根據使用者如何呼叫 function 而不同，就如同上述所提的三種方式： `call`, `apply` and `bind` ，因此也就可以使用不同的方式呼叫 function 使 `this` 值有所不同。</span><br><span class="line"> - Step 1 :</span><br></pre></td></tr></table></figure></p>
+<pre><code>const obj = {
+    value: 1,
+    hello: function() {
+        console.log(this.value)
+    }
+}
+
+obj.hello() // 1
+const hey = obj.hello
+hey() // undefined
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">### 在 ES6 的 Arrow Function ( 箭頭函式 ) 中</span><br><span class="line">在 ES6 要注意的是：</span><br><span class="line"></span><br><span class="line">&gt; 變數宣告的地方的 `this` 就是變數的 `this` 。</span><br><span class="line"></span><br><span class="line"> - example : </span><br><span class="line"></span><br><span class="line">    在 function `hello` 中宣告 arrow function `test` ，</span><br></pre></td></tr></table></figure></code></pre><hr>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<li><a href="https://github.com/aszx87410/blog/issues/39" target="_blank" rel="noopener">淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂</a></li>
+<li><a href="https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/" target="_blank" rel="noopener">What’s THIS in JavaScript ?</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/25/Untitled-1/">What&#39;s THIS in JavaScript ?</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/23/Hoisting - 從 ECMAScript 下手/">Hoisting - 從 ECMAScript 下手</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Joanne Huang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>
