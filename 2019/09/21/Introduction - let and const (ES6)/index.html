@@ -128,35 +128,30 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="const"><a class="header-anchor" href="#const"></a>const</h3>
-<p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
+        <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
 <a id="more"></a>
+
 <ul>
-<li>
-<p>需先指定一初始值，否則會出現錯誤 <code>Missing initializer in const declaration</code></p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b</span><br><span class="line">b = 20 // Error: `Missing initializer in const declaration`</span><br></pre></td></tr></table></figure></p>
+<li><p>需先指定一初始值，否則會出現錯誤 <code>Missing initializer in const declaration</code></p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b</span><br><span class="line">b = 20 // Error: `Missing initializer in const declaration`</span><br></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>不能在後續修改 const 的值，否則出現錯誤 <code>Assignment to constant variable</code> 。</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b = 10</span><br><span class="line">b = 20 // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>let 以及 var 則無此限制</p>
+<li><p>不能在後續修改 const 的值，否則出現錯誤 <code>Assignment to constant variable</code> 。</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b = 10</span><br><span class="line">b = 20 // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>let 以及 var 則無此限制</li>
+</ul>
 </li>
 </ul>
-<h3 id="應用"><a class="header-anchor" href="#應用"></a>應用</h3>
-<ul>
-<li>
-<p>example 01 :</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
-<p>此時當執行 <code>obj.number</code> 時，程式會去修改其中 <code>obj</code> 所儲存的記憶體位置中的  <code>number</code> 的值，而不會去修改到記憶體位置，因此不會出錯，可想像成</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // 其中的 number 的值修改成 2</span><br><span class="line"></span><br><span class="line">obj:0x01</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li><p>example 01 :</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
+<p> 此時當執行 <code>obj.number</code> 時，程式會去修改其中 <code>obj</code> 所儲存的記憶體位置中的  <code>number</code> 的值，而不會去修改到記憶體位置，因此不會出錯，可想像成</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // 其中的 number 的值修改成 2</span><br><span class="line"></span><br><span class="line">obj:0x01</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>example 02 :</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li><p>example 02 :</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>這時已產生一個新的記憶體位置來放 <code>number: 2</code> 的值，之後再將這新的記憶體位置只給 <code>obj</code> 但此時已修改到 <code>const obj</code> 的值了，因此會發生錯誤。</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">0x02: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj:0x02 // obj 的值 ( 也就是儲存的記憶體位置 ) 被修改了</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">0x02: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj:0x02 // obj 的值 ( 也就是儲存的記憶體位置 ) 被修改了</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 

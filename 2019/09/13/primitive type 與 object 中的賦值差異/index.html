@@ -116,89 +116,38 @@
         <span class="column is-narrow">
             
             
-            3 minutes read (About 483 words)
+            3 minutes read (About 488 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="賦值差異"><a class="header-anchor" href="#賦值差異"></a>賦值差異</h3>
-<ul>
-<li>在 primitive type 中</li>
+        <a id="more"></a>
+
+<h3 id="賦值差異"><a href="#賦值差異" class="headerlink" title="賦值差異"></a>賦值差異</h3><ul>
+<li><p>在 primitive type 中，變數 a 並不會跟著一起改變</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> var a = 10;</span><br><span class="line"> var b = a;</span><br><span class="line"> console.log(a, b) // 10, 10;</span><br><span class="line"> b = 200;</span><br><span class="line"> console.log(a, b) // 10, 200;</span><br><span class="line"> ```  </span><br><span class="line"></span><br><span class="line">- 在 object 中，obj 也連同 obj2 一起改變</span><br></pre></td></tr></table></figure></p>
+<p>var obj = {<br> number: 10;<br>}<br>var obj2 = obj;<br>console.log(obj, obj2) // {number: 10} {number: 10};<br>obj2.number = 20;<br>console.log(obj, obj2) // {number: 20} {number: 20};<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line">### 原理</span><br><span class="line"> - 在 primitive type 中</span><br></pre></td></tr></table></figure></p>
+<p>var a = 10;<br>var b = a;<br>console.log(a, b); // 10, 10<br>b = 200;<br>console.log(a, b); // 10, 200<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以由儲存的記憶體位置來試想，當我們宣告  `var a = 10` 時，</span><br></pre></td></tr></table></figure></p>
+<p>a: 10; // 記憶體 a 位置，儲存的值 = 10<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們宣告 `var b = a` 時，會把 a 的值複製給 b ，所以 b 的記憶體位置也會存 10 。</span><br></pre></td></tr></table></figure></p>
+<p>a: 10;<br>b: 10;<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們下指令 `b = 20` 時，此時就將 b 位置的值修改成 20。</span><br></pre></td></tr></table></figure></p>
+<p>a: 10;<br>b: 20;<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在 object 中</span><br></pre></td></tr></table></figure></p>
+<p>var obj = {<br> number: 10;<br>}</p>
+<p>var obj2 = obj;<br>console.log(obj, obj2) // {number: 10} {number: 10};<br>obj2.number = 20;<br>console.log(obj, obj2) // {number: 20} {number: 20};<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們宣告 obj 時，會將 obj 真正的值儲存在某記憶體位置，</span><br></pre></td></tr></table></figure></p>
+<p>var obj = {<br> number: 10;<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可試想儲存在記憶體 0x01 的位置，</span><br></pre></td></tr></table></figure></p>
+<p>0x01 {<br> number: 10;<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此時回頭看 obj 儲存的值其實是這個記憶體位置，</span><br></pre></td></tr></table></figure></p>
+<p>obj: 0x01<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">因此當我們宣告 `var obj2 = obj` 時，會將 obj 的值，也就是記憶體位置複製給 obj2，所以現在 `obj` 與 `obj2` 會指向同一個記憶體位置。</span><br></pre></td></tr></table></figure></p>
+<p>0x01 {<br> number: 10;<br>}</p>
+<p>obj: 0x01<br>obj2: 0x01<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最後當我們執行 `obj2.number = 20` 來改變 obj2 的值的時候，會去找 obj2 的記憶體位置的 number 修改成 20，所以 obj 和 obj2 log 出來的值就會變成相同。</span><br></pre></td></tr></table></figure></p>
+<p>0x01: {<br> number: 20;<br>}</p>
+<p>obj: 0x01<br>obj2: 0x01<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若再將例子變換一些，</span><br></pre></td></tr></table></figure></p>
+<p>var obj = {<br> number: 10;<br>}</p>
+<p>var obj2 = obj;<br>console.log(obj, obj2); // {number: 10} {number: 10}<br>obj2 = {<br> number: 30;<br>}<br>console.log(obj, obj2); // {number: 10} {number: 30}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在 `var obj = &#123; number: 10 &#125;` 時，會先建立新的記憶體位置 0x01，再把記憶體位置給予 obj，而 obj2 同上，也會建立另一個新的記憶體位置 0x02，再將記憶體位置給予 obj2。</span><br></pre></td></tr></table></figure></p>
+<p>0x01: {<br> number: 10;<br>}</p>
+<p>0x02: {<br> number: 30;<br>}</p>
+<p>obj: 0x01<br>obj2: 0x02<br>```</p>
+</li>
 </ul>
-<p>變數 a 並不會跟著一起改變</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  var a = 10</span><br><span class="line">  var b = a</span><br><span class="line">  console.log(a, b) // 10, 10</span><br><span class="line">  b = 200</span><br><span class="line">  console.log(a, b) // 10, 200</span><br><span class="line">  ```  </span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"> - 在 object 中</span><br><span class="line">  </span><br><span class="line">  obj 也連同 obj2 一起改變</span><br></pre></td></tr></table></figure></p>
-<p>var obj = {<br>
-number: 10<br>
-}<br>
-var obj2 = obj<br>
-console.log(obj, obj2) // {number: 10} {number: 10}<br>
-obj2.number = 20<br>
-console.log(obj, obj2) // {number: 20} {number: 20}<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 原理</span><br><span class="line"> - 在 primitive type 中</span><br></pre></td></tr></table></figure></p>
-<p>var a = 10<br>
-var b = a<br>
-console.log(a, b) // 10, 10<br>
-b = 200<br>
-console.log(a, b) // 10, 200<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以由儲存的記憶體位置來試想，當我們宣告  `var a = 10` 時，</span><br></pre></td></tr></table></figure></p>
-<p>a: 10 // 記憶體 a 位置，儲存的值 = 10<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們宣告 `var b = a` 時，會把 a 的值複製給 b ，所以 b 的記憶體位置也會存 10 。</span><br></pre></td></tr></table></figure></p>
-<p>a: 10<br>
-b: 10<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們下指令 `b = 20` 時，此時就將 b 位置的值修改成 20。</span><br></pre></td></tr></table></figure></p>
-<p>a: 10<br>
-b: 20<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在 object 中</span><br></pre></td></tr></table></figure></p>
-<p>var obj = {<br>
-number: 10<br>
-}</p>
-<p>var obj2 = obj<br>
-console.log(obj, obj2) // {number: 10} {number: 10}<br>
-obj2.number = 20<br>
-console.log(obj, obj2) // {number: 20} {number: 20}<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當我們宣告 obj 時，會將 obj 真正的值儲存在某記憶體位置</span><br></pre></td></tr></table></figure></p>
-<p>var obj = {<br>
-number: 10<br>
-}<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可試想儲存在記憶體 0x01 的位置</span><br></pre></td></tr></table></figure></p>
-<p>0x01 {<br>
-number: 10<br>
-}<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此時回頭看 obj 儲存的值其實是這個記憶體位置</span><br></pre></td></tr></table></figure></p>
-<p>obj: 0x01<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">因此當我們宣告 `var obj2 = obj` 時，會將 obj 的值，也就是記憶體位置複製給 obj2，所以現在 `obj` 與 `obj2` 會指向同一個記憶體位置。</span><br></pre></td></tr></table></figure></p>
-<p>0x01 {<br>
-number: 10<br>
-}</p>
-<p>obj: 0x01<br>
-obj2: 0x01<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最後當我們執行 `obj2.number = 20` 來改變 obj2 的值的時候，會去找 obj2 的記憶體位置的 number 修改成 20，所以 obj 和 obj2 log 出來的值就會變成相同。</span><br></pre></td></tr></table></figure></p>
-<p>0x01: {<br>
-number: 20<br>
-}</p>
-<p>obj: 0x01<br>
-obj2: 0x01<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若再將例子變換一些，</span><br></pre></td></tr></table></figure></p>
-<p>var obj = {<br>
-number: 10<br>
-}</p>
-<p>var obj2 = obj<br>
-console.log(obj, obj2) // {number: 10} {number: 10}<br>
-obj2 = {<br>
-number: 30<br>
-}<br>
-console.log(obj, obj2) // {number: 10} {number: 30}<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在 `var obj = &#123; number: 10 &#125;` 時，會先建立新的記憶體位置 0x01，再把記憶體位置給予 obj，而 obj2 同上，也會建立另一個新的記憶體位置 0x02，再將記憶體位置給予 obj2。</span><br></pre></td></tr></table></figure></p>
-<p>0x01: {<br>
-number: 10<br>
-}</p>
-<p>0x02: {<br>
-number: 30<br>
-}</p>
-<p>obj: 0x01<br>
-obj2: 0x02</p>
-<pre><code></code></pre>
 
     
     </div>
