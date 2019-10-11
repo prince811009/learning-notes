@@ -57,15 +57,15 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
 ```
     
  - 直接呼叫 function 
-     *  上述程式碼可以從 function `hello` 可以 log 出 ```this``` 的值和 a, b 兩個參數，因此在呼叫 ```hello(1, 2)``` 的時候，在嚴格模式下 ```this``` 會是 ```undefined``` ， 而 a, b 分別為 1, 2。
+     *  上述程式碼可以從 function ```hello``` 可以 log 出 ```this``` 的值和 a, b 兩個參數，因此在呼叫 ```hello(1, 2)``` 的時候，在嚴格模式下 ```this``` 會是 ```undefined``` ， 而 a, b 分別為 1, 2。
 
  - 使用 ```call``` 和 ```apply``` 方式呼叫 function。
 
-     *  當使用 ```hello.call(undefined, 1, 2)``` 的時候，會發現回傳結果和呼叫 `hello(1, 2)` 相同。
+     *  當使用 ```hello.call(undefined, 1, 2)``` 的時候，會發現回傳結果和呼叫 ```hello(1, 2)``` 相同。
 
-     *  若使用 `hello.apply(undefined, [1, 2])` 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 
+     *  若使用 ```hello.apply(undefined, [1, 2])``` 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 
 
-     *  回到上述未解的問題，也就是一直為 `undefined` 的那項參數 => `this` 的值，以下舉例說明：
+     *  回到上述未解的問題，也就是一直為 ```undefined``` 的那項參數 => ```this``` 的值，以下舉例說明：
         - example 01 :
             ```
             'use strict';
@@ -76,7 +76,7 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
             hello.call('yo', 1, 2) // yo 1 2
             hello.apply('hihihi', [1, 2]) // hihihi 1 2
             ```
-            有趣的是，傳進的的參數為何，`this` 的值就會是那項參數，覆蓋過預設的 `this` 值。
+            有趣的是，傳進的的參數為何，```this``` 的值就會是那項參數，覆蓋過預設的 ```this``` 值。
 
         - example 02 :
             ```
@@ -90,10 +90,10 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
             myCar.hello() // myCar instance
             myCar.hello.call('yoyoyo') // yoyoyo
             ```
-            從上述程式碼可以得知，原本預設的 `this` 值為當我們呼叫 `myCar.hello()` 時回傳的 `myCar` 這項 instance，不過當我們使用 `call` 呼叫 function 時 ( `myCar.hello.call('yoyoyo') // yoyoyo` ) 所傳入的參數所覆蓋掉。 
+            從上述程式碼可以得知，原本預設的 ```this``` 值為當我們呼叫 ```myCar.hello()``` 時回傳的 ```myCar``` 這項 instance，不過當我們使用 ```call``` 呼叫 function 時 ( ```myCar.hello.call('yoyoyo') // yoyoyo``` ) 所傳入的參數所覆蓋掉。 
 
- - 使用 `bind` 方式呼叫 function：
-     *  `bind` 會回傳一個新的 function ，因此我們將 function `hello` 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。
+ - 使用 ```bind``` 方式呼叫 function：
+     *  ```bind``` 會回傳一個新的 function ，因此我們將 function ```hello``` 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。
         ```
         'use strict';
         function hello() {
@@ -104,9 +104,9 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
         myHello() // my
         ```
 
- - 混用 `call` / `apply` and `bind` ：
+ - 混用 ```call``` / ```apply``` and ```bind``` ：
 
-    這邊可以發現，如果已經使用了 `bind` 之後 `this` 的值就不會再被改變了。
+    這邊可以發現，如果已經使用了 ```bind``` 之後 ```this``` 的值就不會再被改變了。
     ```
     'use strict';
     function hello() {
@@ -130,9 +130,9 @@ const obj = {
 obj.hello() // 1
 ```
 這邊所強調的重點為：
-> `this` 的值與作用域或程式碼順序 / 位置無關，而是和如何呼叫有關。
+> ```this``` 的值與作用域或程式碼順序 / 位置無關，而是和如何呼叫有關。
 
-`this` 的值會根據使用者如何呼叫 function 而不同，就如同上述所提的三種方式： `call`, `apply` and `bind` ，因此也就可以使用不同的方式呼叫 function 使 `this` 值有所不同。
+```this``` 的值會根據使用者如何呼叫 function 而不同，就如同上述所提的三種方式： ```call```, ```apply``` and ```bind``` ，因此也就可以使用不同的方式呼叫 function 使 ```this``` 值有所不同。
  - Step 1 :
     ```
     const obj = {
@@ -146,7 +146,7 @@ obj.hello() // 1
     const hey = obj.hello
     hey() // undefined
     ```
-    可將上面這段程式碼的 function call 轉成使用 `call` 的形式來看：
+    可將上面這段程式碼的 function call 轉成使用 ```call``` 的形式來看：
     ```
     const obj = {
         value: 1,
@@ -161,7 +161,7 @@ obj.hello() // 1
     hey() // undefined
     hey.call() // 轉成 call
     ```
-    此時 `obj.hello()` 變成 `obj.hello.call(obj)` ，而 `hey()` 前面沒有東西呼叫，因此變成 `hey.call()` 。
+    此時 ```obj.hello()``` 變成 ```obj.hello.call(obj)``` ，而 ```hey()``` 前面沒有東西呼叫，因此變成 ```hey.call()``` 。
 
  - Step 2 :
     ```
@@ -212,11 +212,11 @@ obj.hello() // 1
     ```
      * answer :
      
-       用 `call` 來轉換形式：
+       用 ```call``` 來轉換形式：
      ```
      hello() // hello.call() => window
      a.hello() // a.hello.call(a) => a
-     b.hello.apply(a) // 因為使用了 `apply` => a
+     b.hello.apply(a) // 因為使用了 ```apply``` => a
      ```
  - question 02 : 
     ```
@@ -235,7 +235,7 @@ obj.hello() // 1
     ```
      * answer : 
 
-     使用 `call` 轉換形式：
+     使用 ```call``` 轉換形式：
      ```
      test() // 轉換成 test.call() -> this 的值為 window，因此 this.x => 10 
      ```
@@ -243,16 +243,16 @@ obj.hello() // 1
 ### 在 ES6 的 Arrow Function ( 箭頭函式 ) 中
 在 ES6 要注意的是：
 
-> 變數宣告的地方的 `this` 就是變數的 `this` 。
+> 變數宣告的地方的 ```this``` 就是變數的 ```this``` 。
 
  - example : 
 
-    在 function `hello` 中宣告 arrow function `test` ，
+    在 function ```hello``` 中宣告 arrow function ```test``` ，
     ```
     const obj = {
         x: 1,
         hello: function() {
-            console.log(this) // 這邊的 `this` 就會是 test 的 this
+            console.log(this) // 這邊的 ```this``` 就會是 test 的 this
             const test = () => {
                 console.log(this.x)
             }
@@ -264,11 +264,11 @@ obj.hello() // 1
     const hello = obj.hello
     hello() // undefined
     ```
-    所以我們可以發現， `test` 這個箭頭函式是在 `hello` 這個 function 裡面被宣告的，因此 `test` 這項 function 所印出的 `this` 就會一樣是 `hello` 的 `this` 的值。
+    所以我們可以發現， ```test``` 這個箭頭函式是在 ```hello``` 這個 function 裡面被宣告的，因此 ```test``` 這項 function 所印出的 ```this``` 就會一樣是 ```hello``` 的 ```this``` 的值。
 
-    因此 `obj.hello()` 所 log 出來的 `this` 是 `obj` ，因此 `test` 的 `this` 的值也就是 `obj` 。
+    因此 ```obj.hello()``` 所 log 出來的 ```this``` 是 ```obj``` ，因此 ```test``` 的 ```this``` 的值也就是 ```obj``` 。
 
-    而呼叫 `hello()` 時， `test` 的 `this` 為全域物件，所以是 `undefined` 。
+    而呼叫 ```hello()``` 時， ```test``` 的 ```this``` 為全域物件，所以是 ```undefined``` 。
 
 ---
 ##### Reference
