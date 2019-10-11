@@ -15,59 +15,59 @@ navbar_links:
 ### 賦值差異
  - 在 primitive type 中，變數 a 並不會跟著一起改變
 
-  ```
-  var a = 10;
-  var b = a;
-  console.log(a, b) // 10, 10;
-  b = 200;
-  console.log(a, b) // 10, 200;
-  ```  
+    ```
+    var a = 10;
+    var b = a;
+    console.log(a, b) // 10, 10;
+    b = 200;
+    console.log(a, b) // 10, 200;
+    ```
+
+<!-- more -->
 
  - 在 object 中，obj 也連同 obj2 一起改變
 
-  ```
-  var obj = {
-    number: 10;
-  }
-  var obj2 = obj;
-  console.log(obj, obj2) // {number: 10} {number: 10};
-  obj2.number = 20;
-  console.log(obj, obj2) // {number: 20} {number: 20};
-  ```
-
-<!-- more -->
+    ```
+    var obj = {
+      number: 10;
+    }
+    var obj2 = obj;
+    console.log(obj, obj2) // {number: 10} {number: 10};
+    obj2.number = 20;
+    console.log(obj, obj2) // {number: 20} {number: 20};
+    ```
 
 ---
 ### 原理
  - 在 primitive type 中
 
-  ```
-  var a = 10;
-  var b = a;
-  console.log(a, b); // 10, 10
-  b = 200;
-  console.log(a, b); // 10, 200
-  ```  
+    ```
+    var a = 10;
+    var b = a;
+    console.log(a, b); // 10, 10
+    b = 200;
+    console.log(a, b); // 10, 200
+    ```
 
-  可以由儲存的記憶體位置來試想，當我們宣告  `var a = 10` 時，
+    可以由儲存的記憶體位置來試想，當我們宣告  `var a = 10` 時，
 
-  ```
-  a: 10; // 記憶體 a 位置，儲存的值 = 10
-  ```
+    ```
+    a: 10; // 記憶體 a 位置，儲存的值 = 10
+    ```
 
-  當我們宣告 `var b = a` 時，會把 a 的值複製給 b ，所以 b 的記憶體位置也會存 10 。
+    當我們宣告 `var b = a` 時，會把 a 的值複製給 b ，所以 b 的記憶體位置也會存 10 。
 
-  ```
-  a: 10;
-  b: 10;
-  ```
+    ```
+    a: 10;
+    b: 10;
+    ```
 
-  當我們下指令 `b = 20` 時，此時就將 b 位置的值修改成 20。
+    當我們下指令 `b = 20` 時，此時就將 b 位置的值修改成 20。
 
-  ```
-  a: 10;
-  b: 20;
-  ```
+    ```
+    a: 10;
+    b: 20;
+    ```
 
 - 在 object 中
 
@@ -124,7 +124,7 @@ navbar_links:
 
   obj: 0x01
   obj2: 0x01
-  ``` 
+  ```
 
   若再將例子變換一些，
   
