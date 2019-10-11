@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 <title>Webpack 超入門安裝 - Learning notes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -43,7 +43,7 @@
         <div class="navbar-brand">
             <a class="navbar-item navbar-logo" href="/">
                 
-                <img src="/images/logo.png" alt="" height="28">
+                <img src="/images/logo.png" alt height="28">
                 
             </a>
             <div class="navbar-burger">
@@ -55,17 +55,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item "
-               href="/archives">Archives</a>
+            <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item "
-               href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories">Categories</a>
             
-            <a class="navbar-item "
-               href="/tags">Tags</a>
+            <a class="navbar-item " href="/tags">Tags</a>
             
-            <a class="navbar-item "
-               href="/about">About</a>
+            <a class="navbar-item " href="/about">About</a>
             
         </div>
         
@@ -81,7 +77,7 @@
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">1&nbsp;&nbsp;<b>Reference</b></a>
+                    <a class="navbar-item" href="#reference">1&nbsp;&nbsp;<b>Reference</b></a>
                     
                 </div>
             </div>
@@ -127,42 +123,66 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <ul>
-<li><p>Global Installation<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Global Installation</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>建立專案資料夾</p>
+<li>
+<p>建立專案資料夾</p>
 <ul>
-<li><figure class="highlight plain hljs"><figcaption><span><folder name>```</folder></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  ```cd &lt;folder name&gt;</span><br></pre></td></tr></table></figure></li>
+<li><code>mkdir &lt;folder name&gt;</code></li>
+<li><code>cd &lt;folder name&gt;</code></li>
 </ul>
 </li>
-<li><p>建立 npm 專案</p>
+</ul>
+<a id="more"></a>
 <ul>
-<li><p><figure class="highlight plain hljs"><figcaption><span>init```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">        1. ```package name``` : 專案名稱</span><br><span class="line">        2. ```version``` : 版本號</span><br><span class="line">        3. ```description``` : 專案敘述</span><br><span class="line">        4. ```entry point``` : 專案執行進入點 ( 預設值為 index.js)</span><br><span class="line">        5. ```test ccommand``` : 專案測試指令</span><br><span class="line">        6. ```git repository``` : 專案原始碼的版本控管位置</span><br><span class="line">        7. ```keywords``` : 專案關鍵字</span><br><span class="line">        8. ```author``` : 專案作者</span><br><span class="line">        9. ```license``` : 專案版權</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"> - 建置文件</span><br><span class="line">     *  src/index.js</span><br></pre></td></tr></table></figure></p>
-<p>import bar from ‘./bar’;</p>
-<p>bar();<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*  src/bar.js</span><br></pre></td></tr></table></figure></p>
-<p>export default function bar() {<br>  //<br>}<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 設定 webpack.config.js 檔</span><br></pre></td></tr></table></figure></p>
-<p>const path = require(‘path’); // 引用 path 模組</p>
-<p>module.exports = {<br>entry: ‘./src/index.js’, // webpack 打包對象<br>output: {</p>
-<pre><code>path: path.resolve(__dirname, &apos;dist&apos;),
-filename: &apos;bundle.js&apos;</code></pre><p>}<br>};<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 在 html / or 文件中引入</span><br></pre></td></tr></table></figure></p>
-<!doctype html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    ...
-</head>
-<body>
-    ...
-    <script src="dist/bundle.js"></script>
-</body>
-</html>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 執行</span><br></pre></td></tr></table></figure>
-
-<p>npx webpack –config webpack.config.js</p>
-<pre><code>
-</code></pre></li>
-</ul>
+<li>
+<p>建立 npm 專案</p>
+<ul>
+<li><code>npm init</code>
+<ol>
+<li><code>package name</code> : 專案名稱</li>
+<li><code>version</code> : 版本號</li>
+<li><code>description</code> : 專案敘述</li>
+<li><code>entry point</code> : 專案執行進入點 ( 預設值為 index.js)</li>
+<li><code>test ccommand</code> : 專案測試指令</li>
+<li><code>git repository</code> : 專案原始碼的版本控管位置</li>
+<li><code>keywords</code> : 專案關鍵字</li>
+<li><code>author</code> : 專案作者</li>
+<li><code>license</code> : 專案版權</li>
+</ol>
 </li>
 </ul>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+</li>
+<li>
+<p>建置文件</p>
+<ul>
+<li>
+<p>src/index.js</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import bar from &apos;./bar&apos;;</span><br><span class="line"></span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>src/bar.js</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default function bar() &#123; </span><br><span class="line">  //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+</li>
+<li>
+<p>設定 webpack.config.js 檔</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;); // 引用 path 模組</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &apos;./src/index.js&apos;, // webpack 打包對象</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">        filename: &apos;bundle.js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>在 html / or 文件中引入</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;script src=&quot;dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>執行</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config webpack.config.js</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
+<ul>
 <li><a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a></li>
 <li><a href="https://webpack.js.org/guides/installation/" target="_blank" rel="noopener">Installation</a></li>
 <li><a href="https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html" target="_blank" rel="noopener">使用 Webpack 綁定應用程式</a></li>
@@ -204,8 +224,7 @@ filename: &apos;bundle.js&apos;</code></pre><p>}<br>};<br><figure class="highlig
         <div class="columns content">
             <div class="column is-narrow has-text-centered">
                 &copy; 2019 Joanne Huang&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
             <div class="column is-hidden-mobile"></div>
 

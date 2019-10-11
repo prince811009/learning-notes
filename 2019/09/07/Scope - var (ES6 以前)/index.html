@@ -128,30 +128,31 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="變數的生存範圍"><a href="#變數的生存範圍" class="headerlink" title="變數的生存範圍"></a>變數的生存範圍</h3><ul>
-<li><p>Scope 的最基本單位 -  function</p>
-<p> 在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // ReferenceError: a is not defined</span><br></pre></td></tr></table></figure></p>
-<p> 因此這個例子中，function test() 會產生一個 test scope，而 <figure class="highlight plain hljs"><figcaption><span>就會宣告在這個 test 的 scope 裡面，所以 ```a``` 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 ```ReferenceError: a is not defined``` 。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"> - global variable</span><br></pre></td></tr></table></figure></p>
-<p> var a = 20 // global variable<br> function test() {</p>
-<pre><code>console.log(a)</code></pre><p> }</p>
-<p> test() // 20<br> console.log(a) // 20<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 優先順序</span><br><span class="line"></span><br><span class="line">   程式會優先尋找 function 中的變數，若無再往上至 global variable 尋找。</span><br></pre></td></tr></table></figure></p>
-<p> var a = 20 // global variable<br> function test() {</p>
-<pre><code>var a = 10
-console.log(a)</code></pre><p> }</p>
-<p> test() // 10<br> console.log(a) // 20<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若我們將變數範圍印出，可更清楚 scope 範圍</span><br></pre></td></tr></table></figure></p>
-<p> var a = ‘global’<br> function test() {</p>
-<pre><code>var a = &apos;test scope a&apos;
-var b = &apos;test scope b&apos;
-console.log(a, b) // test scope a, test scope b 
-function inner() {
-    var b = &apos;inner scope b&apos;
-    console.log(a, b) // test scope a, inner scope b
-}
-inner() </code></pre><p> }</p>
-<p> test()<br> console.log(a) // global<br> ```</p>
-<h3 id="scope-chain-作用域鍊"><a href="#scope-chain-作用域鍊" class="headerlink" title="scope chain 作用域鍊"></a>scope chain 作用域鍊</h3><p>由上可得結論，作用域的優先尋找順序為 <code>inner scope -&gt; test scope -&gt; global scope</code> 。</p>
+        <h3 id="變數的生存範圍"><a class="header-anchor" href="#變數的生存範圍"></a>變數的生存範圍</h3>
+<ul>
+<li>
+<p>Scope 的最基本單位 -  function</p>
+<p>在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // ReferenceError: a is not defined</span><br></pre></td></tr></table></figure></p>
+<p>因此這個例子中，function test() 會產生一個 test scope，而 <code>a</code> 就會宣告在這個 test 的 scope 裡面，所以 <code>a</code> 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 <code>ReferenceError: a is not defined</code> 。</p>
 </li>
 </ul>
+<a id="more"></a>
+<ul>
+<li>
+<p>global variable</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 20</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>優先順序</p>
+<p>程式會優先尋找 function 中的變數，若無再往上至 global variable 尋找。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
+<p>若我們將變數範圍印出，可更清楚 scope 範圍<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var a = &apos;global&apos;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = &apos;test scope a&apos;</span><br><span class="line">    var b = &apos;test scope b&apos;</span><br><span class="line">    console.log(a, b) // test scope a, test scope b </span><br><span class="line">    function inner() &#123;</span><br><span class="line">        var b = &apos;inner scope b&apos;</span><br><span class="line">        console.log(a, b) // test scope a, inner scope b</span><br><span class="line">    &#125;</span><br><span class="line">    inner() </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() </span><br><span class="line">console.log(a) // global</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<h3 id="scope-chain-作用域鍊"><a class="header-anchor" href="#scope-chain-作用域鍊"></a>scope chain 作用域鍊</h3>
+<p>由上可得結論，作用域的優先尋找順序為 <code>inner scope -&gt; test scope -&gt; global scope</code> 。</p>
 
     
     </div>
