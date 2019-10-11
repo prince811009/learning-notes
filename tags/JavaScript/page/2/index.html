@@ -127,11 +127,52 @@
 </li>
 <li><p>primitive type 與 object 資料型態的差別</p>
 <p> 其中最大差別在於 primitive type 為 Immutable</p>
-<p> <epacse hidden>24</epacse></p>
+<p> <epacse hidden>43</epacse></p>
 </li>
 </ul>
         <p class="article-more-link">
             <a href="/2019/09/20/JavaScript 變數的資料型態/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/09/13/prototype_2/" itemprop="url">JavaScript_prototype chain -2</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">Sep 13 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1139 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>第一回我們了解完 prototype 出現的前因後果，後面我們接續著去探索一下當我們下這些指令的時候， JavaScript 在背後做了哪些事情呢?</p>
+<h3 id="JavaScript-在背後默默做的事"><a href="#JavaScript-在背後默默做的事" class="headerlink" title="JavaScript 在背後默默做的事"></a>JavaScript 在背後默默做的事</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>我們想知道的是，當我們呼叫這程式碼的時候，JavaScript 要如何循著線索找到我們要的答案 ?<br><epacse hidden>105</epacse></p>
+        <p class="article-more-link">
+            <a href="/2019/09/13/prototype_2/#more">Read More</a>
         </p>
     
     </div>
@@ -199,47 +240,6 @@
 </li>
 </ul>
 
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/09/13/prototype_2/" itemprop="url">JavaScript_prototype chain -2</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">Sep 13 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Documentation/">Documentation</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            8 minutes read (About 1139 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>第一回我們了解完 prototype 出現的前因後果，後面我們接續著去探索一下當我們下這些指令的時候， JavaScript 在背後做了哪些事情呢?</p>
-<h3 id="JavaScript-在背後默默做的事"><a href="#JavaScript-在背後默默做的事" class="headerlink" title="JavaScript 在背後默默做的事"></a>JavaScript 在背後默默做的事</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>我們想知道的是，當我們呼叫這程式碼的時候，JavaScript 要如何循著線索找到我們要的答案 ?<br><epacse hidden>105</epacse></p>
-        <p class="article-more-link">
-            <a href="/2019/09/13/prototype_2/#more">Read More</a>
-        </p>
     
     </div>
     
@@ -375,7 +375,7 @@
     
         <h3 id="變數的生存範圍"><a href="#變數的生存範圍" class="headerlink" title="變數的生存範圍"></a>變數的生存範圍</h3><ul>
 <li><p>Scope 的最基本單位 -  function</p>
-<p> 在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。<br> <epacse hidden>40</epacse></p>
+<p> 在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。<br> <epacse hidden>39</epacse></p>
 <p> 因此這個例子中，function test() 會產生一個 test scope，而 <code>a</code> 就會宣告在這個 test 的 scope 裡面，所以 <code>a</code> 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 <code>ReferenceError: a is not defined</code> 。</p>
 </li>
 </ul>
