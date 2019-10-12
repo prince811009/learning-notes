@@ -77,47 +77,41 @@
                     
                     
                     
-                    <a class="navbar-item" href="#先從-JavaScript-中的-class-開始">1&nbsp;&nbsp;<b>先從 JavaScript 中的 class 開始</b></a>
+                    <a class="navbar-item" href="#先從-javascript-中的-class-開始">1.1&nbsp;&nbsp;先從 JavaScript 中的 class 開始</a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#JavaScript-設計原理">2&nbsp;&nbsp;<b>JavaScript 設計原理</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#JavaScript-需不需要設計繼承機制">3&nbsp;&nbsp;<b>JavaScript 需不需要設計繼承機制 ?</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#constructor-基本結構">4&nbsp;&nbsp;<b>constructor 基本結構</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#JavaScript-中-new-指令的缺點">5&nbsp;&nbsp;<b>JavaScript 中 new 指令的缺點</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#prototype-屬性的引入">6&nbsp;&nbsp;<b>prototype 屬性的引入</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#結論">7&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#more">2&nbsp;&nbsp;<b></b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">7.1&nbsp;&nbsp;Reference:</a>
+                    <a class="navbar-item" href="#javascript-設計原理">2.1&nbsp;&nbsp;JavaScript 設計原理</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#javascript-需不需要設計繼承機制">2.2&nbsp;&nbsp;JavaScript 需不需要設計繼承機制 ?</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#constructor-基本結構">2.3&nbsp;&nbsp;constructor 基本結構</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#javascript-中-new-指令的缺點">2.4&nbsp;&nbsp;JavaScript 中 new 指令的缺點</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#prototype-屬性的引入">2.5&nbsp;&nbsp;prototype 屬性的引入</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#結論">2.6&nbsp;&nbsp;結論</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#reference">2.6.1&nbsp;&nbsp;Reference:</a>
                     
                 </div>
             </div>
@@ -155,39 +149,49 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="先從-JavaScript-中的-class-開始"><a href="#先從-JavaScript-中的-class-開始" class="headerlink" title="先從 JavaScript 中的 class 開始"></a>先從 JavaScript 中的 class 開始</h3><ul>
-<li>JavaScript 中的繼承機制<br>  有趣的是這其中沒有 “子類別” 與 “父類別” 的概念，也沒有區分 <code>class</code> 與 <code>instance</code> ，皆是由 <code>prototype chain</code> 的模式下實現繼承機制。</li>
+        <h3 id="先從-javascript-中的-class-開始"><a class="header-anchor" href="#先從-javascript-中的-class-開始"></a>先從 JavaScript 中的 class 開始</h3>
+<ul>
+<li>JavaScript 中的繼承機制<br>
+有趣的是這其中沒有 “子類別” 與 “父類別” 的概念，也沒有區分 <code>class</code> 與 <code>instance</code> ，皆是由 <code>prototype chain</code> 的模式下實現繼承機制。</li>
 </ul>
-<a id="more"></a>
-<hr>
-<h3 id="JavaScript-設計原理"><a href="#JavaScript-設計原理" class="headerlink" title="JavaScript 設計原理"></a>JavaScript 設計原理</h3><p>在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。</p>
+<h2 id="more"><a class="header-anchor" href="#more"></a><a id="more"></a></h2>
+<h3 id="javascript-設計原理"><a class="header-anchor" href="#javascript-設計原理"></a>JavaScript 設計原理</h3>
+<p>在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。</p>
 <p>Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。</p>
 <hr>
-<h3 id="JavaScript-需不需要設計繼承機制"><a href="#JavaScript-需不需要設計繼承機制" class="headerlink" title="JavaScript 需不需要設計繼承機制 ?"></a>JavaScript 需不需要設計繼承機制 ?</h3><p>如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。</p>
+<h3 id="javascript-需不需要設計繼承機制"><a class="header-anchor" href="#javascript-需不需要設計繼承機制"></a>JavaScript 需不需要設計繼承機制 ?</h3>
+<p>如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。</p>
 <p>但是 Brendan Eich 沒有打算引入 <code>class</code> 的概念，但是他把 <code>new</code> 的命令引入了 JavaScript 中，從原形中生成一個 instance 。</p>
 <ul>
-<li><p>C++ </p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName *object = new ClassName(param);</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>C++</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName *object = new ClassName(param);</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Java</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOO foo = new Foo();</span><br></pre></td></tr></table></figure></p>
-<p>  而上述提到的 C++, Java 在使用 <code>new</code> 時，會使用 <code>class</code> 的 <code>constructor</code> ，不過因為 JavaScript 沒有引入 <code>class</code> 的概念，因此使用 <code>new</code> 時，後面接的不是 <code>class</code> 而是直接接 <code>constructor</code>。</p>
+<li>
+<p>Java</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOO foo = new Foo();</span><br></pre></td></tr></table></figure></p>
+<p>而上述提到的 C++, Java 在使用 <code>new</code> 時，會使用 <code>class</code> 的 <code>constructor</code> ，不過因為 JavaScript 沒有引入 <code>class</code> 的概念，因此使用 <code>new</code> 時，後面接的不是 <code>class</code> 而是直接接 <code>constructor</code>。</p>
 </li>
-<li><p>example<br>  現在有一個叫做 Dog 的 constructor，來表示狗的原形：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// constructor </span><br><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>  我們在使用 <code>new</code> 生成一個狗的 instance：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">console.log(dogA.name); // Doggy</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>example<br>
+現在有一個叫做 Dog 的 constructor，來表示狗的原形：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// constructor </span><br><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我們在使用 <code>new</code> 生成一個狗的 instance：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">console.log(dogA.name); // Doggy</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <hr>
-<h3 id="constructor-基本結構"><a href="#constructor-基本結構" class="headerlink" title="constructor 基本結構"></a>constructor 基本結構</h3><p>而剛剛提及的 constructor 又是指什麼事情呢 ? </p>
+<h3 id="constructor-基本結構"><a class="header-anchor" href="#constructor-基本結構"></a>constructor 基本結構</h3>
+<p>而剛剛提及的 constructor 又是指什麼事情呢 ?</p>
 <p>使用物件導向的第一步，就是生成 instance，而在 JavaScript 中是以 constructor 與 prototype 來進行。生成 instance 時需要一個模板當作我們的藍圖，表示某一類實物的共同特徵，接著再根據這個模板生成。</p>
 <p>而 JavaScript 中就是使用 constructor 作為一個模板，每個模板可以生成許多 instance ，每個 instance 都有相同的結構。</p>
 <ul>
-<li><p>constructor基本結構</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var Dog = function() &#123;</span><br><span class="line">    this.height = 100;</span><br><span class="line">&#125;</span><br><span class="line">// or another way</span><br><span class="line"></span><br><span class="line">function Dog() &#123;</span><br><span class="line">    this.height = 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>constructor基本結構</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var Dog = function() &#123;</span><br><span class="line">    this.height = 100;</span><br><span class="line">&#125;</span><br><span class="line">// or another way</span><br><span class="line"></span><br><span class="line">function Dog() &#123;</span><br><span class="line">    this.height = 100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>特點：與其他函數的區別</p>
+<li>
+<p>特點：與其他函數的區別</p>
 <ul>
 <li>constructor 函數名的第一個字母通常為大寫</li>
 <li>函數內使用 <code>this</code> ，代表所要生成的對象 instance</li>
@@ -196,36 +200,45 @@
 </li>
 </ul>
 <hr>
-<h3 id="JavaScript-中-new-指令的缺點"><a href="#JavaScript-中-new-指令的缺點" class="headerlink" title="JavaScript 中 new 指令的缺點"></a>JavaScript 中 new 指令的缺點</h3><p>使用 <code>constructor</code> 生成 instance 的缺點為無法共享屬性與 methods</p>
+<h3 id="javascript-中-new-指令的缺點"><a class="header-anchor" href="#javascript-中-new-指令的缺點"></a>JavaScript 中 new 指令的缺點</h3>
+<p>使用 <code>constructor</code> 生成 instance 的缺點為無法共享屬性與 methods</p>
 <ul>
-<li><p>例如先在 Dog 的 <code>constructor</code> 中設置一個 instance 的共同屬性 “species”。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.species = &apos;犬科&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>例如先在 Dog 的 <code>constructor</code> 中設置一個 instance 的共同屬性 “species”。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.species = &apos;犬科&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>再生成兩個 instance</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">var dogB = new Dog(&apos;Lucky&apos;);</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>再生成兩個 instance</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">var dogB = new Dog(&apos;Lucky&apos;);</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>而這兩的 instance 的 species 的屬性是各自獨立的，就算修改其中之一也不會互相影響。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dogA.species = &apos;貓科&apos;;</span><br><span class="line">console.log(dogB.species); // 犬科</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>而這兩的 instance 的 species 的屬性是各自獨立的，就算修改其中之一也不會互相影響。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dogA.species = &apos;貓科&apos;;</span><br><span class="line">console.log(dogB.species); // 犬科</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <p>因此每一個 instance 都擁有屬於自己的屬性和 methods，但這就無法做到屬性 / 數據共享，使不必要的資源浪費；這時就要分成兩個做法，因為有些屬性例如 age, name 很明顯是每個 instance 會不一樣的，但是又會有某一些屬性或是 methods 會是每個 instance 彼此之間可以共享的。</p>
 <hr>
-<h3 id="prototype-屬性的引入"><a href="#prototype-屬性的引入" class="headerlink" title="prototype 屬性的引入"></a>prototype 屬性的引入</h3><p>考慮到這部份的確點，Brendan Eich 又決定為 <code>constructor</code> 設置 <code>prototype</code> 的屬性。所有 instance 需要共享這些屬性和 methods 的都放在這裡，不需要共享的則放在 constructor 裡。</p>
+<h3 id="prototype-屬性的引入"><a class="header-anchor" href="#prototype-屬性的引入"></a>prototype 屬性的引入</h3>
+<p>考慮到這部份的確點，Brendan Eich 又決定為 <code>constructor</code> 設置 <code>prototype</code> 的屬性。所有 instance 需要共享這些屬性和 methods 的都放在這裡，不需要共享的則放在 constructor 裡。</p>
 <p>當 instance一旦被創造，將自動引用 <code>prototype</code> 對象的屬性和 methods，也可以把 instance 的屬性和方法，分成本地端和引用端兩種型態。</p>
 <ul>
-<li><p>使用 <code>prototype</code> 屬性改寫：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Dog.prototype = &#123;</span><br><span class="line">    species: &apos;犬科&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">var dogB = new Dog(&apos;Lucky&apos;);</span><br><span class="line"></span><br><span class="line">console.log(dogA.species); // 犬科</span><br><span class="line">console.log(dogB.species); // 犬科</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>使用 <code>prototype</code> 屬性改寫：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Dog.prototype = &#123;</span><br><span class="line">    species: &apos;犬科&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">var dogB = new Dog(&apos;Lucky&apos;);</span><br><span class="line"></span><br><span class="line">console.log(dogA.species); // 犬科</span><br><span class="line">console.log(dogB.species); // 犬科</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <p>目前 species 的屬性是放在  <code>prototype</code> 裡面，可以讓兩個 instance 共享，因此只要修改  <code>prototype</code> ，就會同時影響兩個 instance 。</p>
 <ul>
-<li>修改  <code>prototype</code><br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog.prototype.species = &apos;貓科&apos;;</span><br><span class="line">console.log(dogA.species); // 貓科</span><br><span class="line">console.log(dogB.species); // 貓科</span><br></pre></td></tr></table></figure></li>
+<li>修改  <code>prototype</code><br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog.prototype.species = &apos;貓科&apos;;</span><br><span class="line">console.log(dogA.species); // 貓科</span><br><span class="line">console.log(dogB.species); // 貓科</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>你有一個 <code>Dog</code> 的函數，就可以把 <code>Dog</code> 當作 <code>constructor</code> ，再利用</p>
+<h3 id="結論"><a class="header-anchor" href="#結論"></a>結論</h3>
+<p>你有一個 <code>Dog</code> 的函數，就可以把 <code>Dog</code> 當作 <code>constructor</code> ，再利用</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Dog()</span><br></pre></td></tr></table></figure></p>
 <p>來 new 一個 <code>Dog</code> 的 instance，並且可以在 Dog.prototype 上寫下想要讓 instance 共同享有的屬性或 methods 。</p>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><ul>
+<h4 id="reference"><a class="header-anchor" href="#reference"></a>Reference:</h4>
+<ul>
 <li><a href="https://github.com/aszx87410/blog/issues/18" target="_blank" rel="noopener">該來理解 JavaScript 的原型鍊了</a></li>
 <li><a href="https://juejin.im/entry/584a1c98ac502e006c5d63b8" target="_blank" rel="noopener">JavaScript 中的構造函数</a></li>
 </ul>
@@ -243,7 +256,7 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/2019/09/13/primitive type 與 object 中的賦值差異/">primitive type 與 object 中的賦值差異</a>
+            <a href="/2019/09/13/prototype_2/">JavaScript_prototype chain -2</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">

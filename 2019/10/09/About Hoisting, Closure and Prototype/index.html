@@ -77,19 +77,19 @@
                     
                     
                     
-                    <a class="navbar-item" href="#Hoisting-變數提升">1&nbsp;&nbsp;<b>Hoisting 變數提升</b></a>
+                    <a class="navbar-item" href="#hoisting-變數提升">1&nbsp;&nbsp;<b>Hoisting 變數提升</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#Closure-閉包">2&nbsp;&nbsp;<b>Closure 閉包</b></a>
+                    <a class="navbar-item" href="#closure-閉包">2&nbsp;&nbsp;<b>Closure 閉包</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#Prototype">3&nbsp;&nbsp;<b>Prototype</b></a>
+                    <a class="navbar-item" href="#prototype">3&nbsp;&nbsp;<b>Prototype</b></a>
                     
                 </div>
             </div>
@@ -134,71 +134,84 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="Hoisting-變數提升"><a href="#Hoisting-變數提升" class="headerlink" title="Hoisting 變數提升"></a>Hoisting 變數提升</h2><ul>
-<li><p>example_1 ( 變數 )</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a)</span><br><span class="line">var a = 1</span><br></pre></td></tr></table></figure></p>
-<p>  可以看成 2 步驟拆解： </p>
+        <h2 id="hoisting-變數提升"><a class="header-anchor" href="#hoisting-變數提升"></a>Hoisting 變數提升</h2>
 <ul>
-<li><p>first : 將變數拆解</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(a)</span><br><span class="line">var a</span><br><span class="line">a = 1</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>example_1 ( 變數 )</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a)</span><br><span class="line">var a = 1</span><br></pre></td></tr></table></figure></p>
+<p>可以看成 2 步驟拆解：</p>
+<ul>
+<li>
+<p>first : 將變數拆解</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(a)</span><br><span class="line">var a</span><br><span class="line">a = 1</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>second : 再提升變數</p>
-<p>  因此在程式跑到 <code>console.log(a)</code> 之前就可以先使用此變數。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a </span><br><span class="line">console.log(a)</span><br><span class="line">a = 1</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>second : 再提升變數</p>
+<p>因此在程式跑到 <code>console.log(a)</code> 之前就可以先使用此變數。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a </span><br><span class="line">console.log(a)</span><br><span class="line">a = 1</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <a id="more"></a>
-
 <ul>
-<li><p>example_2 (function)</p>
+<li>example_2 (function)
 <ul>
-<li><p>正常做法 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    console.log(123)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>正常做法 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    console.log(123)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>因 hoisting 關係，因此以下程式碼也可運行。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test()</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(123)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>因 hoisting 關係，因此以下程式碼也可運行。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test()</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(123)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="Closure-閉包"><a href="#Closure-閉包" class="headerlink" title="Closure 閉包"></a>Closure 閉包</h2><ul>
-<li><p>example_1</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">// 是否能在 function 外存取變數 a ?</span><br><span class="line"></span><br><span class="line">console.log(a)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<h2 id="closure-閉包"><a class="header-anchor" href="#closure-閉包"></a>Closure 閉包</h2>
+<ul>
+<li>
+<p>example_1</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">// 是否能在 function 外存取變數 a ?</span><br><span class="line"></span><br><span class="line">console.log(a)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>answer : 因作用域的不同，在 function 之外無法存取變數 a，且執行完 function 後，裡面的變數會被同時釋放掉。</li>
 </ul>
 </li>
-</ul>
+<li>
+<p>example_2</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var count = 0</span><br><span class="line">function addCount() &#123;</span><br><span class="line">    count++</span><br><span class="line">    return count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(addCount()) // 1</span><br><span class="line">console.log(addCount()) // 2</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>example_2</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var count = 0</span><br><span class="line">function addCount() &#123;</span><br><span class="line">    count++</span><br><span class="line">    return count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(addCount()) // 1</span><br><span class="line">console.log(addCount()) // 2</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>question : </p>
+<li>
+<p>question :</p>
 <p>變數可被改變，連帶影響輸出的值，因此應該要以別的方式避免變數被更改。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var count = 0</span><br><span class="line">function addCount() &#123;</span><br><span class="line">    count++</span><br><span class="line">    return count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(addCount()) // 1</span><br><span class="line">count = 10</span><br><span class="line">console.log(addCount()) // 11</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var count = 0</span><br><span class="line">function addCount() &#123;</span><br><span class="line">    count++</span><br><span class="line">    return count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(addCount()) // 1</span><br><span class="line">count = 10</span><br><span class="line">console.log(addCount()) // 11</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>solution : </p>
+<li>
+<p>solution :</p>
 <p>再產生一個新的作用域，將變數放置在此，使外部存取不到此變數。( 可簡單想成 -&gt; 在 function 裡 return 一個 function)。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createCounter() &#123;</span><br><span class="line">    var count = 0</span><br><span class="line">    function addCount() &#123;</span><br><span class="line">        count++</span><br><span class="line">        return count</span><br><span class="line">    &#125;</span><br><span class="line">    return addCount</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var counter = createCounter()</span><br><span class="line">console.log(counter())</span><br><span class="line">console.log(counter())</span><br></pre></td></tr></table></figure></p>
-<p>  or</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function createCounter() &#123;</span><br><span class="line">    var count = 0</span><br><span class="line">    return function () &#123;</span><br><span class="line">        count++</span><br><span class="line">        return count</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var counter = createCounter()</span><br><span class="line">console.log(counter())</span><br><span class="line">console.log(counter())</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createCounter() &#123;</span><br><span class="line">    var count = 0</span><br><span class="line">    function addCount() &#123;</span><br><span class="line">        count++</span><br><span class="line">        return count</span><br><span class="line">    &#125;</span><br><span class="line">    return addCount</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var counter = createCounter()</span><br><span class="line">console.log(counter())</span><br><span class="line">console.log(counter())</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function createCounter() &#123;</span><br><span class="line">    var count = 0</span><br><span class="line">    return function () &#123;</span><br><span class="line">        count++</span><br><span class="line">        return count</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var counter = createCounter()</span><br><span class="line">console.log(counter())</span><br><span class="line">console.log(counter())</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h2><ul>
-<li><p>example_1 : </p>
-<p> JavaScript 中物件導向的用法</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.name, peter.name)</span><br></pre></td></tr></table></figure></p>
+<h2 id="prototype"><a class="header-anchor" href="#prototype"></a>Prototype</h2>
+<ul>
+<li>
+<p>example_1 :</p>
+<p>JavaScript 中物件導向的用法</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.name, peter.name)</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>example_2 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.getName = function () &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.getName())</span><br><span class="line">console.log(nick.getName === peter.getName) // false</span><br><span class="line">// 記憶體指向不同地方</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>example_2 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.getName = function () &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.getName())</span><br><span class="line">console.log(nick.getName === peter.getName) // false</span><br><span class="line">// 記憶體指向不同地方</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>example_3 :<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName = function () &#123;</span><br><span class="line">    return this.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.getName === peter.getName) // true</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>example_3 :<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName = function () &#123;</span><br><span class="line">    return this.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var nick = new Person(&apos;nick&apos;)</span><br><span class="line">var peter = new Person(&apos;peter&apos;)</span><br><span class="line">console.log(nick.getName === peter.getName) // true</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <hr>

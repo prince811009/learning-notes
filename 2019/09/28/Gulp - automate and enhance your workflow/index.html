@@ -77,17 +77,17 @@
                     
                     
                     
-                    <a class="navbar-item" href="#安裝-Gulp-流程">1&nbsp;&nbsp;<b>安裝 Gulp 流程</b></a>
+                    <a class="navbar-item" href="#安裝-gulp-流程">1&nbsp;&nbsp;<b>安裝 Gulp 流程</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#實作-Gulp-範例">2&nbsp;&nbsp;<b>實作 Gulp 範例</b></a>
+                    <a class="navbar-item" href="#實作-gulp-範例">2&nbsp;&nbsp;<b>實作 Gulp 範例</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">2.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#reference">2.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
@@ -133,16 +133,16 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <blockquote>
-<p>Automate and enhance your workflow  </p>
+<p>Automate and enhance your workflow</p>
 </blockquote>
 <p>目的加強工作流程並自動化。</p>
 <blockquote>
 <p>Gulp 為一個開源的 Task runner ( 工作執行器 )，建構在 node.js 和 npm 上，自動化整合套件。</p>
 </blockquote>
 <a id="more"></a>
-
 <ul>
-<li><p>提供的 API : </p>
+<li>
+<p>提供的 API :</p>
 <ul>
 <li>gulp.task : 執行工作</li>
 <li>gulp.src : 執行資料來源</li>
@@ -150,17 +150,23 @@
 <li>gulp.watch : 監視執行過程中資料是否變更</li>
 </ul>
 </li>
-<li><p>官方 <a href="https://gulpjs.com/" target="_blank" rel="noopener">gulpfile.js</a></p>
-<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// 引用 gulp plugin</span><br><span class="line">const &#123; src, dest, parallel &#125; = require(&apos;gulp&apos;); </span><br><span class="line">const pug = require(&apos;gulp-pug&apos;);</span><br><span class="line">const less = require(&apos;gulp-less&apos;);</span><br><span class="line">const minifyCSS = require(&apos;gulp-csso&apos;);</span><br><span class="line">const concat = require(&apos;gulp-concat&apos;);</span><br><span class="line"></span><br><span class="line">// 建立 gulp task</span><br><span class="line">function html() &#123;</span><br><span class="line">return src(&apos;client/templates/*.pug&apos;)</span><br><span class="line">   .pipe(pug())</span><br><span class="line">   .pipe(dest(&apos;build/html&apos;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function css() &#123;</span><br><span class="line">return src(&apos;client/templates/*.less&apos;)</span><br><span class="line">   .pipe(less())</span><br><span class="line">   .pipe(minifyCSS())</span><br><span class="line">   .pipe(dest(&apos;build/css&apos;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function js() &#123;</span><br><span class="line">return src(&apos;client/javascript/*.js&apos;, &#123; sourcemaps: true &#125;)</span><br><span class="line">   .pipe(concat(&apos;app.min.js&apos;))</span><br><span class="line">   .pipe(dest(&apos;build/js&apos;, &#123; sourcemaps: true &#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.js = js;</span><br><span class="line">exports.css = css;</span><br><span class="line">exports.html = html;</span><br><span class="line">exports.default = parallel(html, css, js);</span><br></pre></td></tr></table></figure></code></pre></li>
+<li>
+<p>官方 <a href="https://gulpjs.com/" target="_blank" rel="noopener">gulpfile.js</a></p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// 引用 gulp plugin</span><br><span class="line">const &#123; src, dest, parallel &#125; = require(&apos;gulp&apos;); </span><br><span class="line">const pug = require(&apos;gulp-pug&apos;);</span><br><span class="line">const less = require(&apos;gulp-less&apos;);</span><br><span class="line">const minifyCSS = require(&apos;gulp-csso&apos;);</span><br><span class="line">const concat = require(&apos;gulp-concat&apos;);</span><br><span class="line"></span><br><span class="line">// 建立 gulp task</span><br><span class="line">function html() &#123;</span><br><span class="line">return src(&apos;client/templates/*.pug&apos;)</span><br><span class="line">   .pipe(pug())</span><br><span class="line">   .pipe(dest(&apos;build/html&apos;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function css() &#123;</span><br><span class="line">return src(&apos;client/templates/*.less&apos;)</span><br><span class="line">   .pipe(less())</span><br><span class="line">   .pipe(minifyCSS())</span><br><span class="line">   .pipe(dest(&apos;build/css&apos;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function js() &#123;</span><br><span class="line">return src(&apos;client/javascript/*.js&apos;, &#123; sourcemaps: true &#125;)</span><br><span class="line">   .pipe(concat(&apos;app.min.js&apos;))</span><br><span class="line">   .pipe(dest(&apos;build/js&apos;, &#123; sourcemaps: true &#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.js = js;</span><br><span class="line">exports.css = css;</span><br><span class="line">exports.html = html;</span><br><span class="line">exports.default = parallel(html, css, js);</span><br></pre></td></tr></table></figure></code></pre>
+</li>
 </ul>
-<h3 id="安裝-Gulp-流程"><a href="#安裝-Gulp-流程" class="headerlink" title="安裝 Gulp 流程"></a>安裝 Gulp 流程</h3><ul>
-<li><p>Check for node, npm, and npx</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line">npm --version</span><br><span class="line">npx --version</span><br></pre></td></tr></table></figure></p>
+<h3 id="安裝-gulp-流程"><a class="header-anchor" href="#安裝-gulp-流程"></a>安裝 Gulp 流程</h3>
+<ul>
+<li>
+<p>Check for node, npm, and npx</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line">npm --version</span><br><span class="line">npx --version</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Install the <a href="https://gulpjs.com/" target="_blank" rel="noopener">gulp</a> command line utility</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp-cli -g // 在 global 環境下安裝 gulp</span><br><span class="line">npm install gulp -D</span><br><span class="line">npx -p touch nodetouch gulpfile.js // 設定檔放置在 gulpfile.js</span><br><span class="line">gulp --help</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Install the <a href="https://gulpjs.com/" target="_blank" rel="noopener">gulp</a> command line utility</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp-cli -g // 在 global 環境下安裝 gulp</span><br><span class="line">npm install gulp -D</span><br><span class="line">npx -p touch nodetouch gulpfile.js // 設定檔放置在 gulpfile.js</span><br><span class="line">gulp --help</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>安裝 gulp 相關套件 ( 以下列舉常見選項 )</p>
+<li>
+<p>安裝 gulp 相關套件 ( 以下列舉常見選項 )</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/gulp-sass" target="_blank" rel="noopener">gulp-sass</a></li>
 <li><a href="https://www.npmjs.com/package/gulp-uglify" target="_blank" rel="noopener">gulp-uglify</a></li>
@@ -172,32 +178,40 @@
 <li><a href="https://www.npmjs.com/package/del" target="_blank" rel="noopener">del</a></li>
 </ul>
 </li>
-<li><p>Create a project</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx mkdirp my-project</span><br><span class="line">cd my-project</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Create a project</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx mkdirp my-project</span><br><span class="line">cd my-project</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Create a package.json file in your project directory</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Create a package.json file in your project directory</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Create a file named gulpfile.js in your project root with these contents :</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function defaultTask(cb) &#123;</span><br><span class="line">// place code for your default task here</span><br><span class="line">cb();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.default = defaultTask</span><br></pre></td></tr></table></figure></p>
-<p> 當我們安裝 gulp 相關套件時，<code>Usage</code> 的地方都有提供詳細的引入方式。</p>
+<li>
+<p>Create a file named gulpfile.js in your project root with these contents :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function defaultTask(cb) &#123;</span><br><span class="line">// place code for your default task here</span><br><span class="line">cb();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.default = defaultTask</span><br></pre></td></tr></table></figure></p>
+<p>當我們安裝 gulp 相關套件時，<code>Usage</code> 的地方都有提供詳細的引入方式。</p>
 </li>
-<li><p>start <code>Gulp</code> ~ </p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp || gulp &lt;task&gt; &lt;othertask&gt;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>start <code>Gulp</code> ~</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp || gulp &lt;task&gt; &lt;othertask&gt;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
-<h3 id="實作-Gulp-範例"><a href="#實作-Gulp-範例" class="headerlink" title="實作 Gulp 範例"></a>實作 Gulp 範例</h3><ul>
-<li><p>設定 gulpfile.js 檔</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const gulp = require(&apos;gulp&apos;); // 載入 gulp</span><br><span class="line">const sass = require(&apos;gulp-sass&apos;); // compile your Sass files</span><br><span class="line">const babel = require(&apos;gulp-babel&apos;); // 將 ES6 以上語法轉換成最基本 JS 語法</span><br><span class="line">const uglify = require(&apos;gulp-uglify&apos;); // minify JavaScript</span><br><span class="line">const rename = require(&apos;gulp-rename&apos;); // rename files</span><br><span class="line">const cleanCSS = require(&apos;gulp-clean-css&apos;); // minify CSS</span><br><span class="line">const del = require(&apos;del&apos;); // Delete files and directories using globs</span><br><span class="line"></span><br><span class="line">function clean() &#123;</span><br><span class="line">   return del(&apos;./build/*&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function styles() &#123;</span><br><span class="line">   return gulp.src(&apos;./src/css/app.scss&apos;) // 輸入路徑</span><br><span class="line">      .pipe(sass())</span><br><span class="line">      .pipe(cleanCSS())</span><br><span class="line">      .pipe(rename(&#123;</span><br><span class="line">         basename: &apos;main&apos;,</span><br><span class="line">         suffix: &apos;.min&apos;</span><br><span class="line">   &#125;))</span><br><span class="line">   .pipe(gulp.dest(&apos;./build/css&apos;)); // 輸出路徑</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function scripts() &#123;</span><br><span class="line">   return gulp.src(&apos;./src/js/*.js&apos;)</span><br><span class="line">      .pipe(babel())</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;./build/js&apos;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function watch() &#123;</span><br><span class="line">   gulp.watch(&apos;./css/style.scss&apos;, styles);</span><br><span class="line">   gulp.watch(&apos;./js/*.js&apos;, scripts);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.clean = clean;</span><br><span class="line">exports.styles = styles;</span><br><span class="line">exports.scripts = scripts;</span><br><span class="line">exports.watch = watch;</span><br><span class="line">exports.default = gulp.series(clean, styles, scripts); // 定義名稱為 default 的 gulp task</span><br></pre></td></tr></table></figure></p>
+<h3 id="實作-gulp-範例"><a class="header-anchor" href="#實作-gulp-範例"></a>實作 Gulp 範例</h3>
+<ul>
+<li>
+<p>設定 gulpfile.js 檔</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const gulp = require(&apos;gulp&apos;); // 載入 gulp</span><br><span class="line">const sass = require(&apos;gulp-sass&apos;); // compile your Sass files</span><br><span class="line">const babel = require(&apos;gulp-babel&apos;); // 將 ES6 以上語法轉換成最基本 JS 語法</span><br><span class="line">const uglify = require(&apos;gulp-uglify&apos;); // minify JavaScript</span><br><span class="line">const rename = require(&apos;gulp-rename&apos;); // rename files</span><br><span class="line">const cleanCSS = require(&apos;gulp-clean-css&apos;); // minify CSS</span><br><span class="line">const del = require(&apos;del&apos;); // Delete files and directories using globs</span><br><span class="line"></span><br><span class="line">function clean() &#123;</span><br><span class="line">   return del(&apos;./build/*&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function styles() &#123;</span><br><span class="line">   return gulp.src(&apos;./src/css/app.scss&apos;) // 輸入路徑</span><br><span class="line">      .pipe(sass())</span><br><span class="line">      .pipe(cleanCSS())</span><br><span class="line">      .pipe(rename(&#123;</span><br><span class="line">         basename: &apos;main&apos;,</span><br><span class="line">         suffix: &apos;.min&apos;</span><br><span class="line">   &#125;))</span><br><span class="line">   .pipe(gulp.dest(&apos;./build/css&apos;)); // 輸出路徑</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function scripts() &#123;</span><br><span class="line">   return gulp.src(&apos;./src/js/*.js&apos;)</span><br><span class="line">      .pipe(babel())</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;./build/js&apos;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function watch() &#123;</span><br><span class="line">   gulp.watch(&apos;./css/style.scss&apos;, styles);</span><br><span class="line">   gulp.watch(&apos;./js/*.js&apos;, scripts);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.clean = clean;</span><br><span class="line">exports.styles = styles;</span><br><span class="line">exports.scripts = scripts;</span><br><span class="line">exports.watch = watch;</span><br><span class="line">exports.default = gulp.series(clean, styles, scripts); // 定義名稱為 default 的 gulp task</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p><code>watch</code></p>
-<p> 例如，當我們使用 <code>gulp-uglify</code> 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， <code>gulp-uglify</code> 可以監看並自動執行最小化。</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function watch() &#123;</span><br><span class="line">   gulp.watch(&apos;./css/style.scss&apos;, styles);</span><br><span class="line">   gulp.watch(&apos;./js/*.js&apos;, scripts);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p> 因此上述程式碼可以協助我們監看 css 以及 js 檔是否有異動來自動執行 <code>function styles()</code> and <code>function scripts()</code> 。</p>
+<li>
+<p><code>watch</code></p>
+<p>例如，當我們使用 <code>gulp-uglify</code> 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， <code>gulp-uglify</code> 可以監看並自動執行最小化。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function watch() &#123;</span><br><span class="line">   gulp.watch(&apos;./css/style.scss&apos;, styles);</span><br><span class="line">   gulp.watch(&apos;./js/*.js&apos;, scripts);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因此上述程式碼可以協助我們監看 css 以及 js 檔是否有異動來自動執行 <code>function styles()</code> and <code>function scripts()</code> 。</p>
 </li>
 </ul>
 <hr>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ul>
+<h4 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h4>
+<ul>
 <li><a href="https://gulpjs.com/docs/en/getting-started/quick-start" target="_blank" rel="noopener">Gulp 官網</a></li>
 <li><a href="https://ithelp.ithome.com.tw/articles/10185420" target="_blank" rel="noopener">Gulp 安裝與介紹</a></li>
 <li><a href="https://www.npmjs.com/package/gulp" target="_blank" rel="noopener">gulp</a></li>
