@@ -124,7 +124,7 @@
     
         <ul>
 <li><p>Global Installation</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --save-dev</span><br></pre></td></tr></table></figure></p>
 </li>
 <li><p>建立專案資料夾</p>
 <ul>
@@ -156,21 +156,21 @@
 <li><p>建置文件</p>
 <ul>
 <li><p>src/index.js</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import bar from &apos;./bar&apos;;</span><br><span class="line"></span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import bar from &apos;./bar&apos;;</span><br><span class="line"></span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
 </li>
 <li><p>src/bar.js</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default function bar() &#123; </span><br><span class="line">  //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default function bar() &#123; </span><br><span class="line">  //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 <li><p>設定 webpack.config.js 檔</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;); // 引用 path 模組</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &apos;./src/index.js&apos;, // webpack 打包對象</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">        filename: &apos;bundle.js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;); // 引用 path 模組</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &apos;./src/index.js&apos;, // webpack 打包對象</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">        filename: &apos;bundle.js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 </li>
 <li><p>在 html / or 文件中引入</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;script src=&quot;dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;script src=&quot;dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 </li>
 <li><p>執行</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config webpack.config.js</span><br></pre></td></tr></table></figure></p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config webpack.config.js</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>

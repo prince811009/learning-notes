@@ -110,6 +110,7 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <p>在先前的 <code>Event Loop + Scope</code> 實作中，發現一項有趣的返回值</p>
+<p><epacse hidden>22</epacse></p>
         <p class="article-more-link">
             <a href="/2019/10/11/About `window.setTimeout()`/#more">Read More</a>
         </p>
@@ -151,8 +152,8 @@
     
         <h2 id="Hoisting-變數提升"><a href="#Hoisting-變數提升" class="headerlink" title="Hoisting 變數提升"></a>Hoisting 變數提升</h2><ul>
 <li><p>example_1 ( 變數 )</p>
-<p> <epacse hidden>0</epacse></p>
-<p> 可以看成 2 步驟拆解： </p>
+<p>  <epacse hidden>0</epacse></p>
+<p>  可以看成 2 步驟拆解： </p>
 <ul>
 <li><p>first : 將變數拆解</p>
 <p>  <epacse hidden>1</epacse></p>
@@ -206,10 +207,10 @@
         <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
 <ul>
 <li><p>call by value / pass by value</p>
-<p> 直接舉個例子來看</p>
-<p> <epacse hidden>83</epacse></p>
-<p> 這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
-<p> 可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
+<p>  直接舉個例子來看</p>
+<p>  <epacse hidden>67</epacse></p>
+<p>  這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
+<p>  可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
 </li>
 </ul>
         <p class="article-more-link">
@@ -253,7 +254,7 @@
     
         <ul>
 <li><p>Global Installation</p>
-<p> <epacse hidden>44</epacse></p>
+<p>  <epacse hidden>33</epacse></p>
 </li>
 <li><p>建立專案資料夾</p>
 <ul>
