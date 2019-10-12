@@ -16,7 +16,7 @@ navbar_links:
 
 <!-- more -->
 
- - example 01 :
+- example 01 :
     ```
     function test() {
         var a = 10
@@ -29,8 +29,8 @@ navbar_links:
     test()
     ```
 
-
     由這項 function，試著改寫成 => 不要直接執行 inner ，而是把這整個 function 直接回傳，會變成：
+
     ```
     function test() {
         var a = 10
@@ -44,13 +44,12 @@ navbar_links:
     inner()
     ```
 
-
     這時因為 `return inner` 的關係，使變數 `a` 也存在於 function inner 之中，所以可以將「在 function 之中 return 一個 function」作為 `Closure` 現象。
 
     一項重要的優點為，可將變數隱藏在 function 內部，不使外部存取到這項變數，也就無法被隨意變更，如以下的例子：
 
+- example 02 :
 
- - example 02 :
     ```
     var myWallet = 100
     function deduct(n) {
@@ -62,7 +61,8 @@ navbar_links:
     ```
 
 
-    原本變數在 function 內部中特定條件下執行特定的事情，但仍能被外部存取且修改，若利用 closure　改寫，就能夠避免這項問題。  
+    原本變數在 function 內部中特定條件下執行特定的事情，但仍能被外部存取且修改，若利用 closure　改寫，就能夠避免這項問題。
+
     ```
     function getWallet() {
         var myWallet = 100
@@ -78,10 +78,9 @@ navbar_links:
     myWallet -= 999 // Uncaught ReferenceError: my_balance is not defined
     ```
 
-
     上述例子出現錯誤的原因為，因為變數被隱藏在 function 內部，因此外部無法存取到，若需要修改需透過執行 `deduct` 這項 function，達到隱藏資訊的目的，變數不會被隨意更改。
 
- - example 03 : 
+- example 03 : 
     另一項常見的例子 
 
     ```
@@ -131,12 +130,12 @@ navbar_links:
         ```
 ---
 ### 從 ECMAScript 中探討 scope
- - `10.1.4 Scope Chain and Identifier Resolution`
+- `10.1.4 Scope Chain and Identifier Resolution`
     > Every execution context has associated with it a scope chain. A scope chain is a list of objects that are searched when evaluating an Identifier. When control enters an execution context, a scope chain is created and populated with an initial set of objects, depending on the type of code.
 
     每個 EC 都有屬於自己的 scope chain，當進入 EC 時 scope chain 就會被建立。
 
- - `10.2 Entering An Execution Context`
+- `10.2 Entering An Execution Context`
    *  `10.2.3 Function Code`
         > The scope chain is initialised to contain the activation object followed by the objects in the scope chain stored in the [[Scope]] property of the Function object.
 
@@ -144,7 +143,7 @@ navbar_links:
         ```
         scope chain = AO + [[Scope]]
         ```
- - `13.2 Creating Function Objects`
+- `13.2 Creating Function Objects`
     > Given an optional parameter list specified by FormalParameterList, a body specified by FunctionBody, and a scope chain specified by Scope, a Function object is constructed as follows:  
     ...  
     > 7. Set the [[Scope]] property of F to a new scope chain (10.1.4) that contains the same objects as Scope.
@@ -153,7 +152,7 @@ navbar_links:
 ---
 ### 探討 closure 行程過程及原理
 依據上述方式一步一步拆解過程
- - example 
+- example 
     ```
     var v1 = 10
     function test() {
@@ -323,10 +322,9 @@ function test () {
 var inner = test()
 inner()
 ```
+
 使用 `return inner` 時，就能夠把內部的 function inner 回傳，使後續動作可以藉著執行 inner() 進行。而這樣的形式，我們可以說 `inner()` 這項 function 是在一個 `Closure`
 之中，因為它也就像是被一項外層的 function 包裹起來。
 
-
 ##### Reference
- - [所有的函式都是閉包：談 JS 中的作用域與 Closure](https://github.com/aszx87410/blog/issues/35)
-
+- [所有的函式都是閉包：談 JS 中的作用域與 Closure](https://github.com/aszx87410/blog/issues/35)

@@ -19,13 +19,13 @@ navbar_links:
 
 <!-- more -->
 
- - 提供的 API : 
+- 提供的 API : 
    *  gulp.task : 執行工作
    *  gulp.src : 執行資料來源
    *  gulp.dest : 執行結果位置
    *  gulp.watch : 監視執行過程中資料是否變更
 
- - 官方 [gulpfile.js](https://gulpjs.com/)
+- 官方 [gulpfile.js](https://gulpjs.com/)
 
       ```
       // 引用 gulp plugin
@@ -62,67 +62,67 @@ navbar_links:
       ```
 
 ### 安裝 Gulp 流程
- - Check for node, npm, and npx
+- Check for node, npm, and npx
 
-    ```
-    node --version
-    npm --version
-    npx --version
-    ```
+   ```
+   node --version
+   npm --version
+   npx --version
+   ```
 
- - Install the [gulp](https://gulpjs.com/) command line utility
+- Install the [gulp](https://gulpjs.com/) command line utility
 
-    ```
-    npm install gulp-cli -g // 在 global 環境下安裝 gulp
-    npm install gulp -D
-    npx -p touch nodetouch gulpfile.js // 設定檔放置在 gulpfile.js
-    gulp --help
-    ```
+   ```
+   npm install gulp-cli -g // 在 global 環境下安裝 gulp
+   npm install gulp -D
+   npx -p touch nodetouch gulpfile.js // 設定檔放置在 gulpfile.js
+   gulp --help
+   ```
 
- - 安裝 gulp 相關套件 ( 以下列舉常見選項 )
-     *  [gulp-sass](https://www.npmjs.com/package/gulp-sass)
-     *  [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
-     *  [gulp-compass](https://www.npmjs.com/package/gulp-compass)
-     *  [gulp-babel](https://www.npmjs.com/package/gulp-babel)
-     *  [gulp-less](https://www.npmjs.com/package/gulp-less)
-     *  [gulp-rename](https://www.npmjs.com/package/gulp-rename)
-     *  [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css)
-     *  [del](https://www.npmjs.com/package/del)
+- 安裝 gulp 相關套件 ( 以下列舉常見選項 )
+   *  [gulp-sass](https://www.npmjs.com/package/gulp-sass)
+   *  [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
+   *  [gulp-compass](https://www.npmjs.com/package/gulp-compass)
+   *  [gulp-babel](https://www.npmjs.com/package/gulp-babel)
+   *  [gulp-less](https://www.npmjs.com/package/gulp-less)
+   *  [gulp-rename](https://www.npmjs.com/package/gulp-rename)
+   *  [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css)
+   *  [del](https://www.npmjs.com/package/del)
 
- - Create a project
+- Create a project
 
-    ```
-    npx mkdirp my-project
-    cd my-project
-    ```
+   ```
+   npx mkdirp my-project
+   cd my-project
+   ```
 
- - Create a package.json file in your project directory
+- Create a package.json file in your project directory
 
-    ```
-    npm init
-    ```
+   ```
+   npm init
+   ```
 
- - Create a file named gulpfile.js in your project root with these contents :
+- Create a file named gulpfile.js in your project root with these contents :
 
-    ```
-    function defaultTask(cb) {
-    // place code for your default task here
-    cb();
-    }
+   ```
+   function defaultTask(cb) {
+   // place code for your default task here
+   cb();
+   }
 
-    exports.default = defaultTask
-    ```
+   exports.default = defaultTask
+   ```
 
-    當我們安裝 gulp 相關套件時，`Usage` 的地方都有提供詳細的引入方式。
+   當我們安裝 gulp 相關套件時，`Usage` 的地方都有提供詳細的引入方式。
 
- - start `Gulp` ~ 
+- start `Gulp` ~ 
     
-    ```
-    gulp || gulp <task> <othertask>
-    ```
+   ```
+   gulp || gulp <task> <othertask>
+   ```
 
 ### 實作 Gulp 範例
- - 設定 gulpfile.js 檔
+- 設定 gulpfile.js 檔
 
    ```
    const gulp = require('gulp'); // 載入 gulp
@@ -167,22 +167,23 @@ navbar_links:
    exports.default = gulp.series(clean, styles, scripts); // 定義名稱為 default 的 gulp task
    ```
 
- - `watch`
+- `watch`
  
-    例如，當我們使用 `gulp-uglify` 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， `gulp-uglify` 可以監看並自動執行最小化。
+   例如，當我們使用 `gulp-uglify` 用來 minify JavaScript 時，會希望每次 JavaScript 有異動時， `gulp-uglify` 可以監看並自動執行最小化。
 
-      ```
-      function watch() {
-         gulp.watch('./css/style.scss', styles);
-         gulp.watch('./js/*.js', scripts);
-      }
-      ```
+   ```
+   function watch() {
+      gulp.watch('./css/style.scss', styles);
+      gulp.watch('./js/*.js', scripts);
+   }
+   ```
+
    因此上述程式碼可以協助我們監看 css 以及 js 檔是否有異動來自動執行 `function styles()` and `function scripts()` 。
 
 ---
 #### Reference
- - [Gulp 官網](https://gulpjs.com/docs/en/getting-started/quick-start)
- - [Gulp 安裝與介紹](https://ithelp.ithome.com.tw/articles/10185420)
- - [gulp](https://www.npmjs.com/package/gulp)
- - [gulp 學習筆記](https://kejyuntw.gitbooks.io/gulp-learning-notes/)
- - [gulp 入門指南](https://987.tw/2014/07/09/gulpru-men-zhi-nan/)
+- [Gulp 官網](https://gulpjs.com/docs/en/getting-started/quick-start)
+- [Gulp 安裝與介紹](https://ithelp.ithome.com.tw/articles/10185420)
+- [gulp](https://www.npmjs.com/package/gulp)
+- [gulp 學習筆記](https://kejyuntw.gitbooks.io/gulp-learning-notes/)
+- [gulp 入門指南](https://987.tw/2014/07/09/gulpru-men-zhi-nan/)

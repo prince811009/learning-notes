@@ -13,7 +13,7 @@ navbar_links:
 ---
 
 ## Hoisting 變數提升 
- - example_1 ( 變數 )
+- example_1 ( 變數 )
 
     ```
     console.log(a)
@@ -41,7 +41,7 @@ navbar_links:
 
 <!-- more -->
 
- - example_2 (function)
+- example_2 (function)
    *  正常做法 :
 
         ```
@@ -64,7 +64,7 @@ navbar_links:
 
 ---
 ## Closure 閉包
- - example_1
+- example_1
 
     ```
     function test() {
@@ -80,7 +80,7 @@ navbar_links:
    * answer : 因作用域的不同，在 function 之外無法存取變數 a，且執行完 function 後，裡面的變數會被同時釋放掉。
 
 
- - example_2
+- example_2
 
     ```
     var count = 0
@@ -145,7 +145,7 @@ navbar_links:
         ```
 ---
 ## Prototype
- - example_1 : 
+- example_1 : 
  
    JavaScript 中物件導向的用法
 
@@ -159,7 +159,7 @@ navbar_links:
     console.log(nick.name, peter.name)
     ```
 
- - example_2 :
+- example_2 :
 
     ```
     function Person(name) {
@@ -176,7 +176,7 @@ navbar_links:
     // 記憶體指向不同地方
     ```
 
- - example_3 :
+- example_3 :
     ```
     function Person(name) {
         this.name = name

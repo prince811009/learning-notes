@@ -27,7 +27,7 @@ var dogA = new Dog('Lucky');
 
 所以有趣的是，在 DogA 和 `Dog.prototype` 之間一定有某些關聯或是方式把他們之間串聯在一起，這樣 JavaScript 才能循著找到原型，而這個連接方式也就是 `__proto__` ( 兩個底線 )，可參閱 [Object.prototype.__proto__](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto) 。
 
- - example
+- example
 
     ```
     function Dog(name, age) {
@@ -93,7 +93,7 @@ console.log(dogA.__proto__.hasOwnProperty('log')); // true
 
 `hasOwnProperty` 是不是很方便檢查用呢 ? 
 
- - quiz:
+- quiz:
 
     ```
     function Dog(name, age) {
@@ -133,25 +133,25 @@ console.log(dogA instanceof Array); // false
 ---
 ### constructor
 暨上一回有提到 `constructor` ，每一個 prototype 都有一個叫做 `constructor` 的屬性
- - example
+- example
  `Dog.prototype.constructor`
  
     而這個屬性會指向構造函數，也就是 `Dog` ( 好像繞口令 ~)。
- - example
+- example
 
- ```
- Dog.prototype 的建構函數也就是 Dog 本身
- ```
+```
+Dog.prototype 的建構函數也就是 Dog 本身
+```
 ---
 ### new 
 #### 定義
 `new` 這個指令是讓我們在具有 constructor 的 function 中創造一個 instance，當我們下 `new` 這個指令後，會依序進行：
- 1. Creates a blank, plain JavaScript object;
- 2. Links (sets the constructor of) this object to another object;
- 3. Passes the newly created object from Step 1 as the this context;
- 4. Returns this if the function doesn't return its own object.
+1. Creates a blank, plain JavaScript object;
+2. Links (sets the constructor of) this object to another object;
+3. Passes the newly created object from Step 1 as the this context;
+4. Returns this if the function doesn't return its own object.
 
- 讓我們先來試看看如何 `new operator`
+讓我們先來試看看如何 `new operator`
 
     ```
     function Car(make, model, year) {
@@ -171,11 +171,11 @@ console.log(dogA instanceof Array); // false
 new constructor[([arguments])]
 ```
 
- - constructor : 
+- constructor : 
 
     A class or function that specifies the type of the object instance
  
- - arguments : 
+- arguments : 
 
     A list of values that the constructor will be called with
 

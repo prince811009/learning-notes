@@ -12,20 +12,20 @@ navbar_links:
     url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Webpack.md
 ---
 
- - Global Installation
+- Global Installation
 
     ```
     npm install webpack --save-dev
     ```
 
- - 建立專案資料夾
-     *  `mkdir <folder name>`
-     *  `cd <folder name>`
+- 建立專案資料夾
+    *  `mkdir <folder name>`
+    *  `cd <folder name>`
 
 <!-- more -->
 
- - 建立 npm 專案
-     *  `npm init`
+- 建立 npm 專案
+    *  `npm init`
         1. `package name` : 專案名稱
         2. `version` : 版本號
         3. `description` : 專案敘述
@@ -37,8 +37,8 @@ navbar_links:
         9. `license` : 專案版權
 
 
- - 建置文件
-     *  src/index.js
+- 建置文件
+    *  src/index.js
 
         ```
         import bar from './bar';
@@ -46,7 +46,7 @@ navbar_links:
         bar();
         ```
 
-     *  src/bar.js
+    *  src/bar.js
 
         ```
         export default function bar() { 
@@ -54,7 +54,7 @@ navbar_links:
         }
         ```
 
- - 設定 webpack.config.js 檔
+- 設定 webpack.config.js 檔
 
     ```
     const path = require('path'); // 引用 path 模組
@@ -68,7 +68,7 @@ navbar_links:
     };
     ```
 
- - 在 html / or 文件中引入
+- 在 html / or 文件中引入
 
     ```
     <!doctype html>
@@ -83,7 +83,7 @@ navbar_links:
     </html>
     ```
 
- - 執行
+- 執行
 
     ```
     npx webpack --config webpack.config.js
@@ -91,7 +91,7 @@ navbar_links:
 
 
 ##### Reference
- - [webpack](https://webpack.js.org/)
- - [Installation](https://webpack.js.org/guides/installation/)
- - [使用 Webpack 綁定應用程式](https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html)
- - [webpack 模組綁定程式](https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html)
+- [webpack](https://webpack.js.org/)
+- [Installation](https://webpack.js.org/guides/installation/)
+- [使用 Webpack 綁定應用程式](https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html)
+- [webpack 模組綁定程式](https://docs.aws.amazon.com/zh_tw/sdk-for-javascript/v2/developer-guide/webpack.html)

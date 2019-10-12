@@ -17,25 +17,25 @@ navbar_links:
 
 <!-- more -->
 
- - 需先指定一初始值，否則會出現錯誤 `Missing initializer in const declaration`
+- 需先指定一初始值，否則會出現錯誤 `Missing initializer in const declaration`
 
-    ```
-    const b
-    b = 20 // Error: `Missing initializer in const declaration`
-    ```
+  ```
+  const b
+  b = 20 // Error: `Missing initializer in const declaration`
+  ```
 
- - 不能在後續修改 const 的值，否則出現錯誤 `Assignment to constant variable` 。
+- 不能在後續修改 const 的值，否則出現錯誤 `Assignment to constant variable` 。
 
-    ```
-    const b = 10
-    b = 20 // Error: `Assignment to constant variable`
-    ```
+  ```
+  const b = 10
+  b = 20 // Error: `Assignment to constant variable`
+  ```
 
-  - let 以及 var 則無此限制
+- let 以及 var 則無此限制
 
 
 ### 應用
- - example 01 :
+- example 01 :
 
     ```
     const obj = {
@@ -61,7 +61,7 @@ navbar_links:
     obj.number = 2
     ```
 
- - example 02 :
+- example 02 :
 
     ```
     const obj = {

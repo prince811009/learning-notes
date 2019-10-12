@@ -13,7 +13,7 @@ navbar_links:
 ---
 ### 變數的生存範圍
 
- - Scope 的最基本單位 -  function
+- Scope 的最基本單位 -  function
 
     在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。
 
@@ -31,7 +31,7 @@ navbar_links:
 
 <!-- more -->
 
- - global variable
+- global variable
 
     ```
     var a = 20 // global variable
@@ -43,7 +43,7 @@ navbar_links:
     console.log(a) // 20
     ```
 
- - 優先順序
+- 優先順序
 
     程式會優先尋找 function 中的變數，若無再往上至 global variable 尋找。
 

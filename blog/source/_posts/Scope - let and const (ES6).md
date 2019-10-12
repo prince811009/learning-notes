@@ -19,7 +19,7 @@ navbar_links:
 
 ### scope
 
- - var
+- var
 
     作用域範圍為 function 之內都可使用
 
@@ -35,7 +35,7 @@ navbar_links:
     test() 
     ```
 
- - let or const
+- let or const
     *  example 01 : 
 
         ```

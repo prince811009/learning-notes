@@ -38,9 +38,9 @@ console.log(myCar.getName()) // hello
 ```
 
 ### 物件導向之外情況
- - 嚴格模式下 => undefined
- - 非嚴格模式，且在瀏覽器下執行 => window
- - 非嚴格模式，且在 node.js 下執行 => global
+- 嚴格模式下 => undefined
+- 非嚴格模式，且在瀏覽器下執行 => window
+- 非嚴格模式，且在 node.js 下執行 => global
 
 ### 更改 this 值
 
@@ -57,16 +57,16 @@ hello.call(undefined, 1, 2) // undefined 1 2
 hello.apply(undefined, [1, 2]) // undefined 1 2
 ```
     
- - 直接呼叫 function 
-     *  上述程式碼可以從 function `hello` 可以 log 出 `this` 的值和 a, b 兩個參數，因此在呼叫 `hello(1, 2)` 的時候，在嚴格模式下 `this` 會是 `undefined` ， 而 a, b 分別為 1, 2。
+- 直接呼叫 function 
+    *  上述程式碼可以從 function `hello` 可以 log 出 `this` 的值和 a, b 兩個參數，因此在呼叫 `hello(1, 2)` 的時候，在嚴格模式下 `this` 會是 `undefined` ， 而 a, b 分別為 1, 2。
 
- - 使用 `call` 和 `apply` 方式呼叫 function。
+- 使用 `call` 和 `apply` 方式呼叫 function。
 
-     *  當使用 `hello.call(undefined, 1, 2)` 的時候，會發現回傳結果和呼叫 `hello(1, 2)` 相同。
+    *  當使用 `hello.call(undefined, 1, 2)` 的時候，會發現回傳結果和呼叫 `hello(1, 2)` 相同。
 
-     *  若使用 `hello.apply(undefined, [1, 2])` 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 
+    *  若使用 `hello.apply(undefined, [1, 2])` 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 
 
-     *  回到上述未解的問題，也就是一直為 `undefined` 的那項參數 => `this` 的值，以下舉例說明：
+    *  回到上述未解的問題，也就是一直為 `undefined` 的那項參數 => `this` 的值，以下舉例說明：
         - example 01 :
 
             ```
@@ -97,8 +97,8 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
 
             從上述程式碼可以得知，原本預設的 `this` 值為當我們呼叫 `myCar.hello()` 時回傳的 `myCar` 這項 instance，不過當我們使用 `call` 呼叫 function 時 ( `myCar.hello.call('yoyoyo') // yoyoyo` ) 所傳入的參數所覆蓋掉。 
 
- - 使用 `bind` 方式呼叫 function：
-     *  `bind` 會回傳一個新的 function ，因此我們將 function `hello` 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。
+- 使用 `bind` 方式呼叫 function：
+    *  `bind` 會回傳一個新的 function ，因此我們將 function `hello` 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。
 
         ```
         'use strict';
@@ -110,7 +110,7 @@ hello.apply(undefined, [1, 2]) // undefined 1 2
         myHello() // my
         ```
 
- - 混用 `call` / `apply` and `bind`：
+- 混用 `call` / `apply` and `bind`：
 
     這邊可以發現，如果已經使用了 `bind` 之後 `this` 的值就不會再被改變了。
     
@@ -143,7 +143,7 @@ obj.hello() // 1
 > `this` 的值與作用域或程式碼順序 / 位置無關，而是和如何呼叫有關。
 
 `this` 的值會根據使用者如何呼叫 function 而不同，就如同上述所提的三種方式： `call`, `apply` and `bind` ，因此也就可以使用不同的方式呼叫 function 使 `this` 值有所不同。
- - Step 1 :
+- Step 1 :
 
     ```
     const obj = {
@@ -177,7 +177,7 @@ obj.hello() // 1
 
     此時 `obj.hello()` 變成 `obj.hello.call(obj)` ，而 `hey()` 前面沒有東西呼叫，因此變成 `hey.call()`。
 
- - Step 2 :
+- Step 2 :
 
     ```
     const obj = {
@@ -208,7 +208,7 @@ obj.hello() // 1
     hello() // hello.call() => undefined ( 非嚴格模式下 -> window.value => undefined)
     ```
 
- - question 01 :
+- question 01 :
 
     ```
     function hello() {
@@ -230,9 +230,9 @@ obj.hello() // 1
     b.hello.apply(a)
     ```
 
-     * answer :
+    * answer :
      
-       用 `call` 來轉換形式：
+        用 `call` 來轉換形式：
 
         ```
         hello() // hello.call() => window
@@ -240,7 +240,7 @@ obj.hello() // 1
         b.hello.apply(a) // 因為使用了 `apply` => a
         ```
 
- - question 02 : 
+- question 02 : 
     
     ```
     var x = 10
@@ -257,9 +257,9 @@ obj.hello() // 1
     obj.fn()
     ```
 
-     * answer : 
+    * answer : 
 
-     使用 `call` 轉換形式：
+        使用 `call` 轉換形式：
 
         ```
         test() // 轉換成 test.call() -> this 的值為 window，因此 this.x => 10 
@@ -270,7 +270,7 @@ obj.hello() // 1
 
 > 變數宣告的地方的 `this` 就是變數的 `this` 。
 
- - example : 
+- example : 
 
     在 function `hello` 中宣告 arrow function `test` ，
     
@@ -299,5 +299,5 @@ obj.hello() // 1
 
 ---
 ##### Reference
- - [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://github.com/aszx87410/blog/issues/39)
- - [What's THIS in JavaScript ?](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
+- [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://github.com/aszx87410/blog/issues/39)
+- [What's THIS in JavaScript ?](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
