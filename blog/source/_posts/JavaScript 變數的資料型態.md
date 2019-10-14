@@ -78,7 +78,7 @@ The following table summarizes the possible return values of typeof
 | Type | Result |
 | -- | -- |
 | Undefined | "undefined" |
-| Null | "object" (see below) |
+| Null | "object" |
 | Boolean | "boolean" |
 | Number | "number" |
 | BigInt | "bigint" |

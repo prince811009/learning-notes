@@ -7,7 +7,7 @@ tags:
 - JavaScript
 toc: true
 navbar_links:
-~Edit on GitHub:
+  Edit on GitHub:
     icon: fas fa-edit
     url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/prototype_1.md
 ---
@@ -17,47 +17,47 @@ navbar_links:
     有趣的是這其中沒有 "子類別" 與 "父類別" 的概念，也沒有區分 `class` 與 `instance` ，皆是由 `prototype chain` 的模式下實現繼承機制。
 
 <!-- more -->
----
-### JavaScript 設計原理
-在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。
 
-Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。
+#### JavaScript 設計原理
+- 在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。
 
----
-### JavaScript 需不需要設計繼承機制 ?
-如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。
+- Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。
 
-但是 Brendan Eich 沒有打算引入 `class` 的概念，但是他把 `new` 的命令引入了 JavaScript 中，從原形中生成一個 instance 。
-- C++ 
+#### JavaScript 需不需要設計繼承機制 ?
+- 如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。
 
-    ```
-    ClassName *object = new ClassName(param);
-    ```
+- 但是 Brendan Eich 沒有打算引入 `class` 的概念，但是他把 `new` 的命令引入了 JavaScript 中，從原形中生成一個 instance 。
 
-- Java
+    - C++ 
 
-    ```
-    FOO foo = new Foo();
-    ```
+        ```
+        ClassName *object = new ClassName(param);
+        ```
 
-    而上述提到的 C++, Java 在使用 `new` 時，會使用 `class` 的 `constructor` ，不過因為 JavaScript 沒有引入 `class` 的概念，因此使用 `new` 時，後面接的不是 `class` 而是直接接 `constructor`。
+    - Java
 
-- example
-    現在有一個叫做 Dog 的 constructor，來表示狗的原形：
+        ```
+        FOO foo = new Foo();
+        ```
 
-    ```
-    // constructor 
-    function Dog(name) {
-        this.name = name;
-    }
-    ```
+        而上述提到的 C++, Java 在使用 `new` 時，會使用 `class` 的 `constructor` ，不過因為 JavaScript 沒有引入 `class` 的概念，因此使用 `new` 時，後面接的不是 `class` 而是直接接 `constructor`。
 
-    我們在使用 `new` 生成一個狗的 instance：
+    - example
+        現在有一個叫做 Dog 的 constructor，來表示狗的原形：
 
-    ```
-    var dogA = new Dog('Doggy');
-    console.log(dogA.name); // Doggy
-    ```
+        ```
+        // constructor 
+        function Dog(name) {
+            this.name = name;
+        }
+        ```
+
+        我們在使用 `new` 生成一個狗的 instance：
+
+        ```
+        var dogA = new Dog('Doggy');
+        console.log(dogA.name); // Doggy
+        ```
 
 ---
 ### constructor 基本結構

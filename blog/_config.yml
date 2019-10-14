@@ -120,6 +120,10 @@ comment:
     type: disqus
     shortname: xxxxxxxx     # (required)
 
+search:
+    type: insight
+
+
 menu:
   Archives: /archives
   Categories: /categories
