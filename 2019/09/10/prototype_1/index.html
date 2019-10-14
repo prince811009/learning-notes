@@ -84,48 +84,51 @@
                     <a class="navbar-item" href="#先從-JavaScript-中的-class-開始">1&nbsp;&nbsp;<b>先從 JavaScript 中的 class 開始</b></a>
                     
                     
-                    <hr class="navbar-divider">
+                    
+                    <a class="navbar-item" href="#JavaScript-設計原理">1.1&nbsp;&nbsp;JavaScript 設計原理</a>
                     
                     
-                    <a class="navbar-item" href="#JavaScript-設計原理">2&nbsp;&nbsp;<b>JavaScript 設計原理</b></a>
                     
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#JavaScript-需不需要設計繼承機制">3&nbsp;&nbsp;<b>JavaScript 需不需要設計繼承機制 ?</b></a>
+                    <a class="navbar-item" href="#JavaScript-需不需要設計繼承機制">1.2&nbsp;&nbsp;JavaScript 需不需要設計繼承機制 ?</a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#constructor-基本結構">4&nbsp;&nbsp;<b>constructor 基本結構</b></a>
+                    <a class="navbar-item" href="#constructor-基本結構">2&nbsp;&nbsp;<b>constructor 基本結構</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#JavaScript-中-new-指令的缺點">5&nbsp;&nbsp;<b>JavaScript 中 new 指令的缺點</b></a>
+                    <a class="navbar-item" href="#JavaScript-中-new-指令的缺點">3&nbsp;&nbsp;<b>JavaScript 中 new 指令的缺點</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#prototype-屬性的引入">6&nbsp;&nbsp;<b>prototype 屬性的引入</b></a>
+                    <a class="navbar-item" href="#prototype-屬性的引入">4&nbsp;&nbsp;<b>prototype 屬性的引入</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">7&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#結論">5&nbsp;&nbsp;<b>結論</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">7.1&nbsp;&nbsp;Reference:</a>
+                    <a class="navbar-item" href="#Reference">5.1&nbsp;&nbsp;Reference:</a>
                     
                 </div>
             </div>
             
+            
+            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/prototype_1.md">
+                
+                <i class="fas fa-edit"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -163,12 +166,17 @@
 <li>JavaScript 中的繼承機制<br>  有趣的是這其中沒有 “子類別” 與 “父類別” 的概念，也沒有區分 <code>class</code> 與 <code>instance</code> ，皆是由 <code>prototype chain</code> 的模式下實現繼承機制。</li>
 </ul>
 <a id="more"></a>
-<hr>
-<h3 id="JavaScript-設計原理"><a href="#JavaScript-設計原理" class="headerlink" title="JavaScript 設計原理"></a>JavaScript 設計原理</h3><p>在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。</p>
-<p>Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。</p>
-<hr>
-<h3 id="JavaScript-需不需要設計繼承機制"><a href="#JavaScript-需不需要設計繼承機制" class="headerlink" title="JavaScript 需不需要設計繼承機制 ?"></a>JavaScript 需不需要設計繼承機制 ?</h3><p>如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。</p>
-<p>但是 Brendan Eich 沒有打算引入 <code>class</code> 的概念，但是他把 <code>new</code> 的命令引入了 JavaScript 中，從原形中生成一個 instance 。</p>
+
+<h4 id="JavaScript-設計原理"><a href="#JavaScript-設計原理" class="headerlink" title="JavaScript 設計原理"></a>JavaScript 設計原理</h4><ul>
+<li><p>在早期 ( 西元 1994 年 ) 那時版本的瀏覽器只能單純瀏覽，並沒有辦法與使用者互動，因此當時的 Netscape 希望可用一種網頁腳本語言，讓使用者可以和瀏覽器互動。</p>
+</li>
+<li><p>Brendan Eich 正是當時研發這項語言的工程師，而那時候的時空背景 object-oriented programming 正流行，Brendan Eich 或許也受到一定程度的影響，因此在 JavaScript 中的數據類型都是 Object 的型態。</p>
+</li>
+</ul>
+<h4 id="JavaScript-需不需要設計繼承機制"><a href="#JavaScript-需不需要設計繼承機制" class="headerlink" title="JavaScript 需不需要設計繼承機制 ?"></a>JavaScript 需不需要設計繼承機制 ?</h4><ul>
+<li><p>如果是一項簡易的語言，到是不需要考慮到繼承機制問題，只不過 JavaScript 中的數據型態都是以 Object 呈現，那就必須有一項機制將這些物件互相聯繫，因此 JavaScript 仍然設計了繼承機制。</p>
+</li>
+<li><p>但是 Brendan Eich 沒有打算引入 <code>class</code> 的概念，但是他把 <code>new</code> 的命令引入了 JavaScript 中，從原形中生成一個 instance 。</p>
 <ul>
 <li><p>C++ </p>
 <p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName *object = new ClassName(param);</span><br></pre></td></tr></table></figure></p>
@@ -181,6 +189,8 @@
 <p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// constructor </span><br><span class="line">function Dog(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>  我們在使用 <code>new</code> 生成一個狗的 instance：</p>
 <p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dogA = new Dog(&apos;Doggy&apos;);</span><br><span class="line">console.log(dogA.name); // Doggy</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
 </li>
 </ul>
 <hr>

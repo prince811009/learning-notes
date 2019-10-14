@@ -157,19 +157,23 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
-<ul>
+<ol>
 <li><p>call by value / pass by value</p>
-<p>  直接舉個例子來看</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
+<p> 直接舉個例子來看</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
+</li>
+<li><p>可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
 </li>
 </ul>
+</li>
+</ol>
 <a id="more"></a>
 
-<pre><code>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 `x` 和 `y` 的值進行交換，因為我們拿出來交換的東西並不是真正的 `x` 和 `y` ，而是 `x` 和 `y` 的值的副本。
-
-可以把我們宣告的 `a` 和 `b` 想像成兩個新的變數，只是剛好存的值與  `x` 和 `y` 一樣，所以就算改變了 `a` 也不會改變 `x` ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</code></pre><ul>
-<li>call by reference<br> 可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
-</ul>
+<ol start="2">
+<li>call by reference<br>可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
+</ol>
 <hr>
 <h3 id="適用情境"><a href="#適用情境" class="headerlink" title="適用情境"></a>適用情境</h3><ul>
 <li><p>數字</p>
