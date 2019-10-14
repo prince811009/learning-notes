@@ -1,6 +1,6 @@
 ---
-title: call by value or by reference ?
-date: 2019-10-6 10:43:10
+title: Is JavaScript a call-by-value or call-by-reference language?
+date: 2019-10-14 10:43:10
 categories:
 - Documentation
 tags:
@@ -31,11 +31,12 @@ navbar_links:
     console.log(x, y); // 10, 20
     ```
 
+<!-- more -->
+
     這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 `x` 和 `y` 的值進行交換，因為我們拿出來交換的東西並不是真正的 `x` 和 `y` ，而是 `x` 和 `y` 的值的副本。
 
     可以把我們宣告的 `a` 和 `b` 想像成兩個新的變數，只是剛好存的值與  `x` 和 `y` 一樣，所以就算改變了 `a` 也不會改變 `x` ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。
 
-<!-- more -->
 
 - call by reference
    可以說是和上述第一種方式相反，傳進去的參數則是真的  `x` 和 `y`，在 function 裡面宣告的  `a` 和 `b` 只是 alias ，如果我們改變了 `a` 就真的會因此改變 `x` 。

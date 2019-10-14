@@ -1,3 +1,6 @@
 [submodule "themes/minos"]
 	path = themes/minos
 	url = https://github.com/ppoffice/hexo-theme-minos.git
+[submodule "blog/themes/minos"]
+	path = blog/themes/minos
+	url = https://github.com/ppoffice/hexo-theme-minos.git
