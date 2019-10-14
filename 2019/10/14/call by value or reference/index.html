@@ -67,6 +67,10 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
             
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
                 <a class="navbar-item" title="Table of Contents">
@@ -89,7 +93,7 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#事實其實是">3&nbsp;&nbsp;<b>事實其實是…</b></a>
+                    <a class="navbar-item" href="#事實其實是…">3&nbsp;&nbsp;<b>事實其實是…</b></a>
                     
                     
                     <hr class="navbar-divider">
@@ -107,7 +111,7 @@
                     
                     
                     
-                    <a class="navbar-item" href="#reference">4.2.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#Reference">4.2.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
@@ -152,44 +156,35 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="function-參數傳遞方式"><a class="header-anchor" href="#function-參數傳遞方式"></a>function 參數傳遞方式</h3>
-<p>先來說明第一種方式：</p>
+        <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
 <ul>
-<li>
-<p>call by value / pass by value</p>
-<p>直接舉個例子來看</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
+<li><p>call by value / pass by value</p>
+<p>  直接舉個例子來看</p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <a id="more"></a>
+
 <pre><code>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 `x` 和 `y` 的值進行交換，因為我們拿出來交換的東西並不是真正的 `x` 和 `y` ，而是 `x` 和 `y` 的值的副本。
 
-可以把我們宣告的 `a` 和 `b` 想像成兩個新的變數，只是剛好存的值與  `x` 和 `y` 一樣，所以就算改變了 `a` 也不會改變 `x` ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。
-</code></pre>
-<ul>
-<li>call by reference<br>
-可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
+可以把我們宣告的 `a` 和 `b` 想像成兩個新的變數，只是剛好存的值與  `x` 和 `y` 一樣，所以就算改變了 `a` 也不會改變 `x` ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</code></pre><ul>
+<li>call by reference<br> 可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
 </ul>
 <hr>
-<h3 id="適用情境"><a class="header-anchor" href="#適用情境"></a>適用情境</h3>
-<ul>
-<li>
-<p>數字</p>
-<p>在 JavaScript 中一般情境，例如上面 example 中的 Primitive type ( 原始型別 )，只會使用 call by value ，因為我們無法透過 function 中的引數去改變 function 外的變數。</p>
+<h3 id="適用情境"><a href="#適用情境" class="headerlink" title="適用情境"></a>適用情境</h3><ul>
+<li><p>數字</p>
+<p>  在 JavaScript 中一般情境，例如上面 example 中的 Primitive type ( 原始型別 )，只會使用 call by value ，因為我們無法透過 function 中的引數去改變 function 外的變數。</p>
 </li>
-<li>
-<p>物件</p>
+<li><p>物件</p>
 <ul>
-<li>
-<p>看起來像是 call by sharing</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(obj) &#123;</span><br><span class="line">    obj.number++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br><span class="line">add(o)</span><br><span class="line">console.log(o.number) // 11</span><br></pre></td></tr></table></figure></p>
+<li><p>看起來像是 call by sharing</p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(obj) &#123;</span><br><span class="line">    obj.number++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br><span class="line">add(o)</span><br><span class="line">console.log(o.number) // 11</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="事實其實是"><a class="header-anchor" href="#事實其實是"></a>事實其實是…</h3>
-<p>在看到 Huli 這篇文章所引用的句子時著實也嚇了一跳，「JavaScript 只有 call by value」。</p>
+<h3 id="事實其實是…"><a href="#事實其實是…" class="headerlink" title="事實其實是…"></a>事實其實是…</h3><p>在看到 Huli 這篇文章所引用的句子時著實也嚇了一跳，「JavaScript 只有 call by value」。</p>
 <p>在宣告一個 object 時，在底層實作上，Object 被存取的地方是一個記憶體的位置，概念很像 C 語言的指標，儲存的值是「記憶體位置」。</p>
 <p>例如，當我們宣告一個變數時，</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -198,63 +193,49 @@
 <thead>
 <tr>
 <th>變數名稱</th>
-<th style="text-align:center">記憶體位置</th>
-<th style="text-align:right">儲存的值</th>
+<th align="center">記憶體位置</th>
+<th align="right">儲存的值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td></td>
-<td style="text-align:center">0x01</td>
-<td style="text-align:right">{number: 10}</td>
+<td align="center">0x01</td>
+<td align="right">{number: 10}</td>
 </tr>
 <tr>
 <td>o</td>
-<td style="text-align:center">0x02</td>
-<td style="text-align:right">0x01</td>
+<td align="center">0x02</td>
+<td align="right">0x01</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
-<li>
-<p>因此如果從上層來看，<code>o</code> 的值為 <code>{number: 10}</code> ，不過若從底層時做的角度來看，<code>o</code> 的值為記憶體位置的 <code>0x01</code>。</p>
+<li><p>因此如果從上層來看，<code>o</code> 的值為 <code>{number: 10}</code> ，不過若從底層時做的角度來看，<code>o</code> 的值為記憶體位置的 <code>0x01</code>。</p>
 </li>
-<li>
-<p>也就是說在 function 裡面的變數是透過「記憶體位置」去操作這些東西，因此 <code>o</code> 和 <code>obj</code> 兩個變數的指標指向了同一個記憶體位置，而底層實作原理就是把 <code>o</code> 的記憶體位置傳給 <code>obj</code> ，所以才能指著同一個位置。</p>
+<li><p>也就是說在 function 裡面的變數是透過「記憶體位置」去操作這些東西，因此 <code>o</code> 和 <code>obj</code> 兩個變數的指標指向了同一個記憶體位置，而底層實作原理就是把 <code>o</code> 的記憶體位置傳給 <code>obj</code> ，所以才能指著同一個位置。</p>
 </li>
-<li>
-<p>因此我們在前面提到 “適用情境” 中的物件時，這裡提到的 <code>call by sharing</code> ( 傳記憶體位置進去 )，可說是 <code>call by value</code> 的一種，因為原理同樣是傳一個值的備份給它，指是這邊指的 “值” 是記憶體的位置。</p>
+<li><p>因此我們在前面提到 “適用情境” 中的物件時，這裡提到的 <code>call by sharing</code> ( 傳記憶體位置進去 )，可說是 <code>call by value</code> 的一種，因為原理同樣是傳一個值的備份給它，指是這邊指的 “值” 是記憶體的位置。</p>
 </li>
 </ul>
-<h3 id="結論"><a class="header-anchor" href="#結論"></a>結論</h3>
-<h4 id="定義"><a class="header-anchor" href="#定義"></a>定義</h4>
-<ul>
-<li>
-<p><code>call by value</code> 會把傳進去的值先複製一份 (可以是數值、記憶體位置 )，<code>call by reference</code> 在底層實作上也有類似的行為。</p>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ul>
+<li><p><code>call by value</code> 會把傳進去的值先複製一份 (可以是數值、記憶體位置 )，<code>call by reference</code> 在底層實作上也有類似的行為。</p>
 </li>
-<li>
-<p>在 <code>call by reference</code> 中， <code>x</code> 的記憶體位置和 <code>a</code> 相同， <code>y</code> 的記憶體位置和 <code>b</code> 相同，因此你可以說他們兩兩是相同的。</p>
+<li><p>在 <code>call by reference</code> 中， <code>x</code> 的記憶體位置和 <code>a</code> 相同， <code>y</code> 的記憶體位置和 <code>b</code> 相同，因此你可以說他們兩兩是相同的。</p>
 </li>
-<li>
-<p>不過在 <code>call by value</code> 中，就算傳給對方的是指標，也只是代表「指標內所儲存的值」，有就是把記憶體的位置指給對方，或說是指向相同的記憶體位置，但是指標本身還是有不同的記憶體位置 ( 繞口 ~)。</p>
+<li><p>不過在 <code>call by value</code> 中，就算傳給對方的是指標，也只是代表「指標內所儲存的值」，有就是把記憶體的位置指給對方，或說是指向相同的記憶體位置，但是指標本身還是有不同的記憶體位置 ( 繞口 ~)。</p>
 </li>
-<li>
-<p>若是想像成，在 <code>call by value</code> 時，等於是新增了一個變數 <code>a</code> ，讓 <code>a</code> 儲存的值和傳進來的參數相同，這樣的想法會比較直覺；而 <code>call by reference</code> 則是把 <code>a</code> 當作 <code>x</code> 的 alias ( 別名 )，但是其實兩者是相同的變數。</p>
+<li><p>若是想像成，在 <code>call by value</code> 時，等於是新增了一個變數 <code>a</code> ，讓 <code>a</code> 儲存的值和傳進來的參數相同，這樣的想法會比較直覺；而 <code>call by reference</code> 則是把 <code>a</code> 當作 <code>x</code> 的 alias ( 別名 )，但是其實兩者是相同的變數。</p>
 </li>
 </ul>
-<h4 id="從行為上區分"><a class="header-anchor" href="#從行為上區分"></a>從行為上區分</h4>
-<p>從「行為」本身上區分兩者是比較容易的方法，不同的種類達成的行為不同。</p>
+<h4 id="從行為上區分"><a href="#從行為上區分" class="headerlink" title="從行為上區分"></a>從行為上區分</h4><p>從「行為」本身上區分兩者是比較容易的方法，不同的種類達成的行為不同。</p>
 <ul>
-<li>條件 : 在 function 中對引數重新賦值，是否會影響外面的變數
-<ul>
+<li>條件 : 在 function 中對引數重新賦值，是否會影響外面的變數<ul>
 <li>會 -&gt; <code>call by reference</code></li>
 <li>不會 -&gt; <code>call by value</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
-<ul>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
 <li><a href="https://github.com/aszx87410/blog/issues/30" target="_blank" rel="noopener">深入探討 JavaScript 中的參數傳遞：call by value 還是 reference?</a></li>
 <li><a href="https://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language" target="_blank" rel="noopener">Is JavaScript a pass-by-reference or pass-by-value language?</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing" target="_blank" rel="noopener">Evaluation strategy</a></li>
@@ -362,6 +343,35 @@
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 </body>
 </html>

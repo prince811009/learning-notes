@@ -67,6 +67,10 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
             
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
                 <a class="navbar-item" title="Table of Contents">
@@ -128,31 +132,26 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="變數的生存範圍"><a class="header-anchor" href="#變數的生存範圍"></a>變數的生存範圍</h3>
-<ul>
-<li>
-<p>Scope 的最基本單位 -  function</p>
-<p>在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // ReferenceError: a is not defined</span><br></pre></td></tr></table></figure></p>
-<p>因此這個例子中，function test() 會產生一個 test scope，而 <code>a</code> 就會宣告在這個 test 的 scope 裡面，所以 <code>a</code> 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 <code>ReferenceError: a is not defined</code> 。</p>
+        <h3 id="變數的生存範圍"><a href="#變數的生存範圍" class="headerlink" title="變數的生存範圍"></a>變數的生存範圍</h3><ul>
+<li><p>Scope 的最基本單位 -  function</p>
+<p>  在 JavaScript 中，ES6 之前 Scope 的基本單位為 function，在 function 才能產生一個新的作用域。</p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // ReferenceError: a is not defined</span><br></pre></td></tr></table></figure></p>
+<p>  因此這個例子中，function test() 會產生一個 test scope，而 <code>a</code> 就會宣告在這個 test 的 scope 裡面，所以 <code>a</code> 只有在此 function 裡面才能被看到，在 function 之外就無法看到此變數，出現錯誤 <code>ReferenceError: a is not defined</code> 。</p>
 </li>
 </ul>
 <a id="more"></a>
+
 <ul>
-<li>
-<p>global variable</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 20</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
+<li><p>global variable</p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 20</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>優先順序</p>
-<p>程式會優先尋找 function 中的變數，若無再往上至 global variable 尋找。</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
-<p>若我們將變數範圍印出，可更清楚 scope 範圍<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var a = &apos;global&apos;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = &apos;test scope a&apos;</span><br><span class="line">    var b = &apos;test scope b&apos;</span><br><span class="line">    console.log(a, b) // test scope a, test scope b </span><br><span class="line">    function inner() &#123;</span><br><span class="line">        var b = &apos;inner scope b&apos;</span><br><span class="line">        console.log(a, b) // test scope a, inner scope b</span><br><span class="line">    &#125;</span><br><span class="line">    inner() </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() </span><br><span class="line">console.log(a) // global</span><br></pre></td></tr></table></figure></p>
+<li><p>優先順序</p>
+<p>  程式會優先尋找 function 中的變數，若無再往上至 global variable 尋找。</p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = 20 // global variable</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = 10</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() // 10</span><br><span class="line">console.log(a) // 20</span><br></pre></td></tr></table></figure></p>
+<p>  若我們將變數範圍印出，可更清楚 scope 範圍<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var a = &apos;global&apos;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = &apos;test scope a&apos;</span><br><span class="line">    var b = &apos;test scope b&apos;</span><br><span class="line">    console.log(a, b) // test scope a, test scope b </span><br><span class="line">    function inner() &#123;</span><br><span class="line">        var b = &apos;inner scope b&apos;</span><br><span class="line">        console.log(a, b) // test scope a, inner scope b</span><br><span class="line">    &#125;</span><br><span class="line">    inner() </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() </span><br><span class="line">console.log(a) // global</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
-<h3 id="scope-chain-作用域鍊"><a class="header-anchor" href="#scope-chain-作用域鍊"></a>scope chain 作用域鍊</h3>
-<p>由上可得結論，作用域的優先尋找順序為 <code>inner scope -&gt; test scope -&gt; global scope</code> 。</p>
+<h3 id="scope-chain-作用域鍊"><a href="#scope-chain-作用域鍊" class="headerlink" title="scope chain 作用域鍊"></a>scope chain 作用域鍊</h3><p>由上可得結論，作用域的優先尋找順序為 <code>inner scope -&gt; test scope -&gt; global scope</code> 。</p>
 
     
     </div>
@@ -253,6 +252,35 @@
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 </body>
 </html>

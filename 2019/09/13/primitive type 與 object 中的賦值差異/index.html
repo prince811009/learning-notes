@@ -67,6 +67,10 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
             
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
                 <a class="navbar-item" title="Table of Contents">
@@ -128,25 +132,21 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="賦值差異"><a class="header-anchor" href="#賦值差異"></a>賦值差異</h3>
-<ul>
-<li>
-<p>在 primitive type 中，變數 a 並不會跟著一起改變</p>
+        <h3 id="賦值差異"><a href="#賦值差異" class="headerlink" title="賦值差異"></a>賦值差異</h3><ul>
+<li><p>在 primitive type 中，變數 a 並不會跟著一起改變</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 10;</span><br><span class="line">var b = a;</span><br><span class="line">console.log(a, b) // 10, 10;</span><br><span class="line">b = 200;</span><br><span class="line">console.log(a, b) // 10, 200;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <a id="more"></a>
+
 <ul>
-<li>
-<p>在 object 中，obj 也連同 obj2 一起改變</p>
+<li><p>在 object 中，obj 也連同 obj2 一起改變</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  number: 10;</span><br><span class="line">&#125;</span><br><span class="line">var obj2 = obj;</span><br><span class="line">console.log(obj, obj2) // &#123;number: 10&#125; &#123;number: 10&#125;;</span><br><span class="line">obj2.number = 20;</span><br><span class="line">console.log(obj, obj2) // &#123;number: 20&#125; &#123;number: 20&#125;;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <hr>
-<h3 id="原理"><a class="header-anchor" href="#原理"></a>原理</h3>
-<ul>
-<li>
-<p>在 primitive type 中</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li><p>在 primitive type 中</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 10;</span><br><span class="line">var b = a;</span><br><span class="line">console.log(a, b); // 10, 10</span><br><span class="line">b = 200;</span><br><span class="line">console.log(a, b); // 10, 200</span><br></pre></td></tr></table></figure></p>
 <p>可以由儲存的記憶體位置來試想，當我們宣告 <code>var a = 10</code> 時，</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a: 10; // 記憶體 a 位置，儲存的值 = 10</span><br></pre></td></tr></table></figure></p>
@@ -155,8 +155,7 @@
 <p>當我們下指令 <code>b = 20</code> 時，此時就將 b 位置的值修改成 20。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a: 10</span><br><span class="line">b: 20</span><br></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>在 object 中</p>
+<li><p>在 object 中</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  number: 10;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var obj2 = obj;</span><br><span class="line">console.log(obj, obj2) // &#123;number: 10&#125; &#123;number: 10&#125;;</span><br><span class="line">obj2.number = 20;</span><br><span class="line">console.log(obj, obj2) // &#123;number: 20&#125; &#123;number: 20&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>當我們宣告 obj 時，會將 obj 真正的值儲存在某記憶體位置，</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  number: 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -188,12 +187,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/2019/09/13/prototype_2/">JavaScript_prototype chain -2</a>
+            <a href="/2019/09/20/JavaScript 變數的資料型態/">JavaScript 變數的資料型態</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/2019/09/10/prototype_1/">JavaScript_prototype chain - 1</a>
+            <a href="/2019/09/13/prototype_2/">JavaScript_prototype chain -2</a>
             
         </span>
     </div>
@@ -276,6 +275,35 @@
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 </body>
 </html>

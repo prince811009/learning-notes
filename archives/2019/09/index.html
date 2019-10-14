@@ -67,6 +67,10 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
             
             
         </div>
@@ -114,13 +118,13 @@
                 <div class="article content>">
                     <time class="is-text-small" datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">
                         Sep 13</time>
-                    <h6 class="title is-6"><a href="/2019/09/13/prototype_2/">JavaScript_prototype chain -2</a></h6>
+                    <h6 class="title is-6"><a href="/2019/09/13/primitive type 與 object 中的賦值差異/">primitive type 與 object 中的賦值差異</a></h6>
                 </div>
             
                 <div class="article content>">
                     <time class="is-text-small" datetime="2019-09-13T02:43:10.000Z" itemprop="datePublished">
                         Sep 13</time>
-                    <h6 class="title is-6"><a href="/2019/09/13/primitive type 與 object 中的賦值差異/">primitive type 與 object 中的賦值差異</a></h6>
+                    <h6 class="title is-6"><a href="/2019/09/13/prototype_2/">JavaScript_prototype chain -2</a></h6>
                 </div>
             
                 <div class="article content>">
@@ -193,6 +197,35 @@
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 </body>
 </html>
