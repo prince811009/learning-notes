@@ -1,6 +1,6 @@
 ---
-title: "About `window.setTimeout()`"
-date: 2019-10-11 17:15:58
+title: "About setTimeout()"
+date: 2019-10-01 17:15:58
 categories:
 - Documentation
 tags:
