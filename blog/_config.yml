@@ -116,10 +116,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: minos
 
-comment:
-    type: disqus
-    shortname: xxxxxxxx     # (required)
-
 search:
     type: insight
 

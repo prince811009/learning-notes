@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/About%20Hoisting%2C%20Closure%20and%20Prototype.md
 ---
 
 ## Hoisting 變數提升 

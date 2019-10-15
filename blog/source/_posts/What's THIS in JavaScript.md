@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/What's%20THIS%20in%20JavaScript.md
 ---
 
 ### 前言

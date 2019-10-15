@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/prototype_2.md
 ---
 
 第一回我們了解完 prototype 出現的前因後果，後面我們接續著去探索一下當我們下這些指令的時候， JavaScript 在背後做了哪些事情呢?

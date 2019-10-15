@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Scope%20-%20var%20(ES6%20%E4%BB%A5%E5%89%8D).md
 ---
 ### 變數的生存範圍
 

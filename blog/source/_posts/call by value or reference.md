@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/call%20by%20value%20or%20reference.md
 ---
 
 ### function 參數傳遞方式

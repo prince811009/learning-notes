@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Hoisting%20-%20%E5%BE%9E%20ECMAScript%20%E4%B8%8B%E6%89%8B.md
 ---
 讓我們從個小測驗著手吧
 

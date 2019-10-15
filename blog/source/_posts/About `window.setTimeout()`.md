@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/About%20%60window.setTimeout()%60.md
 ---
 
 在先前的 `Event Loop + Scope` 實作中，發現一項有趣的返回值

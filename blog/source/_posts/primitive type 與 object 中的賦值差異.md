@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/primitive%20type%20%E8%88%87%20object%20%E4%B8%AD%E7%9A%84%E8%B3%A6%E5%80%BC%E5%B7%AE%E7%95%B0.md
 ---
 
 ### 賦值差異

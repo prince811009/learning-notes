@@ -6,10 +6,6 @@ categories:
 tags:
 - JavaScript
 toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Gulp%20-%20automate%20and%20enhance%20your%20workflow.md
 ---
 > Automate and enhance your workflow  
 
