@@ -1,6 +1,3 @@
-[submodule "blog/themes/cactus"]
-	path = blog/themes/cactus
-	url = https://github.com/prince811009/hexo-theme-cactus
 [submodule "blog/themes/minos"]
 	path = blog/themes/minos
 	url = https://github.com/prince811009/hexo-theme-minos

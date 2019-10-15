@@ -116,9 +116,16 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: minos
 
+comment:
+    type: gitment
+    owner: prince811009         # (required) GitHub user name
+    repo: prince811009.github.io          # (required) GitHub repository name
+    client_id: 9e66c957b5182e1412a0   # (required) OAuth application client id
+    client_secret: a198f8a26e2234d092486d5ae0d148280c7eb4d9
+ # (required) OAuth application client secret
+
 search:
     type: insight
-
 
 menu:
   Archives: /archives
