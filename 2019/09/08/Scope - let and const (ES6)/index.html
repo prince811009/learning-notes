@@ -125,41 +125,34 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="前言："><a class="header-anchor" href="#前言："></a>前言：</h3>
-<p>在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 <code>block</code> 。</p>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 <code>block</code> 。</p>
 <a id="more"></a>
-<h3 id="scope"><a class="header-anchor" href="#scope"></a>scope</h3>
-<ul>
-<li>
-<p>var</p>
-<p>作用域範圍為 function 之內都可使用</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        var b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h3><ul>
+<li><p>var</p>
+<p>  作用域範圍為 function 之內都可使用</p>
+<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        var b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>let or const</p>
+<li><p>let or const</p>
 <ul>
-<li>
-<p>example 01 :</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        let b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // b is not defined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
-<p>因為在 ES6 之後，使用 <code>let</code> or <code>const</code> ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 <code>if</code> 的範圍外後，就無法存取到 <code>b</code> 。</p>
+<li><p>example 01 : </p>
+<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        let b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // b is not defined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<p> 因為在 ES6 之後，使用 <code>let</code> or <code>const</code> ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 <code>if</code> 的範圍外後，就無法存取到 <code>b</code> 。</p>
 </li>
-<li>
-<p>example 02 :</p>
+<li><p>example 02 :  </p>
 <ul>
-<li>使用 var 宣告的情況下：</li>
-</ul>
+<li><p>使用 var 宣告的情況下：</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (var i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>answer:<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">final value: 10 // 可存取到 function 中的所有變數</span><br></pre></td></tr></table></figure></li>
+</li>
 </ul>
 <ul>
-<li>使用 let or const 宣告的情況下：<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (let i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></li>
+<li>answer:<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">final value: 10 // 可存取到 function 中的所有變數</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ul>
-<li>answer:<br>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure></li>
+<li>使用 let or const 宣告的情況下：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (let i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>answer:<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
