@@ -115,7 +115,7 @@
     
         <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
 <ol>
-<li><p>call by value / pass by value<br> 直接舉個例子來看<br> <epacse hidden>40</epacse></p>
+<li><p>call by value / pass by value<br> 直接舉個例子來看<br> <epacse hidden>86</epacse></p>
 <ul>
 <li><p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
 </li>
@@ -165,15 +165,15 @@
     
         <h2 id="Hoisting-變數提升"><a href="#Hoisting-變數提升" class="headerlink" title="Hoisting 變數提升"></a>Hoisting 變數提升</h2><ul>
 <li><p>example_1 ( 變數 )</p>
-<p>  <epacse hidden>0</epacse></p>
+<p>  <epacse hidden>5</epacse></p>
 <p>  可以看成 2 步驟拆解： </p>
 <ul>
 <li><p>first : 將變數拆解</p>
-<p>  <epacse hidden>1</epacse></p>
+<p>  <epacse hidden>6</epacse></p>
 </li>
 <li><p>second : 再提升變數</p>
 <p>  因此在程式跑到 <code>console.log(a)</code> 之前就可以先使用此變數。</p>
-<p>  <epacse hidden>2</epacse></p>
+<p>  <epacse hidden>7</epacse></p>
 </li>
 </ul>
 </li>
@@ -219,7 +219,7 @@
     
         <ul>
 <li><p>Global Installation</p>
-<p>  <epacse hidden>49</epacse></p>
+<p>  <epacse hidden>50</epacse></p>
 </li>
 <li><p>建立專案資料夾</p>
 <ul>
