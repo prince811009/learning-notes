@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="前言： 在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 block 。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="let and const (ES6) 的生存範圍">
+<meta property="og:url" content="https://prince811009.github.io/2019/09/08/Scope - let and const (ES6)/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="前言： 在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 block 。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:08:51.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="let and const (ES6) 的生存範圍">
+<meta name="twitter:description" content="前言： 在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 block 。">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -93,9 +123,9 @@
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Scope%20-%20let%20and%20const%20(ES6).md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -132,34 +162,41 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 <code>block</code> 。</p>
+        <h3 id="前言："><a class="header-anchor" href="#前言："></a>前言：</h3>
+<p>在 ES6 之前，scope 作用域的最基本單位為 function，只要有 function 就會產生新的作用域；但若在 ES6 之後，最基本單位為 <code>block</code> 。</p>
 <a id="more"></a>
-
-<h3 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h3><ul>
-<li><p>var</p>
-<p>  作用域範圍為 function 之內都可使用</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        var b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>let or const</p>
+<h3 id="scope"><a class="header-anchor" href="#scope"></a>scope</h3>
 <ul>
-<li><p>example 01 : </p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        let b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // b is not defined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
-<p> 因為在 ES6 之後，使用 <code>let</code> or <code>const</code> ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 <code>if</code> 的範圍外後，就無法存取到 <code>b</code> 。</p>
+<li>
+<p>var</p>
+<p>作用域範圍為 function 之內都可使用</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        var b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>example 02 :  </p>
+<li>
+<p>let or const</p>
 <ul>
-<li><p>使用 var 宣告的情況下：</p>
+<li>
+<p>example 01 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">    var a = 60</span><br><span class="line">    if (a === 60) &#123;</span><br><span class="line">        let b = 10 </span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b) // b is not defined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<p>因為在 ES6 之後，使用 <code>let</code> or <code>const</code> ，其作用域會存在於 block 中，因此在這個狀況下跳脫出 <code>if</code> 的範圍外後，就無法存取到 <code>b</code> 。</p>
+</li>
+<li>
+<p>example 02 :</p>
+<ul>
+<li>使用 var 宣告的情況下：</li>
+</ul>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (var i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
-</li>
+<ul>
+<li>answer:<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">final value: 10 // 可存取到 function 中的所有變數</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ul>
-<li>answer:<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">final value: 10 // 可存取到 function 中的所有變數</span><br></pre></td></tr></table></figure></li>
+<li>使用 let or const 宣告的情況下：<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (let i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ul>
-<li>使用 let or const 宣告的情況下：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    for (let i=0; i&lt;10; i++) &#123;</span><br><span class="line">        console.log(&apos;i:&apos;, i)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;final value:&apos;, i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>answer:<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure></li>
+<li>answer:<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">i: 5</span><br><span class="line">i: 6</span><br><span class="line">i: 7</span><br><span class="line">i: 8</span><br><span class="line">i: 9</span><br><span class="line">i is not defined</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -192,31 +229,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/09/08/Scope - let and const (ES6)/';
-        this.page.identifier = '2019/09/08/Scope - let and const (ES6)/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/09/08/Scope - let and const (ES6)/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -230,6 +271,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -263,6 +317,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

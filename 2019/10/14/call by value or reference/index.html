@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="function 參數傳遞方式 先來說明第一種方式：   call by value / pass by value 直接舉個例子來看 72   這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 x 和 y 的值進行交換，因為我們拿出來交換的東">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Is JavaScript a call-by-value or call-by-reference language?">
+<meta property="og:url" content="https://prince811009.github.io/2019/10/14/call by value or reference/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="function 參數傳遞方式 先來說明第一種方式：   call by value / pass by value 直接舉個例子來看 72   這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 x 和 y 的值進行交換，因為我們拿出來交換的東">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:07:58.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Is JavaScript a call-by-value or call-by-reference language?">
+<meta name="twitter:description" content="function 參數傳遞方式 先來說明第一種方式：   call by value / pass by value 直接舉個例子來看 72   這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 x 和 y 的值進行交換，因為我們拿出來交換的東">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -93,7 +123,7 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#事實其實是…">3&nbsp;&nbsp;<b>事實其實是…</b></a>
+                    <a class="navbar-item" href="#事實其實是">3&nbsp;&nbsp;<b>事實其實是…</b></a>
                     
                     
                     <hr class="navbar-divider">
@@ -111,15 +141,15 @@
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">4.2.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#reference">4.2.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/call%20by%20value%20or%20reference.md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -156,39 +186,48 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
+        <h3 id="function-參數傳遞方式"><a class="header-anchor" href="#function-參數傳遞方式"></a>function 參數傳遞方式</h3>
+<p>先來說明第一種方式：</p>
 <ol>
-<li><p>call by value / pass by value</p>
-<p> 直接舉個例子來看</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>call by value / pass by value<br>
+直接舉個例子來看<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function swap(a, b) &#123;</span><br><span class="line">    var temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var x = 10;</span><br><span class="line">var y = 20;</span><br><span class="line">swap(x, y);</span><br><span class="line">console.log(x, y); // 10, 20</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
+<li>
+<p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
 </li>
-<li><p>可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
+<li>
+<p>可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
 </li>
 </ul>
 </li>
 </ol>
 <a id="more"></a>
-
 <ol start="2">
-<li>call by reference<br>可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
+<li>call by reference<br>
+可以說是和上述第一種方式相反，傳進去的參數則是真的  <code>x</code> 和 <code>y</code>，在 function 裡面宣告的  <code>a</code> 和 <code>b</code> 只是 alias ，如果我們改變了 <code>a</code> 就真的會因此改變 <code>x</code> 。</li>
 </ol>
 <hr>
-<h3 id="適用情境"><a href="#適用情境" class="headerlink" title="適用情境"></a>適用情境</h3><ul>
-<li><p>數字</p>
-<p>  在 JavaScript 中一般情境，例如上面 example 中的 Primitive type ( 原始型別 )，只會使用 call by value ，因為我們無法透過 function 中的引數去改變 function 外的變數。</p>
-</li>
-<li><p>物件</p>
+<h3 id="適用情境"><a class="header-anchor" href="#適用情境"></a>適用情境</h3>
 <ul>
-<li><p>看起來像是 call by sharing</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(obj) &#123;</span><br><span class="line">    obj.number++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br><span class="line">add(o)</span><br><span class="line">console.log(o.number) // 11</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>數字</p>
+<p>在 JavaScript 中一般情境，例如上面 example 中的 Primitive type ( 原始型別 )，只會使用 call by value ，因為我們無法透過 function 中的引數去改變 function 外的變數。</p>
+</li>
+<li>
+<p>物件</p>
+<ul>
+<li>
+<p>看起來像是 call by sharing</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(obj) &#123;</span><br><span class="line">    obj.number++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br><span class="line">add(o)</span><br><span class="line">console.log(o.number) // 11</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="事實其實是…"><a href="#事實其實是…" class="headerlink" title="事實其實是…"></a>事實其實是…</h3><p>在看到 Huli 這篇文章所引用的句子時著實也嚇了一跳，「JavaScript 只有 call by value」。</p>
+<h3 id="事實其實是"><a class="header-anchor" href="#事實其實是"></a>事實其實是…</h3>
+<p>在看到 Huli 這篇文章所引用的句子時著實也嚇了一跳，「JavaScript 只有 call by value」。</p>
 <p>在宣告一個 object 時，在底層實作上，Object 被存取的地方是一個記憶體的位置，概念很像 C 語言的指標，儲存的值是「記憶體位置」。</p>
 <p>例如，當我們宣告一個變數時，</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    number: 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -197,49 +236,63 @@
 <thead>
 <tr>
 <th>變數名稱</th>
-<th align="center">記憶體位置</th>
-<th align="right">儲存的值</th>
+<th style="text-align:center">記憶體位置</th>
+<th style="text-align:right">儲存的值</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td></td>
-<td align="center">0x01</td>
-<td align="right">{number: 10}</td>
+<td style="text-align:center">0x01</td>
+<td style="text-align:right">{number: 10}</td>
 </tr>
 <tr>
 <td>o</td>
-<td align="center">0x02</td>
-<td align="right">0x01</td>
+<td style="text-align:center">0x02</td>
+<td style="text-align:right">0x01</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
-<li><p>因此如果從上層來看，<code>o</code> 的值為 <code>{number: 10}</code> ，不過若從底層時做的角度來看，<code>o</code> 的值為記憶體位置的 <code>0x01</code>。</p>
+<li>
+<p>因此如果從上層來看，<code>o</code> 的值為 <code>{number: 10}</code> ，不過若從底層時做的角度來看，<code>o</code> 的值為記憶體位置的 <code>0x01</code>。</p>
 </li>
-<li><p>也就是說在 function 裡面的變數是透過「記憶體位置」去操作這些東西，因此 <code>o</code> 和 <code>obj</code> 兩個變數的指標指向了同一個記憶體位置，而底層實作原理就是把 <code>o</code> 的記憶體位置傳給 <code>obj</code> ，所以才能指著同一個位置。</p>
+<li>
+<p>也就是說在 function 裡面的變數是透過「記憶體位置」去操作這些東西，因此 <code>o</code> 和 <code>obj</code> 兩個變數的指標指向了同一個記憶體位置，而底層實作原理就是把 <code>o</code> 的記憶體位置傳給 <code>obj</code> ，所以才能指著同一個位置。</p>
 </li>
-<li><p>因此我們在前面提到 “適用情境” 中的物件時，這裡提到的 <code>call by sharing</code> ( 傳記憶體位置進去 )，可說是 <code>call by value</code> 的一種，因為原理同樣是傳一個值的備份給它，指是這邊指的 “值” 是記憶體的位置。</p>
+<li>
+<p>因此我們在前面提到 “適用情境” 中的物件時，這裡提到的 <code>call by sharing</code> ( 傳記憶體位置進去 )，可說是 <code>call by value</code> 的一種，因為原理同樣是傳一個值的備份給它，指是這邊指的 “值” 是記憶體的位置。</p>
 </li>
 </ul>
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ul>
-<li><p><code>call by value</code> 會把傳進去的值先複製一份 (可以是數值、記憶體位置 )，<code>call by reference</code> 在底層實作上也有類似的行為。</p>
+<h3 id="結論"><a class="header-anchor" href="#結論"></a>結論</h3>
+<h4 id="定義"><a class="header-anchor" href="#定義"></a>定義</h4>
+<ul>
+<li>
+<p><code>call by value</code> 會把傳進去的值先複製一份 (可以是數值、記憶體位置 )，<code>call by reference</code> 在底層實作上也有類似的行為。</p>
 </li>
-<li><p>在 <code>call by reference</code> 中， <code>x</code> 的記憶體位置和 <code>a</code> 相同， <code>y</code> 的記憶體位置和 <code>b</code> 相同，因此你可以說他們兩兩是相同的。</p>
+<li>
+<p>在 <code>call by reference</code> 中， <code>x</code> 的記憶體位置和 <code>a</code> 相同， <code>y</code> 的記憶體位置和 <code>b</code> 相同，因此你可以說他們兩兩是相同的。</p>
 </li>
-<li><p>不過在 <code>call by value</code> 中，就算傳給對方的是指標，也只是代表「指標內所儲存的值」，有就是把記憶體的位置指給對方，或說是指向相同的記憶體位置，但是指標本身還是有不同的記憶體位置 ( 繞口 ~)。</p>
+<li>
+<p>不過在 <code>call by value</code> 中，就算傳給對方的是指標，也只是代表「指標內所儲存的值」，有就是把記憶體的位置指給對方，或說是指向相同的記憶體位置，但是指標本身還是有不同的記憶體位置 ( 繞口 ~)。</p>
 </li>
-<li><p>若是想像成，在 <code>call by value</code> 時，等於是新增了一個變數 <code>a</code> ，讓 <code>a</code> 儲存的值和傳進來的參數相同，這樣的想法會比較直覺；而 <code>call by reference</code> 則是把 <code>a</code> 當作 <code>x</code> 的 alias ( 別名 )，但是其實兩者是相同的變數。</p>
+<li>
+<p>若是想像成，在 <code>call by value</code> 時，等於是新增了一個變數 <code>a</code> ，讓 <code>a</code> 儲存的值和傳進來的參數相同，這樣的想法會比較直覺；而 <code>call by reference</code> 則是把 <code>a</code> 當作 <code>x</code> 的 alias ( 別名 )，但是其實兩者是相同的變數。</p>
 </li>
 </ul>
-<h4 id="從行為上區分"><a href="#從行為上區分" class="headerlink" title="從行為上區分"></a>從行為上區分</h4><p>從「行為」本身上區分兩者是比較容易的方法，不同的種類達成的行為不同。</p>
+<h4 id="從行為上區分"><a class="header-anchor" href="#從行為上區分"></a>從行為上區分</h4>
+<p>從「行為」本身上區分兩者是比較容易的方法，不同的種類達成的行為不同。</p>
 <ul>
-<li>條件 : 在 function 中對引數重新賦值，是否會影響外面的變數<ul>
+<li>條件 : 在 function 中對引數重新賦值，是否會影響外面的變數
+<ul>
 <li>會 -&gt; <code>call by reference</code></li>
 <li>不會 -&gt; <code>call by value</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
+<ul>
 <li><a href="https://github.com/aszx87410/blog/issues/30" target="_blank" rel="noopener">深入探討 JavaScript 中的參數傳遞：call by value 還是 reference?</a></li>
 <li><a href="https://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language" target="_blank" rel="noopener">Is JavaScript a pass-by-reference or pass-by-value language?</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing" target="_blank" rel="noopener">Evaluation strategy</a></li>
@@ -272,31 +325,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/10/14/call by value or reference/';
-        this.page.identifier = '2019/10/14/call by value or reference/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/10/14/call by value or reference/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -310,6 +367,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -343,6 +413,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

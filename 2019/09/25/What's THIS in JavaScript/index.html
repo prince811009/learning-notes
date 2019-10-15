@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="前言 常常出現以及使用的 this 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What&#39;s `THIS` in JavaScript?">
+<meta property="og:url" content="https://prince811009.github.io/2019/09/25/What's THIS in JavaScript/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="前言 常常出現以及使用的 this 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:09:12.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What&#39;s `THIS` in JavaScript?">
+<meta name="twitter:description" content="前言 常常出現以及使用的 this 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -111,19 +141,19 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#在-ES6-的-Arrow-Function-箭頭函式-中">6&nbsp;&nbsp;<b>在 ES6 的 Arrow Function ( 箭頭函式 ) 中</b></a>
+                    <a class="navbar-item" href="#在-es6-的-arrow-function-箭頭函式-中">6&nbsp;&nbsp;<b>在 ES6 的 Arrow Function ( 箭頭函式 ) 中</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">6.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#reference">6.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/What&#39;s%20THIS%20in%20JavaScript.md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -160,57 +190,72 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>常常出現以及使用的 <code>this</code> 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。</p>
+        <h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>常常出現以及使用的 <code>this</code> 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。</p>
 <a id="more"></a>
-
-<h3 id="由物件導向的角度開始探討"><a href="#由物件導向的角度開始探討" class="headerlink" title="由物件導向的角度開始探討"></a>由物件導向的角度開始探討</h3><p>試宣告了一個 class <code>Car</code> ，我們可以使用兩個 methods ( setName and getName )，並在裡面使用 <code>this.name</code> 存取 instance 的屬性，由此可見這裡的 <code>this</code> 指的對象就是 instance 本身 ( <code>myCar</code> )。</p>
+<h3 id="由物件導向的角度開始探討"><a class="header-anchor" href="#由物件導向的角度開始探討"></a>由物件導向的角度開始探討</h3>
+<p>試宣告了一個 class <code>Car</code> ，我們可以使用兩個 methods ( setName and getName )，並在裡面使用 <code>this.name</code> 存取 instance 的屬性，由此可見這裡的 <code>this</code> 指的對象就是 instance 本身 ( <code>myCar</code> )。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;</span><br><span class="line">    setName(name) &#123;</span><br><span class="line">        this.name = name</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    getName() &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">       </span><br><span class="line">const myCar = new Car()</span><br><span class="line">myCar.setName(&apos;hello&apos;)</span><br><span class="line">console.log(myCar.getName()) // hello</span><br></pre></td></tr></table></figure></p>
-<h3 id="物件導向之外情況"><a href="#物件導向之外情況" class="headerlink" title="物件導向之外情況"></a>物件導向之外情況</h3><ul>
+<h3 id="物件導向之外情況"><a class="header-anchor" href="#物件導向之外情況"></a>物件導向之外情況</h3>
+<ul>
 <li>嚴格模式下 =&gt; undefined</li>
 <li>非嚴格模式，且在瀏覽器下執行 =&gt; window</li>
 <li>非嚴格模式，且在 node.js 下執行 =&gt; global</li>
 </ul>
-<h3 id="更改-this-值"><a href="#更改-this-值" class="headerlink" title="更改 this 值"></a>更改 this 值</h3><p>儘管 this 可能有預設值，但仍可透過一些方法去修改：</p>
+<h3 id="更改-this-值"><a class="header-anchor" href="#更改-this-值"></a>更改 this 值</h3>
+<p>儘管 this 可能有預設值，但仍可透過一些方法去修改：</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello(a, b)&#123;</span><br><span class="line">    console.log(this, a, b)</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">hello(1, 2) // undefined 1 2</span><br><span class="line">hello.call(undefined, 1, 2) // undefined 1 2</span><br><span class="line">hello.apply(undefined, [1, 2]) // undefined 1 2</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>直接呼叫 function </p>
+<li>
+<p>直接呼叫 function</p>
 <ul>
 <li>上述程式碼可以從 function <code>hello</code> 可以 log 出 <code>this</code> 的值和 a, b 兩個參數，因此在呼叫 <code>hello(1, 2)</code> 的時候，在嚴格模式下 <code>this</code> 會是 <code>undefined</code> ， 而 a, b 分別為 1, 2。</li>
 </ul>
 </li>
-<li><p>使用 <code>call</code> 和 <code>apply</code> 方式呼叫 function。</p>
+<li>
+<p>使用 <code>call</code> 和 <code>apply</code> 方式呼叫 function。</p>
 <ul>
-<li><p>當使用 <code>hello.call(undefined, 1, 2)</code> 的時候，會發現回傳結果和呼叫 <code>hello(1, 2)</code> 相同。</p>
+<li>
+<p>當使用 <code>hello.call(undefined, 1, 2)</code> 的時候，會發現回傳結果和呼叫 <code>hello(1, 2)</code> 相同。</p>
 </li>
-<li><p>若使用 <code>hello.apply(undefined, [1, 2])</code> 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。 </p>
+<li>
+<p>若使用 <code>hello.apply(undefined, [1, 2])</code> 回傳值也是相同，差別部分在於傳進去的參數需要是 array 。</p>
 </li>
-<li><p>回到上述未解的問題，也就是一直為 <code>undefined</code> 的那項參數 =&gt; <code>this</code> 的值，以下舉例說明：</p>
+<li>
+<p>回到上述未解的問題，也就是一直為 <code>undefined</code> 的那項參數 =&gt; <code>this</code> 的值，以下舉例說明：</p>
 <ul>
-<li><p>example 01 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello(a, b)&#123;</span><br><span class="line">    console.log(this, a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello.call(&apos;yo&apos;, 1, 2) // yo 1 2</span><br><span class="line">hello.apply(&apos;hihihi&apos;, [1, 2]) // hihihi 1 2</span><br></pre></td></tr></table></figure></p>
-<p>  有趣的是，傳進的的參數為何，<code>this</code> 的值就會是那項參數，覆蓋過預設的 <code>this</code> 值。</p>
+<li>
+<p>example 01 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello(a, b)&#123;</span><br><span class="line">    console.log(this, a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello.call(&apos;yo&apos;, 1, 2) // yo 1 2</span><br><span class="line">hello.apply(&apos;hihihi&apos;, [1, 2]) // hihihi 1 2</span><br></pre></td></tr></table></figure></p>
+<p>有趣的是，傳進的的參數為何，<code>this</code> 的值就會是那項參數，覆蓋過預設的 <code>this</code> 值。</p>
 </li>
-<li><p>example 02 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;</span><br><span class="line">    hello() &#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myCar = new Car()</span><br><span class="line">myCar.hello() // myCar instance</span><br><span class="line">myCar.hello.call(&apos;yoyoyo&apos;) // yoyoyo</span><br></pre></td></tr></table></figure></p>
-<p>  從上述程式碼可以得知，原本預設的 <code>this</code> 值為當我們呼叫 <code>myCar.hello()</code> 時回傳的 <code>myCar</code> 這項 instance，不過當我們使用 <code>call</code> 呼叫 function 時 ( <code>myCar.hello.call(&#39;yoyoyo&#39;) // yoyoyo</code> ) 所傳入的參數所覆蓋掉。 </p>
+<li>
+<p>example 02 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;</span><br><span class="line">    hello() &#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myCar = new Car()</span><br><span class="line">myCar.hello() // myCar instance</span><br><span class="line">myCar.hello.call(&apos;yoyoyo&apos;) // yoyoyo</span><br></pre></td></tr></table></figure></p>
+<p>從上述程式碼可以得知，原本預設的 <code>this</code> 值為當我們呼叫 <code>myCar.hello()</code> 時回傳的 <code>myCar</code> 這項 instance，不過當我們使用 <code>call</code> 呼叫 function 時 ( <code>myCar.hello.call('yoyoyo') // yoyoyo</code> ) 所傳入的參數所覆蓋掉。</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>使用 <code>bind</code> 方式呼叫 function：</p>
+<li>
+<p>使用 <code>bind</code> 方式呼叫 function：</p>
 <ul>
-<li><p><code>bind</code> 會回傳一個新的 function ，因此我們將 function <code>hello</code> 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myHello = hello.bind(&apos;my&apos;)</span><br><span class="line">myHello() // my</span><br></pre></td></tr></table></figure></p>
+<li>
+<p><code>bind</code> 會回傳一個新的 function ，因此我們將 function <code>hello</code> 使用 my 綁定，最後呼叫 myHello() 時會輸出 my 。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myHello = hello.bind(&apos;my&apos;)</span><br><span class="line">myHello() // my</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
-<li><p>混用 <code>call</code> / <code>apply</code> and <code>bind</code>：</p>
-<p>  這邊可以發現，如果已經使用了 <code>bind</code> 之後 <code>this</code> 的值就不會再被改變了。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myHello = hello.bind(&apos;my&apos;)</span><br><span class="line">myHello.call(&apos;your&apos;) // my</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>混用 <code>call</code> / <code>apply</code> and <code>bind</code>：</p>
+<p>這邊可以發現，如果已經使用了 <code>bind</code> 之後 <code>this</code> 的值就不會再被改變了。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const myHello = hello.bind(&apos;my&apos;)</span><br><span class="line">myHello.call(&apos;your&apos;) // my</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
-<h3 id="物件中的-this"><a href="#物件中的-this" class="headerlink" title="物件中的 this"></a>物件中的 this</h3><p>除了物件導向 class 中的 this ，接續探討一般 JavaScript 中的 object 的情況。<br>首先先宣告一項物件：</p>
+<h3 id="物件中的-this"><a class="header-anchor" href="#物件中的-this"></a>物件中的 this</h3>
+<p>除了物件導向 class 中的 this ，接續探討一般 JavaScript 中的 object 的情況。<br>
+首先先宣告一項物件：</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br></pre></td></tr></table></figure></p>
 <p>這邊所強調的重點為：</p>
 <blockquote>
@@ -218,52 +263,61 @@
 </blockquote>
 <p><code>this</code> 的值會根據使用者如何呼叫 function 而不同，就如同上述所提的三種方式： <code>call</code>, <code>apply</code> and <code>bind</code> ，因此也就可以使用不同的方式呼叫 function 使 <code>this</code> 值有所不同。</p>
 <ul>
-<li><p>Step 1 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">const hey = obj.hello</span><br><span class="line">hey() // undefined</span><br></pre></td></tr></table></figure></p>
-<p>  可將上面這段程式碼的 function call 轉成使用 <code>call</code> 的形式來看：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">obj.hello.call(obj) // 轉成 call</span><br><span class="line">const hey = obj.hello</span><br><span class="line">hey() // undefined</span><br><span class="line">hey.call() // 轉成 call</span><br></pre></td></tr></table></figure></p>
-<p>  此時 <code>obj.hello()</code> 變成 <code>obj.hello.call(obj)</code> ，而 <code>hey()</code> 前面沒有東西呼叫，因此變成 <code>hey.call()</code>。</p>
+<li>
+<p>Step 1 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">const hey = obj.hello</span><br><span class="line">hey() // undefined</span><br></pre></td></tr></table></figure></p>
+<p>可將上面這段程式碼的 function call 轉成使用 <code>call</code> 的形式來看：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">obj.hello.call(obj) // 轉成 call</span><br><span class="line">const hey = obj.hello</span><br><span class="line">hey() // undefined</span><br><span class="line">hey.call() // 轉成 call</span><br></pre></td></tr></table></figure></p>
+<p>此時 <code>obj.hello()</code> 變成 <code>obj.hello.call(obj)</code> ，而 <code>hey()</code> 前面沒有東西呼叫，因此變成 <code>hey.call()</code>。</p>
 </li>
-<li><p>Step 2 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;,</span><br><span class="line">    inner: &#123;</span><br><span class="line">        value: 2,</span><br><span class="line">        hello: function() &#123;</span><br><span class="line">            console.log(this.value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const obj2 = obj.inner</span><br><span class="line">const hello = obj.inner.hello</span><br><span class="line">obj.inner.hello()</span><br><span class="line">obj2.hello()</span><br><span class="line">hello()</span><br></pre></td></tr></table></figure></p>
-<p>  可把最後面這段想成</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj.inner.hello() // obj.inner.hello.call(obj.inner) =&gt; 2</span><br><span class="line">obj2.hello() // obj2.hello.call(obj2) =&gt; 2</span><br><span class="line">hello() // hello.call() =&gt; undefined ( 非嚴格模式下 -&gt; window.value =&gt; undefined)</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Step 2 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this.value)</span><br><span class="line">    &#125;,</span><br><span class="line">    inner: &#123;</span><br><span class="line">        value: 2,</span><br><span class="line">        hello: function() &#123;</span><br><span class="line">            console.log(this.value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const obj2 = obj.inner</span><br><span class="line">const hello = obj.inner.hello</span><br><span class="line">obj.inner.hello()</span><br><span class="line">obj2.hello()</span><br><span class="line">hello()</span><br></pre></td></tr></table></figure></p>
+<p>可把最後面這段想成</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj.inner.hello() // obj.inner.hello.call(obj.inner) =&gt; 2</span><br><span class="line">obj2.hello() // obj2.hello.call(obj2) =&gt; 2</span><br><span class="line">hello() // hello.call() =&gt; undefined ( 非嚴格模式下 -&gt; window.value =&gt; undefined)</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>question 01 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var b = &#123;</span><br><span class="line">    value: 2,</span><br><span class="line">    hello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello()</span><br><span class="line">a.hello()</span><br><span class="line">b.hello.apply(a)</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>question 01 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function hello() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    hello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var b = &#123;</span><br><span class="line">    value: 2,</span><br><span class="line">    hello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello()</span><br><span class="line">a.hello()</span><br><span class="line">b.hello.apply(a)</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>answer :</p>
-<p>  用 <code>call</code> 來轉換形式：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello() // hello.call() =&gt; window</span><br><span class="line">a.hello() // a.hello.call(a) =&gt; a</span><br><span class="line">b.hello.apply(a) // 因為使用了 `apply` =&gt; a</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>answer :</p>
+<p>用 <code>call</code> 來轉換形式：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello() // hello.call() =&gt; window</span><br><span class="line">a.hello() // a.hello.call(a) =&gt; a</span><br><span class="line">b.hello.apply(a) // 因為使用了 `apply` =&gt; a</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
-<li><p>question 02 : </p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var x = 10</span><br><span class="line">var obj = &#123;</span><br><span class="line">    x: 20,</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">        var test = function() &#123;</span><br><span class="line">            console.log(this.x)</span><br><span class="line">        &#125;</span><br><span class="line">        test()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn()</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>question 02 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var x = 10</span><br><span class="line">var obj = &#123;</span><br><span class="line">    x: 20,</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">        var test = function() &#123;</span><br><span class="line">            console.log(this.x)</span><br><span class="line">        &#125;</span><br><span class="line">        test()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn()</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>answer : </p>
-<p>  使用 <code>call</code> 轉換形式：</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test() // 轉換成 test.call() -&gt; this 的值為 window，因此 this.x =&gt; 10</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>answer :</p>
+<p>使用 <code>call</code> 轉換形式：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test() // 轉換成 test.call() -&gt; this 的值為 window，因此 this.x =&gt; 10</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="在-ES6-的-Arrow-Function-箭頭函式-中"><a href="#在-ES6-的-Arrow-Function-箭頭函式-中" class="headerlink" title="在 ES6 的 Arrow Function ( 箭頭函式 ) 中"></a>在 ES6 的 Arrow Function ( 箭頭函式 ) 中</h3><p>在 ES6 要注意的是：</p>
+<h3 id="在-es6-的-arrow-function-箭頭函式-中"><a class="header-anchor" href="#在-es6-的-arrow-function-箭頭函式-中"></a>在 ES6 的 Arrow Function ( 箭頭函式 ) 中</h3>
+<p>在 ES6 要注意的是：</p>
 <blockquote>
 <p>變數宣告的地方的 <code>this</code> 就是變數的 <code>this</code> 。</p>
 </blockquote>
 <ul>
-<li><p>example : </p>
-<p>  在 function <code>hello</code> 中宣告 arrow function <code>test</code> ，</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    x: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this) // 這邊的 `this` 就會是 test 的 this</span><br><span class="line">        const test = () =&gt; &#123;</span><br><span class="line">            console.log(this.x)</span><br><span class="line">        &#125;</span><br><span class="line">        test()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">const hello = obj.hello</span><br><span class="line">hello() // undefined</span><br></pre></td></tr></table></figure></p>
-<p>  所以我們可以發現， <code>test</code> 這個箭頭函式是在 <code>hello</code> 這個 function 裡面被宣告的，因此 <code>test</code> 這項 function 所印出的 <code>this</code> 就會一樣是 <code>hello</code> 的 <code>this</code> 的值。</p>
-<p>  因此 <code>obj.hello()</code> 所 log 出來的 <code>this</code> 是 <code>obj</code> ，因此 <code>test</code> 的 <code>this</code> 的值也就是 <code>obj</code> 。</p>
-<p>  而呼叫 <code>hello()</code> 時， <code>test</code> 的 <code>this</code> 為全域物件，所以是 <code>undefined</code> 。</p>
+<li>
+<p>example :</p>
+<p>在 function <code>hello</code> 中宣告 arrow function <code>test</code> ，</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    x: 1,</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">        console.log(this) // 這邊的 `this` 就會是 test 的 this</span><br><span class="line">        const test = () =&gt; &#123;</span><br><span class="line">            console.log(this.x)</span><br><span class="line">        &#125;</span><br><span class="line">        test()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.hello() // 1</span><br><span class="line">const hello = obj.hello</span><br><span class="line">hello() // undefined</span><br></pre></td></tr></table></figure></p>
+<p>所以我們可以發現， <code>test</code> 這個箭頭函式是在 <code>hello</code> 這個 function 裡面被宣告的，因此 <code>test</code> 這項 function 所印出的 <code>this</code> 就會一樣是 <code>hello</code> 的 <code>this</code> 的值。</p>
+<p>因此 <code>obj.hello()</code> 所 log 出來的 <code>this</code> 是 <code>obj</code> ，因此 <code>test</code> 的 <code>this</code> 的值也就是 <code>obj</code> 。</p>
+<p>而呼叫 <code>hello()</code> 時， <code>test</code> 的 <code>this</code> 為全域物件，所以是 <code>undefined</code> 。</p>
 </li>
 </ul>
 <hr>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
+<ul>
 <li><a href="https://github.com/aszx87410/blog/issues/39" target="_blank" rel="noopener">淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂</a></li>
 <li><a href="https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/" target="_blank" rel="noopener">What’s THIS in JavaScript ?</a></li>
 </ul>
@@ -294,31 +348,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/09/25/What&#39;s THIS in JavaScript/';
-        this.page.identifier = '2019/09/25/What&#39;s THIS in JavaScript/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/09/25/What&#39;s THIS in JavaScript/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -332,6 +390,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -365,6 +436,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

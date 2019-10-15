@@ -14,9 +14,19 @@
 
 
 
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Learning notes">
+<meta property="og:url" content="https://prince811009.github.io/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learning notes">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +43,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +80,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -72,6 +97,13 @@
             </a>
             
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -106,15 +138,19 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="function-參數傳遞方式"><a href="#function-參數傳遞方式" class="headerlink" title="function 參數傳遞方式"></a>function 參數傳遞方式</h3><p>先來說明第一種方式：</p>
+        <h3 id="function-參數傳遞方式"><a class="header-anchor" href="#function-參數傳遞方式"></a>function 參數傳遞方式</h3>
+<p>先來說明第一種方式：</p>
 <ol>
-<li><p>call by value / pass by value</p>
-<p> 直接舉個例子來看</p>
-<p> <epacse hidden>65</epacse></p>
+<li>
+<p>call by value / pass by value<br>
+直接舉個例子來看<br>
+<epacse hidden>72</epacse></p>
 <ul>
-<li><p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
+<li>
+<p>這是個很有趣的現象，我們上述例子的用意在於希望把 x, y 的值交換，先把 a 指向 temp ( 我們預留的空位 )，把 b 指向給 a ，最後再把 temp 指向給 b。但是其實上述的例子並沒有真的把 <code>x</code> 和 <code>y</code> 的值進行交換，因為我們拿出來交換的東西並不是真正的 <code>x</code> 和 <code>y</code> ，而是 <code>x</code> 和 <code>y</code> 的值的副本。</p>
 </li>
-<li><p>可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
+<li>
+<p>可以把我們宣告的 <code>a</code> 和 <code>b</code> 想像成兩個新的變數，只是剛好存的值與  <code>x</code> 和 <code>y</code> 一樣，所以就算改變了 <code>a</code> 也不會改變 <code>x</code> ，因為他們本身就是不同的變數 ( 記憶體位置打從一開始就不同 ) 。</p>
 </li>
 </ul>
 </li>
@@ -198,17 +234,21 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="Hoisting-變數提升"><a href="#Hoisting-變數提升" class="headerlink" title="Hoisting 變數提升"></a>Hoisting 變數提升</h2><ul>
-<li><p>example_1 ( 變數 )</p>
-<p>  <epacse hidden>0</epacse></p>
-<p>  可以看成 2 步驟拆解： </p>
+        <h2 id="hoisting-變數提升"><a class="header-anchor" href="#hoisting-變數提升"></a>Hoisting 變數提升</h2>
 <ul>
-<li><p>first : 將變數拆解</p>
-<p>  <epacse hidden>1</epacse></p>
+<li>
+<p>example_1 ( 變數 )</p>
+<p><epacse hidden>0</epacse></p>
+<p>可以看成 2 步驟拆解：</p>
+<ul>
+<li>
+<p>first : 將變數拆解</p>
+<p><epacse hidden>1</epacse></p>
 </li>
-<li><p>second : 再提升變數</p>
-<p>  因此在程式跑到 <code>console.log(a)</code> 之前就可以先使用此變數。</p>
-<p>  <epacse hidden>2</epacse></p>
+<li>
+<p>second : 再提升變數</p>
+<p>因此在程式跑到 <code>console.log(a)</code> 之前就可以先使用此變數。</p>
+<p><epacse hidden>2</epacse></p>
 </li>
 </ul>
 </li>
@@ -253,10 +293,12 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <ul>
-<li><p>Global Installation</p>
-<p>  <epacse hidden>39</epacse></p>
+<li>
+<p>Global Installation</p>
+<p><epacse hidden>33</epacse></p>
 </li>
-<li><p>建立專案資料夾</p>
+<li>
+<p>建立專案資料夾</p>
 <ul>
 <li><code>mkdir &lt;folder name&gt;</code></li>
 <li><code>cd &lt;folder name&gt;</code></li>
@@ -302,7 +344,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>首先先簡介 Closure 的特性</p>
+        <h3 id="introduction"><a class="header-anchor" href="#introduction"></a>Introduction</h3>
+<p>首先先簡介 Closure 的特性</p>
         <p class="article-more-link">
             <a href="/2019/10/01/Closure - about closure and scope in JavaScript/#more">Read More</a>
         </p>
@@ -343,7 +386,7 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <blockquote>
-<p>Automate and enhance your workflow  </p>
+<p>Automate and enhance your workflow</p>
 </blockquote>
 <p>目的加強工作流程並自動化。</p>
 <blockquote>
@@ -388,7 +431,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>常常出現以及使用的 <code>this</code> 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。</p>
+        <h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>常常出現以及使用的 <code>this</code> 似乎是一個常見又難纏的敵人，以下整理及提供一些資料參考。</p>
         <p class="article-more-link">
             <a href="/2019/09/25/What's THIS in JavaScript/#more">Read More</a>
         </p>
@@ -468,7 +512,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
+        <h3 id="const"><a class="header-anchor" href="#const"></a>const</h3>
+<p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
         <p class="article-more-link">
             <a href="/2019/09/21/Introduction - let and const (ES6)/#more">Read More</a>
         </p>
@@ -509,16 +554,18 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <ul>
-<li>primitive type ( 原始型態 )<ul>
+<li>primitive type ( 原始型態 )
+<ul>
 <li>null</li>
 <li>undefined</li>
 <li>string</li>
 <li>number</li>
 <li>boolean</li>
-<li>symbol (ES6) </li>
+<li>symbol (ES6)</li>
 </ul>
 </li>
-<li>others<ul>
+<li>others
+<ul>
 <li>object(array, function, date…)</li>
 </ul>
 </li>
@@ -566,6 +613,19 @@
             <div class="column is-hidden-mobile"></div>
 
             
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
             
         </div>
     </div>
@@ -598,6 +658,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

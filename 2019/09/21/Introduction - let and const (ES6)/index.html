@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="const 全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="let and const (ES6)">
+<meta property="og:url" content="https://prince811009.github.io/2019/09/21/Introduction - let and const (ES6)/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="const 全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:08:14.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="let and const (ES6)">
+<meta name="twitter:description" content="const 全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -93,9 +123,9 @@
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Introduction%20-%20let%20and%20const%20(ES6).md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -132,29 +162,35 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
+        <h3 id="const"><a class="header-anchor" href="#const"></a>const</h3>
+<p>全名為 constant ( 常數 )，相對於 var ( 變數 )，需要一開始即指定一初始值給 const，且不能在後續的步驟修改 const 的值。</p>
 <a id="more"></a>
-
 <ul>
-<li><p>需先指定一初始值，否則會出現錯誤 <code>Missing initializer in const declaration</code></p>
+<li>
+<p>需先指定一初始值，否則會出現錯誤 <code>Missing initializer in const declaration</code></p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b</span><br><span class="line">b = 20 // Error: `Missing initializer in const declaration`</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>不能在後續修改 const 的值，否則出現錯誤 <code>Assignment to constant variable</code> 。</p>
+<li>
+<p>不能在後續修改 const 的值，否則出現錯誤 <code>Assignment to constant variable</code> 。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const b = 10</span><br><span class="line">b = 20 // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>let 以及 var 則無此限制</p>
+<li>
+<p>let 以及 var 則無此限制</p>
 </li>
 </ul>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li><p>example 01 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
-<p>  此時當執行 <code>obj.number</code> 時，程式會去修改其中 <code>obj</code> 所儲存的記憶體位置中的  <code>number</code> 的值，而不會去修改到記憶體位置，因此不會出錯，可想像成</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // 其中的 number 的值修改成 2</span><br><span class="line"></span><br><span class="line">obj:0x01</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
+<h3 id="應用"><a class="header-anchor" href="#應用"></a>應用</h3>
+<ul>
+<li>
+<p>example 01 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
+<p>此時當執行 <code>obj.number</code> 時，程式會去修改其中 <code>obj</code> 所儲存的記憶體位置中的  <code>number</code> 的值，而不會去修改到記憶體位置，因此不會出錯，可想像成</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // 其中的 number 的值修改成 2</span><br><span class="line"></span><br><span class="line">obj:0x01</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.number = 2</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>example 02 :</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p> 這時已產生一個新的記憶體位置來放 <code>number: 2</code> 的值，之後再將這新的記憶體位置只給 <code>obj</code> 但此時已修改到 <code>const obj</code> 的值了，因此會發生錯誤。</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">0x02: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj:0x02 // obj 的值 ( 也就是儲存的記憶體位置 ) 被修改了</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>example 02 :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>這時已產生一個新的記憶體位置來放 <code>number: 2</code> 的值，之後再將這新的記憶體位置只給 <code>obj</code> 但此時已修改到 <code>const obj</code> 的值了，因此會發生錯誤。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">0x01: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">0x02: &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj:0x02 // obj 的值 ( 也就是儲存的記憶體位置 ) 被修改了</span><br><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">  number: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">  number: 2</span><br><span class="line">&#125; // Error: `Assignment to constant variable`</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 
@@ -184,31 +220,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/09/21/Introduction - let and const (ES6)/';
-        this.page.identifier = '2019/09/21/Introduction - let and const (ES6)/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/09/21/Introduction - let and const (ES6)/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -222,6 +262,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -255,6 +308,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

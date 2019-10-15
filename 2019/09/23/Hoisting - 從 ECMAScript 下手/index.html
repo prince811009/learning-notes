@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="讓我們從個小測驗著手吧">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hoisting - 從 ECMAScript 下手">
+<meta property="og:url" content="https://prince811009.github.io/2019/09/23/Hoisting - 從 ECMAScript 下手/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="讓我們從個小測驗著手吧">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:07:36.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hoisting - 從 ECMAScript 下手">
+<meta name="twitter:description" content="讓我們從個小測驗著手吧">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -87,25 +117,25 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#ECMAScript">2&nbsp;&nbsp;<b>ECMAScript</b></a>
+                    <a class="navbar-item" href="#ecmascript">2&nbsp;&nbsp;<b>ECMAScript</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#quiz-1">3&nbsp;&nbsp;<b>quiz</b></a>
+                    <a class="navbar-item" href="#quiz">3&nbsp;&nbsp;<b>quiz</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">3.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#reference">3.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/Hoisting%20-%20%E5%BE%9E%20ECMAScript%20%E4%B8%8B%E6%89%8B.md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -144,148 +174,195 @@
     
         <p>讓我們從個小測驗著手吧</p>
 <a id="more"></a>
-
-
-<h3 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h3><pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(&apos;1.&apos;, a)</span><br><span class="line">    var a = 7</span><br><span class="line">    console.log(&apos;2.&apos;, a)</span><br><span class="line">    a++</span><br><span class="line">    var a</span><br><span class="line">    inner()</span><br><span class="line">    console.log(&apos;4.&apos;, a)</span><br><span class="line">    function inner()&#123;</span><br><span class="line">        console.log(&apos;3.&apos;, a)</span><br><span class="line">        a = 30</span><br><span class="line">        b = 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a)</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a)</span><br><span class="line">console.log(&apos;7.&apos;, b)</span><br></pre></td></tr></table></figure></code></pre><ul>
-<li><p>answer : </p>
-<p>  以 hoisting 試想</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a</span><br><span class="line">    console.log(&apos;1.&apos;, a) // &apos;1. undefined&apos;</span><br><span class="line">    a = 7</span><br><span class="line">    console.log(&apos;2.&apos;, a) // &apos;2. 7&apos;</span><br><span class="line">    a++</span><br><span class="line">    var a</span><br><span class="line"></span><br><span class="line">    function inner() &#123;</span><br><span class="line">        console.log(&apos;3.&apos;, a) // &apos;3. 8&apos;</span><br><span class="line">        a = 30</span><br><span class="line">        b = 200</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line">    console.log(&apos;4.&apos;, a) // &apos;4. 30&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a) // &apos;5. 1&apos;</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a) // &apos;6. 70&apos;</span><br><span class="line">console.log(&apos;7.&apos;, b) // &apos;7. 200&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="quiz"><a class="header-anchor" href="#quiz"></a>quiz</h3>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test() &#123;</span><br><span class="line">    console.log(&apos;1.&apos;, a)</span><br><span class="line">    var a = 7</span><br><span class="line">    console.log(&apos;2.&apos;, a)</span><br><span class="line">    a++</span><br><span class="line">    var a</span><br><span class="line">    inner()</span><br><span class="line">    console.log(&apos;4.&apos;, a)</span><br><span class="line">    function inner()&#123;</span><br><span class="line">        console.log(&apos;3.&apos;, a)</span><br><span class="line">        a = 30</span><br><span class="line">        b = 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a)</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a)</span><br><span class="line">console.log(&apos;7.&apos;, b)</span><br></pre></td></tr></table></figure></code></pre>
+<ul>
+<li>
+<p>answer :</p>
+<p>以 hoisting 試想</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test() &#123;</span><br><span class="line">    var a</span><br><span class="line">    console.log(&apos;1.&apos;, a) // &apos;1. undefined&apos;</span><br><span class="line">    a = 7</span><br><span class="line">    console.log(&apos;2.&apos;, a) // &apos;2. 7&apos;</span><br><span class="line">    a++</span><br><span class="line">    var a</span><br><span class="line"></span><br><span class="line">    function inner() &#123;</span><br><span class="line">        console.log(&apos;3.&apos;, a) // &apos;3. 8&apos;</span><br><span class="line">        a = 30</span><br><span class="line">        b = 200</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line">    console.log(&apos;4.&apos;, a) // &apos;4. 30&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a) // &apos;5. 1&apos;</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a) // &apos;6. 70&apos;</span><br><span class="line">console.log(&apos;7.&apos;, b) // &apos;7. 200&apos;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <hr>
-<h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><ul>
-<li><p>Execution Contexts</p>
-<p>  When control is transferred to ECMAScript executable code, control is entering an <em>execution context</em>. Active execution contexts logically form a stack. The top execution context on this logical stack is the running execution context.</p>
-</li>
-<li><p>Variable Instantiation</p>
-<p>  Every execution context has associated with it a variable object. Variables and functions declared in the source text are added as properties of the variable object. For function code, parameters are added as properties of the variable object.</p>
-<p>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>  On entering an execution context, the properties are bound to the variable object in the following order:</p>
+<h3 id="ecmascript"><a class="header-anchor" href="#ecmascript"></a>ECMAScript</h3>
 <ul>
-<li><p>For function code: for each formal parameter, as defined in the FormalParameterList, create a property of the variable object whose name is the Identifier and whose attributes are determined by the type of code. The values of the parameters are supplied by the caller as arguments to [[Call]].  </p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123) // 會使參數初始化</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Execution Contexts</p>
+<p>When control is transferred to ECMAScript executable code, control is entering an <em>execution context</em>. Active execution contexts logically form a stack. The top execution context on this logical stack is the running execution context.</p>
 </li>
-<li><p>For each FunctionDeclaration in the code, in source text order, create a property of the variable object.</p>
-<p> If the variable object already has a property with this name, replace its value and attributes.</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: function</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line">    function b() &#123;</span><br><span class="line"></span><br><span class="line">    &#125; // 若有同名的，則會被後面的所覆蓋</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123)</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Variable Instantiation</p>
+<p>Every execution context has associated with it a variable object. Variables and functions declared in the source text are added as properties of the variable object. For function code, parameters are added as properties of the variable object.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">    var a = 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>On entering an execution context, the properties are bound to the variable object in the following order:</p>
+<ul>
+<li>
+<p>For function code: for each formal parameter, as defined in the FormalParameterList, create a property of the variable object whose name is the Identifier and whose attributes are determined by the type of code. The values of the parameters are supplied by the caller as arguments to [[Call]].</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123) // 會使參數初始化</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>For each VariableDeclaration or VariableDeclarationNoIn in the code, create a property of the variable object whose value is undefined.</p>
-<p> If there is already a property of the variable object with the name of a declared variable, the value of the property and its attributes are not changed. </p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: function,</span><br><span class="line">    c: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line">    function b() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    var c = 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123)</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>For each FunctionDeclaration in the code, in source text order, create a property of the variable object.</p>
+<p>If the variable object already has a property with this name, replace its value and attributes.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: function</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line">    function b() &#123;</span><br><span class="line"></span><br><span class="line">    &#125; // 若有同名的，則會被後面的所覆蓋</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123)</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>For each VariableDeclaration or VariableDeclarationNoIn in the code, create a property of the variable object whose value is undefined.</p>
+<p>If there is already a property of the variable object with the name of a declared variable, the value of the property and its attributes are not changed.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">VO: &#123;</span><br><span class="line">    a: 123,</span><br><span class="line">    b: function,</span><br><span class="line">    c: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test(a, b) &#123;</span><br><span class="line">    function b() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    var c = 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(123)</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
 <p>了解原理後，回到上述的 quiz</p>
-<h3 id="quiz-1"><a href="#quiz-1" class="headerlink" title="quiz"></a>quiz</h3><pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test()&#123;</span><br><span class="line">console.log(&apos;1.&apos;, a)</span><br><span class="line">var a = 7</span><br><span class="line">console.log(&apos;2.&apos;, a)</span><br><span class="line">a++</span><br><span class="line">var a</span><br><span class="line">inner()</span><br><span class="line">console.log(&apos;4.&apos;, a)</span><br><span class="line">function inner()&#123;</span><br><span class="line">    console.log(&apos;3.&apos;, a)</span><br><span class="line">    a = 30</span><br><span class="line">    b = 200</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a)</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a)</span><br><span class="line">console.log(&apos;7.&apos;, b)</span><br></pre></td></tr></table></figure></code></pre><ul>
-<li><p>answer : </p>
-<p> 體驗在 JS 引擎中此段程式碼如何被執行</p>
+<h3 id="quiz"><a class="header-anchor" href="#quiz"></a>quiz</h3>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function test()&#123;</span><br><span class="line">console.log(&apos;1.&apos;, a)</span><br><span class="line">var a = 7</span><br><span class="line">console.log(&apos;2.&apos;, a)</span><br><span class="line">a++</span><br><span class="line">var a</span><br><span class="line">inner()</span><br><span class="line">console.log(&apos;4.&apos;, a)</span><br><span class="line">function inner()&#123;</span><br><span class="line">    console.log(&apos;3.&apos;, a)</span><br><span class="line">    a = 30</span><br><span class="line">    b = 200</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">console.log(&apos;5.&apos;, a)</span><br><span class="line">a = 70</span><br><span class="line">console.log(&apos;6.&apos;, a)</span><br><span class="line">console.log(&apos;7.&apos;, b)</span><br></pre></td></tr></table></figure></code></pre>
+<ul>
+<li>
+<p>answer :</p>
+<p>體驗在 JS 引擎中此段程式碼如何被執行</p>
 </li>
 </ul>
 <ol>
-<li><p>產生 global Execution Context，並初始化 global VO</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>產生 global Execution Context，並初始化 global VO</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>首先尋找參數，但因為此段並不是 function 所以沒有參數。</p>
+<li>
+<p>首先尋找參數，但因為此段並不是 function 所以沒有參數。</p>
 </li>
-<li><p>接著尋找是否有 function 的宣告 -&gt; 找到 <code>test()</code> 的宣告。<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>接著尋找是否有 function 的宣告 -&gt; 找到 <code>test()</code> 的宣告。<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>尋找變數宣告<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>尋找變數宣告<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>開始執行程式</p>
+<li>
+<p>開始執行程式</p>
 <ul>
-<li><p>Line 1 : <code>var a = 1;</code><br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 1 : <code>var a = 1;</code><br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Line 2~15 : function 宣告跳過</p>
+<li>
+<p>Line 2~15 : function 宣告跳過</p>
 </li>
-<li><p>Line 16 : 當呼叫一個新的 function <code>test()</code> ，就進入一個新的 <code>execution context</code> 。</p>
+<li>
+<p>Line 16 : 當呼叫一個新的 function <code>test()</code> ，就進入一個新的 <code>execution context</code> 。</p>
 </li>
 </ul>
 </li>
 </ol>
 <hr>
 <ol start="6">
-<li><p>產生新的 test Execution Context ，並初始化 test VO :</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>產生新的 test Execution Context ，並初始化 test VO :</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>首先尋找參數 -&gt; 無</p>
+<li>
+<p>首先尋找參數 -&gt; 無</p>
 </li>
-<li><p>接著尋找是否有 function 的宣告 -&gt; 找到 <code>inner()</code> 的宣告。</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>接著尋找是否有 function 的宣告 -&gt; 找到 <code>inner()</code> 的宣告。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>尋找變數宣告</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>尋找變數宣告</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>開始執行程式</p>
+<li>
+<p>開始執行程式</p>
 <ul>
-<li><p>Line 3 : <code>console.log(&#39;1.&#39;, a) // undefined</code></p>
+<li>
+<p>Line 3 : <code>console.log('1.', a) // undefined</code></p>
 </li>
-<li><p>Line 4 : <code>var a = 7</code></p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 7</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 4 : <code>var a = 7</code></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 7</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Line 5 : <code>console.log(&#39;2.&#39;, a) // 7</code></p>
+<li>
+<p>Line 5 : <code>console.log('2.', a) // 7</code></p>
 </li>
-<li><p>Line 6 : <code>a++</code></p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 6 : <code>a++</code></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Line 8 : <code>inner()</code></p>
+<li>
+<p>Line 8 : <code>inner()</code></p>
 </li>
 </ul>
 </li>
 </ol>
 <hr>
 <ol start="11">
-<li><p>產生新的 inner Execution Context ，並初始化 inner VO :</p>
+<li>
+<p>產生新的 inner Execution Context ，並初始化 inner VO :</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>function inner() 中沒有傳入任何參數，裡面也沒有 function 以及變數。</p>
+<li>
+<p>function inner() 中沒有傳入任何參數，裡面也沒有 function 以及變數。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>開始執行程式</p>
+<li>
+<p>開始執行程式</p>
 <ul>
-<li><p>Line 11 : <code>console.log(&#39;3.&#39;, a) // 8</code></p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p> 因為 inner VO 裡面是空的，因此往上找至 test VO -&gt; a: 8 。</p>
+<li>
+<p>Line 11 : <code>console.log('3.', a) // 8</code></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因為 inner VO 裡面是空的，因此往上找至 test VO -&gt; a: 8 。</p>
 </li>
-<li><p>Line 12 : <code>a = 30</code></p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 12 : <code>a = 30</code></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Line 13 : <code>b = 200</code></p>
-<p> 因為 inner VO 裡面沒有 b 的資訊，因此往上找至 test VO ，發現裡面也沒有 b 的資訊，繼續往上至 global VO 找，仍沒有 b 的資訊，最後在 global VO 建立 b 的資訊 ( 讓 b 變成全域變數 )。</p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 13 : <code>b = 200</code></p>
+<p>因為 inner VO 裡面沒有 b 的資訊，因此往上找至 test VO ，發現裡面也沒有 b 的資訊，繼續往上至 global VO 找，仍沒有 b 的資訊，最後在 global VO 建立 b 的資訊 ( 讓 b 變成全域變數 )。</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">inner EC</span><br><span class="line">inner VO &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
-<li><p>執行完 inner()，將 inner EC pop 出去。</p>
+<li>
+<p>執行完 inner()，將 inner EC pop 出去。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">test EC</span><br><span class="line">test VO &#123;</span><br><span class="line">    inner: func,</span><br><span class="line">    a: 30</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>回到 function test() {} 內部</p>
+<li>
+<p>回到 function test() {} 內部</p>
 <ul>
-<li>Line 9 : <code>console.log(&#39;4.&#39;, a) // 30</code></li>
+<li>Line 9 : <code>console.log('4.', a) // 30</code></li>
 </ul>
 </li>
-<li><p>執行完 test()，將 test EC pop 出去。</p>
+<li>
+<p>執行完 test()，將 test EC pop 出去。</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>回到 global EC</p>
+<li>
+<p>回到 global EC</p>
 <ul>
-<li><p>Line 17 : <code>console.log(&#39;5.&#39;, a) // 1</code></p>
+<li>
+<p>Line 17 : <code>console.log('5.', a) // 1</code></p>
 </li>
-<li><p>Line 18 : <code>a = 70</code></p>
-<p> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 70,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>Line 18 : <code>a = 70</code></p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global EC</span><br><span class="line">global VO &#123;</span><br><span class="line">    test: func,</span><br><span class="line">    a: 70,</span><br><span class="line">    b: 200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>Line 19 : <code>console.log(&#39;6.&#39;, a) // 70</code></p>
+<li>
+<p>Line 19 : <code>console.log('6.', a) // 70</code></p>
 </li>
-<li><p>Line 20 : <code>console.log(&#39;7.&#39;, a) // 200</code></p>
+<li>
+<p>Line 20 : <code>console.log('7.', a) // 200</code></p>
 </li>
 </ul>
 </li>
-<li><p>主程式執行完畢</p>
+<li>
+<p>主程式執行完畢</p>
 </li>
 </ol>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
-<li><a href="https://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%203rd%20edition,%20December%201999.pdf" target="_blank" rel="noopener">ECMA-262 - Ecma International
+<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
+<ul>
+<li><a href="https://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%203rd%20edition,%20December%201999.pdf" target="_blank" rel="noopener">ECMA-262 - Ecma International<br>
 </a></li>
 <li><a href="https://github.com/aszx87410/blog/issues/34" target="_blank" rel="noopener">我知道你懂 hoisting，可是你了解到多深？</a></li>
 </ul>
@@ -316,31 +393,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/09/23/Hoisting - 從 ECMAScript 下手/';
-        this.page.identifier = '2019/09/23/Hoisting - 從 ECMAScript 下手/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/09/23/Hoisting - 從 ECMAScript 下手/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -354,6 +435,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -387,6 +481,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>

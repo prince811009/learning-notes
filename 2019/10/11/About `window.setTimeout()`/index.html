@@ -14,9 +14,24 @@
 
 
 
+    <meta name="description" content="在先前的 Event Loop + Scope 實作中，發現一項有趣的返回值">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About `window.setTimeout()`">
+<meta property="og:url" content="https://prince811009.github.io/2019/10/11/About `window.setTimeout()`/index.html">
+<meta property="og:site_name" content="Learning notes">
+<meta property="og:description" content="在先前的 Event Loop + Scope 實作中，發現一項有趣的返回值">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-15T04:07:12.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About `window.setTimeout()`">
+<meta name="twitter:description" content="在先前的 Event Loop + Scope 實作中，發現一項有趣的返回值">
 
 
 
+
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -33,6 +48,19 @@
 
 <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 </head>
@@ -57,9 +85,11 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -81,23 +111,23 @@
                     
                     
                     
-                    <a class="navbar-item" href="#setTimeout">1&nbsp;&nbsp;<b>setTimeout()</b></a>
+                    <a class="navbar-item" href="#settimeout">1&nbsp;&nbsp;<b>setTimeout()</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Example">1.1&nbsp;&nbsp;Example</a>
+                    <a class="navbar-item" href="#example">1.1&nbsp;&nbsp;Example</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Reference">1.1.1&nbsp;&nbsp;Reference</a>
+                    <a class="navbar-item" href="#reference">1.1.1&nbsp;&nbsp;Reference</a>
                     
                 </div>
             </div>
             
             
-            <a class="navbar-item" title="Edit on GitHub" href="https://github.com/prince811009/prince811009.github.io/blob/source/blog/source/_posts/About%20%60window.setTimeout()%60.md">
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
                 
-                <i class="fas fa-edit"></i>
+                <i class="fab fa-github"></i>
                 
             </a>
                
@@ -136,30 +166,36 @@
     
         <p>在先前的 <code>Event Loop + Scope</code> 實作中，發現一項有趣的返回值</p>
 <a id="more"></a>
-
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0; i&lt;5; i++) &#123;</span><br><span class="line">  console.log(&apos;i: &apos; + i)</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;, i * 1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>此時使用 node.js 中會得到的答案為：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 0</span><br><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">5 (第 0 秒)</span><br><span class="line">5 (第 1 秒) </span><br><span class="line">5 (第 2 秒) </span><br><span class="line">5 (第 3 秒) </span><br><span class="line">5 (第 4 秒)</span><br></pre></td></tr></table></figure></p>
+<li>
+<p>此時使用 node.js 中會得到的答案為：<br>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i: 0</span><br><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">5 (第 0 秒)</span><br><span class="line">5 (第 1 秒) </span><br><span class="line">5 (第 2 秒) </span><br><span class="line">5 (第 3 秒) </span><br><span class="line">5 (第 4 秒)</span><br></pre></td></tr></table></figure></p>
 </li>
-<li><p>但如果使用瀏覽器中的 devTools 則會出現此項現象：</p>
+<li>
+<p>但如果使用瀏覽器中的 devTools 則會出現此項現象：</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">i: 0</span><br><span class="line">i: 1</span><br><span class="line">i: 2</span><br><span class="line">i: 3</span><br><span class="line">i: 4</span><br><span class="line">此行會多出一個數值</span><br><span class="line">5 (第 0 秒)</span><br><span class="line">5 (第 1 秒) </span><br><span class="line">5 (第 2 秒) </span><br><span class="line">5 (第 3 秒) </span><br><span class="line">5 (第 4 秒)</span><br></pre></td></tr></table></figure></p>
 <p>可能會依據所使用的不同瀏覽器 (Chorme, Mozilla Firefox) 而回傳一個不同的數值，甚至是使用一般分頁或是無痕模式分頁也會有所不同。</p>
 </li>
 </ul>
 <hr>
-<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h3><p>The setTimeout() sets a timer which executes a function or specified piece of code once the timer expires.</p>
+<h3 id="settimeout"><a class="header-anchor" href="#settimeout"></a>setTimeout()</h3>
+<p>The setTimeout() sets a timer which executes a function or specified piece of code once the timer expires.</p>
 <p>根據 MDN 定義 setTimeout() 的作用，會在延遲某段時間後，執行之中的程式碼</p>
 <ul>
-<li><p>Return value : <code>timeoutID</code></p>
+<li>
+<p>Return value : <code>timeoutID</code></p>
 <p>返回值 <code>timeoutID</code> 會是一個正整數，來表示 timer 的編號。之後這項值可以傳遞給 <code>clearTimeout()</code> 來取消 timer 使用。</p>
 <p>因此當我們使用這段程式碼在不同瀏覽器或是不同狀態下的分頁的 devTools 進行測試時：</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;&#125;, 0)</span><br></pre></td></tr></table></figure></p>
 <p>可以得到不同的數值，原因是這和瀏覽器背後處理過幾次 <code>setTimeout()</code> 有關。</p>
 </li>
 </ul>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>We can set a timeout after few seconds and store the timeoutID for use by clearTimeout().</p>
+<h4 id="example"><a class="header-anchor" href="#example"></a>Example</h4>
+<p>We can set a timeout after few seconds and store the timeoutID for use by clearTimeout().</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var timeoutID</span><br><span class="line"></span><br><span class="line">function delayedAlert() &#123;</span><br><span class="line">  timeoutID = window.setTimeout(window.alert, 2 * 1000, &apos;yo!&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function clearAlert() &#123;</span><br><span class="line">  window.clearTimeout(timeoutID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><ul>
+<h5 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h5>
+<ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout" target="_blank" rel="noopener">WindowOrWorkerGlobalScope.setTimeout()</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout" target="_blank" rel="noopener">WindowOrWorkerGlobalScope.clearTimeout()</a></li>
 </ul>
@@ -190,31 +226,35 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
 
 
 <div class="comments">
     <h3 class="title is-4">Comments</h3>
     
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://prince811009.github.io/2019/10/11/About `window.setTimeout()`/';
-        this.page.identifier = '2019/10/11/About `window.setTimeout()`/';
-        
-        this.language = 'en';
-        
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'xxxxxxxx' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	var gitment = new Gitment({
+		id: '2019/10/11/About `window.setTimeout()`/',
+		owner: 'prince811009',
+		repo: 'prince811009.github.io',
+		oauth: {
+			client_id: '9e66c957b5182e1412a0',
+			client_secret: 'a198f8a26e2234d092486d5ae0d148280c7eb4d9',
+		},
+	})
+	gitment.render('comment-container')
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 </div>
 
     </div>
@@ -228,6 +268,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -261,6 +314,118 @@
     moment.locale("en-AU");
 </script>
 
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
 
 
 <script src="/js/script.js"></script>
